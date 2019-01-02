@@ -15,7 +15,7 @@ I among others wanted to try this layout out for myself before the product launc
 
 I first created a B0XX using wood, which you can see the process of in the WoodB0XX folder, but did not like the feeling of its surface and its large size.
 
-I have now made one in a much smaller aluminum case that I purchased from Digikey, and have had a acrylic panel laser cut with the layout I drew in Autodesk Inventor. This one is currently a work in progress, and is almost complete. This process and increased functionality is detailed in the MiniAluminum folder.
+I have now made one in a much smaller aluminum case that I purchased from Digikey, and have had an acrylic panel laser cut with the layout I drew in Autodesk Inventor. This one is currently a work in progress, and is almost complete. This process and increased functionality is detailed in the MiniAluminum folder.
 
 The MiniB0XX folder contains files pertaining to a 3d printable case that is similar in size and potential functionality to my Aluminum B0XX. 
 
