@@ -14,7 +14,7 @@ To contact any of the people who are credited in this repo, including myself, si
 https://discord.gg/6wcEaDU
 
 
-I among others wanted to try this layout out for myself before the product launches, so many including me have created a B0XX from raw materials, prefabricated cases, arcade hardware, and arduinos.
+I among others wanted to try this layout for before the product launches, so many including me have created a B0XX from raw materials, prefabricated cases, arcade hardware, and arduinos.
 
 I first created a B0XX using wood, which you can see the process of in the WoodB0XX folder, but did not like the feeling of its surface and its large size.
 
