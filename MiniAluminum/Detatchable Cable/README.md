@@ -1,7 +1,7 @@
-# Crane's Detatchable Gamecube Cable Guide
+# Crane's Detachable Gamecube Cable Guide
 ![image](https://i.imgur.com/GE0oSzS.jpg)
 
-Here you will find all the information needed to make a detatchable cable for a custom Gamecube controller/fightstick.
+Here you will find all the information needed to make a detachable cable for a custom Gamecube controller/fightstick.
 
 If you have any questions regarding the process, feel free to message me on Discord @Crane#1195, or join the 20XX Discord here https://discord.gg/6wcEaDU and ask in the DIY #discussion channel
 
