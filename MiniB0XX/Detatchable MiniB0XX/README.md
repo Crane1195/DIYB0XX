@@ -1,6 +1,6 @@
 ## Disclaimer, I have not printed these edited versions of the MiniB0XX, as I do not have a 3d printer. The holes I made in it in theory should work, as they match up exactly to the product pages diagrams, but I cannot confirm with 100% certainty that these designs are flawless. If you end up printing one, let me know if the holes fit the passthroughs.
 
-When printing these
+When printing these,
 
     Print outsides facing on bed so you get a glossy face plate and backplate.
     Uses #6 Countersunk Flat head screws 3/4".
