@@ -1,15 +1,18 @@
-The B0XX is a controller designed for Super Smash Brothers Melee, with ergonomics being the number one priority.
-It is
-Designed by Aziz “Hax$” Al-Yami
+The B0XX is a controller designed for Super Smash Brothers Melee, with ergonomics being the number one priority. It is
 
-Produced & Engineered by Stephen “Streamlord” Kasmir
-
-Programmed & Engineered by Kyle “simple” McDowell
-
-Logo & Art  by Jacqueline "Jisu" Choe
+    Designed by Aziz “Hax$” Al-Yami
+    Produced & Engineered by Stephen “Streamlord” Kasmir
+    Programmed & Engineered by Kyle “simple” McDowell
+    Logo & Art  by Jacqueline "Jisu" Choe
 
 More information regarding the B0XX and links to preorder it are found here
-<https://b0xx.com/>
+
+https://b0xx.com/
+
+To contact any of the people who are credited in this repo, including myself, simple, Danny, and Snapple, join the 20XX discord here 
+
+https://discord.gg/6wcEaDU
+
 
 I among others wanted to try this layout out for myself before the product launches, so many including me have created a B0XX from raw materials, prefabricated cases, arcade hardware, and arduinos.
 
