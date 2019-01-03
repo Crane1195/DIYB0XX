@@ -2,10 +2,10 @@
 
 When printing these,
 
-    Print outsides facing on bed so you get a glossy face plate and backplate.
+    "Print outsides facing on bed so you get a glossy face plate and backplate.
     Uses #6 Countersunk Flat head screws 3/4".
-    Design is in inches, so make sure you convert to 2540% scale if using mm.
-    -simple
+    Design is in inches, so make sure you convert to 2540% scale if using mm."
+        -simple
 I converted simples stl files for the MiniB0XX to ipt files, and then edited those to have holes for Neutrik passthroughs. These ipt files are found in .ipts
 
 The Neutrik passthroughs on the MiniB0XX allow for a detatchable RJ45 male to Gamecube male cable and/or an external usb port to connect to the arduino for updating software.
