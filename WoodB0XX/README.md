@@ -24,7 +24,7 @@ Also, a shout out to to Snapple and Danny who modified Simples Smashbox arduino 
 
 https://drive.google.com/drive/folders/1aIYlZwDAfIVsUXEV2qf-GNJ2OELuwDIt?usp=sharing
 
-These utilize the Nicohood Nintendo library found herehttps://github . com/NicoHood/Nintendo
+These utilize the Nicohood Nintendo library found here https://github.com/NicoHood/Nintendo
 
 Anyway, enough of the intro, lets get into the build.
 
