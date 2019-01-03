@@ -13,14 +13,16 @@ SimpleControllers(https://github.com/SimpleControllers)
 And possibly more people that I am forgetting currently. Their website, where the B0XX is now available to preorder http://b0xx.com/
 
 
-Here you can find the B0XX manifesto explaining how the B0XX attempts to be in line with the gamecube controller for SSBM, as well as the 20XX community discord where you can keep up to date with the progress of the B0XX development, as well as ask questions to Streamlord or Simple about the B0XX, or myself (Crane) and others any DIY questions.
+Here you can find the B0XX manifesto explaining how the B0XX attempts to be in line with the gamecube controller for SSBM, as well as the 20XX community Discord where you can keep up to date with the progress of the B0XX development, as well as ask questions to Streamlord or Simple about the B0XX, or myself (Crane) and others any DIY questions.
+
+Here's the Discord invite link https://discord.gg/6wcEaDU
 
 Huge shout out to Simple for his excellent guide detailing how to DIY a smashbox found here
 https://docs.google.com/document/d/1ndV4E_w2ThAv9LpbjEzRDWwMj0uBWB9YqbvkHV35X5w/edit
 
 His guide is an incredible resource for how the wiring works.
 
-Also, a shout out to to Snapple and Danny who modified Simples Smashbox arduino code to be accurate to the B0XX manifesto and work with the B0XX's 2 modifiers, found here. I further modified this code with a few tweaks to make it function for Smash4 and Smash Ultimate. 
+Also, a shout out to to Snapple and Danny who modified Simples Smashbox arduino code to be accurate to the B0XX manifesto and work with the B0XX's 2 modifiers, found here. I further modified this code with a few tweaks to make it function for Smash4 and Smash Ultimate.
 
 https://drive.google.com/drive/folders/1aIYlZwDAfIVsUXEV2qf-GNJ2OELuwDIt?usp=sharing
 
@@ -81,7 +83,7 @@ Next up was the internals. Here you can see the OBSF24 Blues, and the cables I s
 
 ![image](https://i.imgur.com/eLWxTKm.jpg)
 
-Wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common groundcable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did. For more info on how the wiring works, check out Simple's guide linked above, message me on discord, or join the 20XX discord from the link above. @Crane#1195 is my ID
+Wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common groundcable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did. For more info on how the wiring works, check out Simple's guide linked above, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID
 
 ![image](https://i.imgur.com/0YlfuPZ.jpg)
 
@@ -105,4 +107,4 @@ Here is an extensive part list I made to track how much I spent but I thought I'
 
 ![image](https://i.imgur.com/0mqm5v5.jpg)
 
-Once again, huge thanks to Simple for his guide, and assistance when I had a couple of roadblocks, as well as Hax, and Streamlord. We are all on the discord which can be found at http://b0xx.com/ if you have any questions, or want to keep up with the actual B0XX's development.
+Once again, huge thanks to Simple for his guide, and assistance when I had a couple of roadblocks, as well as Hax, and Streamlord. We are all on the Discord which can be found at http://b0xx.com/ (or above) if you have any questions, or want to keep up with the actual B0XX's development.
