@@ -2,4 +2,4 @@ These utilize the Nicohood Library. They were originally made by simple to make 
 
 I then modified aspects of that code to make it function in Smash 4 and Smash Ultimate. The changes I made are detailed in the header of the file, lines 9-13.
 
-All the names above are the Discord names of users in the 20XX Discord, where this code was shared
+All the names above are the Discord names of users in the 20XX Discord, where this code is shared.
