@@ -13,7 +13,7 @@ simple https://github.com/SimpleControllers/SimpleControllersBuild-a-Box
 
 Snapple https://github.com/snooply/b0xxuptomanifesto
 
-Danny posted in 20XX DIY #discussion
+Danny posted the Melee tweaks in 20XX DIY #discussion
 
 My changes to make this work in Smash4 and Ultimate
 
