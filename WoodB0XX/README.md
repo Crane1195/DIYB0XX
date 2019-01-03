@@ -24,7 +24,7 @@ His guide is an incredible resource for how the wiring works.
 
 Also, a shout out to to Snapple and Danny who modified Simples Smashbox arduino code to be accurate to the B0XX manifesto and work with the B0XX's 2 modifiers, found here. I further modified this code with a few tweaks to make it function for Smash4 and Smash Ultimate.
 
-https://drive.google.com/drive/folders/1aIYlZwDAfIVsUXEV2qf-GNJ2OELuwDIt?usp=sharing
+https://github.com/Crane1195/DIYB0XX/tree/master/code
 
 These utilize the Nicohood Nintendo library found here https://github.com/NicoHood/Nintendo
 
