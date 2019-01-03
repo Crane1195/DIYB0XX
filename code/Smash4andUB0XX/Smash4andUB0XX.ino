@@ -6,11 +6,12 @@
  * Just remember to mention you used my code!
  * Version 2.0 I just suck at github
  * Edited by Danny for SmashB0XX
- * [Crane] Mod running, tilts, triggers(shields), and most firefox angles edited. All the things below is how it works in Sm4sh, I'll update it once I get ultimate tonight.
+ * [Crane] Mod running, tilts, triggers(shields), and most firefox angles edited.
  * Mods change running/walking speed, they likely aren't optimal. Notably though, Direction, then mod1 gives perfect speed to ledgerun in smash4.
  * Tilts now work with mod1.
- * Triggers now give the analog value needed to shield in smash4 (probably ultimate too). LRAStart now works too because of this
- * FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work. Can't figure out why. C stickless firefox angles function now, but not perfectly.
+ * Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
+ * FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
+   C stickless firefox angles function now, but not perfectly.
  */
 //This makes the controller bidirection data line on pin number8
 CGamecubeConsole GamecubeConsole(8);      //Defines a "Gamecube Console" sending data to the console on pin 8
