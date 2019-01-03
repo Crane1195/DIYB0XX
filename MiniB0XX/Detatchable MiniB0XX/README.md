@@ -16,7 +16,9 @@ For JustRJ45, you will have to open the MiniB0XX up to change the software
 
 For JustUSB, you will have a non detatchable Gamecube cable.
 
-For more information regarding how to make a RJ45 male to Gamecube male cable and how to use one in a DIYB0XX, stay tuned to DIYB0XX/MiniAluminum , as I have that setup in my new B0XX, and will soon be showing how it works.
+For more information regarding how to make a RJ45 male to Gamecube male cable and how to use one in a DIYB0XX, check this guide out
+
+https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
 
 Here is a link to the product page of the RJ45 passthrough, https://www.neutrik.com/en/product/ne8fdp-b
 
