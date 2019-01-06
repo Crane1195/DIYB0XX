@@ -55,7 +55,7 @@ Glued the top to the walls, and applied tons of pressure using clamps, and some 
 
 ![image](https://i.imgur.com/8v1nStO.jpg)
 
-The only picture I could find of the finished pure wooden B0XX, with the dween that just showed up.
+The only picture I could find of the finished pure wooden B0XX, with the Arduino that just showed up.
 
 ![image](https://i.imgur.com/mLYnbQ7.jpg)
 
@@ -79,7 +79,7 @@ Painted the top, and sides using multiple layers of spraypaint, and then brushed
 
 ![image](https://i.imgur.com/nJz8njy.jpg)
 
-Next up was the internals. Here you can see the OBSF24 Blues, and the cables I spliced together to connect the buttons to the dween. Bought a pack of 10 double ended cables with .110" QCD's, cut them in half, and spliced them to jumper cables that I also cut in half, soldering and heatshrinking them. Also pictured is a gamecube controller cable that I desoldered from a dead GCC I bought from ebay.
+Next up was the internals. Here you can see the OBSF24 Blues, and the cables I spliced together to connect the buttons to the Arduino. Bought a pack of 10 double ended cables with .110" QCD's, cut them in half, and spliced them to jumper cables that I also cut in half, soldering and heatshrinking them. Also pictured is a gamecube controller cable that I desoldered from a dead GCC I bought from ebay.
 
 ![image](https://i.imgur.com/eLWxTKm.jpg)
 
@@ -99,7 +99,7 @@ Another Angle
 
 ![image](https://i.imgur.com/bWkMDLI.jpg)
 
-Immediately after drilling a 3/8 inch hole for the dweens USB port, I remembered that I have a jigsaw. Used a knife to square it out a bit so the usb could fit, but it isn't as clean as a jigsaw could've been.
+Immediately after drilling a 3/8 inch hole for the Arduino's USB port, I remembered that I have a jigsaw. Used a knife to square it out a bit so the usb could fit, but it isn't as clean as a jigsaw could've been.
 
 ![image](https://i.imgur.com/UNmyYfB.png)
 
