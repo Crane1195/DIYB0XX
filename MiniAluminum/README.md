@@ -1,5 +1,5 @@
 ## Crane's DIY MiniB0XX
-`![image](place picture here)
+`![image](pic here)
 `
 The B0XX is a controller designed for Super Smash Brothers Melee, with ergonomics being the number one priority. It is
 
