@@ -11,6 +11,6 @@ simple https://github.com/SimpleControllers/SimpleControllersBuild-a-Box
 
 ### Program modifications : 
 
-Snapple https://github.com/snooply/b0xxuptomanifesto
+Snapple: Changing the code to work with two modifier buttons https://github.com/snooply/b0xxuptomanifesto
 
-Danny posted in 20XX DIY #discussion
+Danny: Changing the angles the modifiers produce. Posted in the 20XX Discord's DIY #discussion channel
