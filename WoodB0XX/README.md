@@ -83,7 +83,11 @@ Next up was the internals. Here you can see the OBSF24 Blues, and the cables I s
 
 ![image](https://i.imgur.com/eLWxTKm.jpg)
 
-Wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common groundcable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did. For more info on how the wiring works, check out Simple's guide linked above, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID
+Wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common groundcable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did. 
+
+![image](https://i.imgur.com/z4oZP2O.jpg)
+
+Here is a wiring diagram I made showing how it all works. For more info on how the wiring works, check out Simple's guide linked above, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID.
 
 ![image](https://i.imgur.com/0YlfuPZ.jpg)
 
