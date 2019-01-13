@@ -16,9 +16,9 @@ https://discord.gg/6wcEaDU
 
 I among others wanted to try this layout for before the product launches, so many including me have created a B0XX from raw materials, prefabricated cases, arcade hardware, and arduinos.
 
-I first created a B0XX using wood, which you can see the process of in the WoodB0XX folder, but did not like the feeling of its surface and its large size.
+I first created a B0XX using wood, which you can see the process of in the MyWoodB0XX folder, but did not like the feeling of its surface and its large size.
 
-I have now made one in a much smaller aluminum case that I purchased from Digikey, and have had an acrylic panel laser cut with the layout I drew in Autodesk Inventor. This one is currently a work in progress, and is almost complete. This process and increased functionality will soon be detailed in the MiniAluminum folder.
+I have now made one in a much smaller aluminum case that I purchased from Digikey, and have had an acrylic panel laser cut with the layout I drew in Autodesk Inventor. This one is currently a work in progress, and is almost complete. This process and increased functionality will soon be detailed in the MyAluminumB0XX folder.
 
 The MiniB0XX folder contains files pertaining to a 3d printable case that is similar in size and potential functionality to my Aluminum B0XX. 
 
