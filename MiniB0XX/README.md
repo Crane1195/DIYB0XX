@@ -1,4 +1,4 @@
-The MiniB0XX is a 12" by 8" shrunk version of the B0XX designed by simple.
+The MiniB0XX is a 11.5" by 8" shrunk version of the B0XX designed by simple to be 3D printed.
 
 The files in the folder "Original MiniB0XX" are the printable STL files posted by simple in the 20XX discord in DIY #resources
 
