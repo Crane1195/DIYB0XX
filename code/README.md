@@ -1,4 +1,4 @@
-## I did not create these programs. I have recieved the permission of their creators and editors to add them to this repo to have all do it yourself B0XX information in one place, for the purpose of organization.
+## I did not create these programs. I have received the permission of their creators and editors to add them to this repo to have all do it yourself B0XX information in one place, for the purpose of organization.
 
 These utilize the Nicohood Library. They were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto. This is meleeB0XX.ino
 
