@@ -12,11 +12,11 @@ The B0XX is a controller designed for Super Smash Brothers Melee, with ergonomic
     Programmed & Engineered by Kyle “simple” McDowell
     Logo & Art  by Jacqueline "Jisu" Choe
 
-More information regarding the B0XX and links to preorder it are found here
+More information regarding the B0XX and links to preorder it are found here.
 
 https://b0xx.com/
 
-To contact any of the people who are credited in this repo, including myself, simple, Danny, and Snapple, join the B0XX discord here 
+To contact any of the people who are credited in this repo, including myself, simple, Danny, and Snapple, join the B0XX discord here.
 
 https://discord.gg/6wcEaDU
 
