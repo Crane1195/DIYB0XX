@@ -16,12 +16,12 @@ More information regarding the B0XX and links to preorder it are found here
 
 https://b0xx.com/
 
-To contact any of the people who are credited in this repo, including myself, simple, Danny, and Snapple, join the 20XX discord here 
+To contact any of the people who are credited in this repo, including myself, simple, Danny, and Snapple, join the B0XX discord here 
 
 https://discord.gg/6wcEaDU
 
 
-I among others wanted to try this layout for before the product launches, so many including me have created a B0XX from raw materials, prefabricated cases, arcade hardware, and arduinos.
+I wanted to try this layout before the product launches, so I created a B0XX from raw materials (later a prefabricated case), arcade hardware, and an Arduino.
 
 I first created a B0XX using wood, which you can see the process of in the MyWoodB0XX folder, but did not like the feeling of its surface and its large size.
 
@@ -31,6 +31,6 @@ The process of making the detachable GameCube cable used with my Aluminum B0XX i
 
 The MiniB0XX folder contains files pertaining to a 3d printable case that is similar in size and potential functionality to my Aluminum B0XX. 
 
-The code folder includes the most up to date software for flashing to an arduino, with profiles for both Smash Melee, and Smash4/Ultimate, and information regarding how to set it up, and who all contributed.
+The code folder includes the most up to date software for flashing to an Arduino, with profiles for both Melee and Smash4/Ultimate, information regarding how to set it up, and who all contributed.
 
 If sharing any of the files/information found here, give credit to their original creators.
