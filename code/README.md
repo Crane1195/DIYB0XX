@@ -10,18 +10,26 @@ I have combined the Melee and Smash4/U code, so you don't have to keep swapping 
  *    To tell if you are using the Melee mode in Ultimate, with tap jump on
 `
      if you press mod1 and up
+     
        if you are on Ultimate code
+     
          you will not jump
+       
        if you are on Melee code
+         
          you will jump
 `
 
  *    To tell if you are using the Ultimate mode in Melee,
 `
     Press mod1, down, and B
+    
     if you are on Melee code
+      
       you will down b
+    
     if you are on Ultimate code
+      
       you will neutral b
 `    
 
