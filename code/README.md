@@ -3,11 +3,11 @@
 This utilize the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
 
 I then modified aspects of that code to make it function in Smash 4 and Smash Ultimate.
-I have combined the Melee and Smash4/U code, so you don't have to keep swapping profiles.
+## I have combined the Melee and Smash4/Ultimate code, so you don't have to keep swapping profiles.
  *  To launch in Melee mode, just plug in normally.
- *  To launch in Ultimate/4 mode, hold Start and B while plugging in.
+ *  To launch in Smash4/Ultimate mode, hold Start and B while plugging in.
  
- *    To tell if you are using the Melee mode in Ultimate, with tap jump on
+ *    To tell if you are using the correct mode in Ultimate, with tap jump on
 
      if you press mod1 and up
      
@@ -20,7 +20,7 @@ I have combined the Melee and Smash4/U code, so you don't have to keep swapping 
          you will jump
 
 
- *    To tell if you are using the Ultimate mode in Melee,
+ *    To tell if you are using the correct mode in Melee,
 
     Press mod1, down, and B
     
@@ -35,5 +35,13 @@ I have combined the Melee and Smash4/U code, so you don't have to keep swapping 
  *  If you are in the wrong mode, you can either unplug and try again, or you can use this button combonation to switch modes mid game.  
  `    Down+Right+Mod1+B+X+A`
  *  If using the standard B0XX layout, this is both hands index/middle fingers and thumbs
+
+## Edits made for the Smash4/Ultimate mode
+ * Mod running, tilts, triggers(shields), and most firefox angles edited.
+ * Mods change running/walking speed, they likely aren't optimal. Notably though, Direction, then mod1 gives perfect speed to ledgerun in smash4.
+ * Tilts now work with mod1.
+ * Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
+ * FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
+   C stickless firefox angles function now, but not perfectly.
 
 All the names above are the Discord names of users in the 20XX Discord, where this code is shared. Github links are in the README files of each folder
