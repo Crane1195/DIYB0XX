@@ -11,11 +11,11 @@ I then modified aspects of that code to make it function in Smash 4 and Smash Ul
 
      if you press mod1 and up
      
-       if you are on Ultimate code
+       if you are on Ultimate mode
      
          you will not jump
        
-       if you are on Melee code
+       if you are on Melee mode
          
          you will jump
 
@@ -24,11 +24,11 @@ I then modified aspects of that code to make it function in Smash 4 and Smash Ul
 
     Press mod1, down, and B
     
-    if you are on Melee code
+    if you are on Melee mode
       
       you will down b
     
-    if you are on Ultimate code
+    if you are on Ultimate mode
       
       you will neutral b  
 
