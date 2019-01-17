@@ -37,11 +37,10 @@ I then modified aspects of that code to make it function in Smash 4 and Smash Ul
  *  If using the standard B0XX layout, this is both hands index/middle fingers and thumbs
 
 ## Edits made for the Smash4/Ultimate mode
- * Mod running, tilts, triggers(shields), and most firefox angles edited.
- * Mods change running/walking speed, they likely aren't optimal. Notably though, Direction, then mod1 gives perfect speed to ledgerun in smash4.
+ * Mods + cardinals, tilts, triggers(shields), and most firefox angles edited.
+ * Mods walk speeds are likely aren't optimal. Notably though, right/left + mod1 gives perfect speed to ledgerun in smash4.
  * Tilts now work with mod1.
  * Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
- * FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
-   C stickless firefox angles function now, but not perfectly.
+ * FFox angles (B0XX method, c stick) now almost work properly. Mod1+diagonal+cright/left do not work in Smash4, but do in Ultimate. C stickless firefox angles function now, but not perfectly.
 
 All the names above are the Discord names of users in the 20XX Discord, where this code is shared. Github links are in the README files of each folder
