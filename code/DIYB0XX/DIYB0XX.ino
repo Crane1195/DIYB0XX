@@ -6,12 +6,37 @@
  * Just remember to mention you used my code!
  * Version 2.0 I just suck at github
  * Edited by Danny for SmashB0XX
- * [Crane] Mod running, tilts, triggers(shields), and most firefox angles edited.
+ * [Crane] 
+ * For Smash4/U mode, 
+ * Mod running, tilts, triggers(shields), and most firefox angles edited.
  * Mods change running/walking speed, they likely aren't optimal. Notably though, Direction, then mod1 gives perfect speed to ledgerun in smash4.
  * Tilts now work with mod1.
  * Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
  * FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
    C stickless firefox angles function now, but not perfectly.
+
+ * The Melee and Smash4/U code have been combined, so you don't have to keep swapping profiles.
+ *  To launch in Melee mode, just plug in normally
+ *  To launch in Ultimate/4 mode, hold Start and B while plugging in.
+ *    
+ *    To tell if you are using the Melee mode in Ultimate, with tap jump on
+ *      if you press mod1 and up
+ *        if you are on Ultimate code
+ *          you will not jump
+ *        if you are on Melee code
+ *          you will jump
+ *          
+ *    To tell if you are using the Ultimate mode in Melee,
+ *      Press mod1, down, and B
+ *      if you are on Melee code
+ *        you will down b
+ *      if you are on Ultimate code
+ *        you will neutral b
+ *        
+ *  If you are in the wrong mode, you can either unplug and try again, or you can use this button combonation to switch modes mid game.  
+ *    Down+Right+Mod1+B+X+A
+ *  If using the standard B0XX layout, this is both hands index/middle fingers and thumbs
+ *        
  */
 //This makes the controller bidirection data line on pin number8
 CGamecubeConsole GamecubeConsole(8);      //Defines a "Gamecube Console" sending data to the console on pin 8
@@ -21,31 +46,33 @@ Gamecube_Data_t d = defaultGamecubeData;   //Structure for data to be sent to co
 CGamecubeController GamecubeController1(7);
 
 //This is the pinout of the controller.  Can be changed to your liking.  I may have mixed up some of the tilt pins but you can change that physically in your build or through the code.  Just do test runs along the way.
-const int A = 22;
-const int B = 24;
-const int X = 28;
-const int Y = 26;
-const int Z = 30;
-const int START = 31;
+const int A = 46;
+const int B = 44;
+const int X = 49;
+const int Y = 31;
+const int Z = 41;
+const int START = 39;
 
-const int R = 34;
-const int L = 35;
+const int R = 24;
+const int L = 34;
 //const int RLIGHT = 36; Only if using LightShield Button
 //This is the value of analog shielding 74 is lightest possible on gamecube.  It varies from gamecube to dolphin no idea why.
 //const int RLIGHTv = 74;
 
-const int LEFT = 38;
-const int RIGHT = 39;
-const int UP = 40;
-const int DOWN = 41;
+const int LEFT = 26;
+const int RIGHT = 40;
+const int UP = 48;
+const int DOWN = 35;
 
-const int MOD1 = 46;
-const int MOD2 = 44;
+const int MOD1 = 38;
+const int MOD2 = 22;
 
-const int CLEFT = 48;
-const int CRIGHT = 49;
-const int CUP = 50;
+const int CLEFT = 28;
+const int CRIGHT = 50;
+const int CUP = 30;
 const int CDOWN = 51;
+
+bool isMelee = true;
 
 void setup()
 {
@@ -78,6 +105,11 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
 
+  if (digitalRead(START) == LOW && digitalRead(B) == LOW)
+    isMelee = false;
+  
+  
+  
   //This is needed to run the code.
   GamecubeController1.read();
 }
@@ -127,6 +159,15 @@ void loop()
   int cLeft = 0;
   int cRight = 0;
 
+  if (digitalRead(MOD1) == LOW && digitalRead(RIGHT) == LOW && digitalRead(DOWN) == LOW
+   && digitalRead(B) == LOW && digitalRead(X) == LOW && digitalRead(A) == LOW)
+   {
+    if (isMelee == true)
+      isMelee = false;
+    else
+      isMelee = true;
+   }
+  
   if (digitalRead(MOD1) == LOW && digitalRead(MOD2) == HIGH)mod1 = 1;
   if (digitalRead(MOD2) == LOW && digitalRead(MOD1) == HIGH)mod2 = 1;
 
@@ -176,7 +217,8 @@ void loop()
   
   
   
-  //This is for digital shield
+  //This is for digital shield.
+  //[Crane] Also does a bit of analog shield for Smash4 and Ultimate
   if (digitalRead(R) == LOW) {
     pinR = 1;
     pinRLIGHT = 125;
@@ -186,7 +228,87 @@ void loop()
     pinLLIGHT = 125;
   }
 
+  if (isMelee == true)
+  {
+    if(mod1){
+    if(leftOne || rightOne){
+      pinxAxis = 128 + ((rightOne - leftOne)*59);
+    }
+    if(upOne || downOne){
+      pinyAxis = 128 + ((upOne - downOne)*52);
+    }
+    if((leftOne || rightOne) && (upOne || downOne)){      
+      pinxAxis = 128 + ((rightOne - leftOne)*59);
+      pinyAxis = 128 + ((upOne - downOne)*23);
+    }
+    //Ambiguous DI
+    if((leftOne || rightOne) && pinA){
+      pinxAxis = 128 + ((rightOne - leftOne)*47);
+    }
+    //FireFox Angles with cButtons
+    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*53);
+      pinyAxis = 128 + ((upOne - downOne)*37);
+    }
+    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*62);
+      pinyAxis = 128 + ((upOne - downOne)*30);
+    }
+    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*63);
+      pinyAxis = 128 + ((upOne - downOne)*37);
+    }
+    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*51);
+      pinyAxis = 128 + ((upOne - downOne)*42);
+    }
+    //Up and Down Forward Smash
+    if((upOne||downOne)&&(cLeft||cRight)){
+      pinxAxisC = 128 + ((cRight - cLeft)*127);
+      pinyAxisC = 128 + ((upOne - downOne)*41);
+    }
+  }
 
+  if(mod2){
+    if(leftOne || rightOne){
+      pinxAxis = 128 + ((rightOne - leftOne)*23);
+    }
+    if(upOne || downOne){
+      pinyAxis = 128 + ((upOne - downOne)*59);
+    }
+    if((leftOne || rightOne) && (upOne || downOne)){
+      pinxAxis = 128 + ((rightOne - leftOne)*23);
+      pinyAxis = 128 + ((upOne - downOne)*59);
+    }
+    //Keeps B Reversals Fair
+    if((leftOne || rightOne) && pinB){
+      pinxAxis = 128 + ((rightOne - leftOne)*59); 
+    }
+    //Ambiguous DI
+    if((leftOne || rightOne) && pinA){
+      pinxAxis = 128 + ((rightOne - leftOne)*35); 
+    }
+    //FireFox Angles with cButtons
+    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*44);
+      pinyAxis = 128 + ((upOne - downOne)*63);
+    }
+    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*31);
+      pinyAxis = 128 + ((upOne - downOne)*64);
+    }
+    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*37);
+      pinyAxis = 128 + ((upOne - downOne)*63);
+    }
+    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*47);
+      pinyAxis = 128 + ((upOne - downOne)*57);
+    }
+  }
+  }
+  else
+  {
   if(mod1){
     if(leftOne || rightOne){
       pinxAxis = 128 + ((rightOne - leftOne)*49);
@@ -279,7 +401,7 @@ void loop()
       pinyAxisC = 128;
     }
   }
-
+  }
   //Manual Shield Tilt with R
   if(pinR){
     if(downOne){
