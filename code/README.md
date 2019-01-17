@@ -8,8 +8,8 @@ I have combined the Melee and Smash4/U code, so you don't have to keep swapping 
  *  To launch in Ultimate/4 mode, hold Start and B while plugging in.
  
  *    To tell if you are using the Melee mode in Ultimate, with tap jump on
-`
-     if you press mod1 and up
+
+`    if you press mod1 and up
      
        if you are on Ultimate code
      
@@ -17,12 +17,12 @@ I have combined the Melee and Smash4/U code, so you don't have to keep swapping 
        
        if you are on Melee code
          
-         you will jump
-`
+         you will jump `
+
 
  *    To tell if you are using the Ultimate mode in Melee,
-`
-    Press mod1, down, and B
+
+`   Press mod1, down, and B
     
     if you are on Melee code
       
@@ -30,8 +30,7 @@ I have combined the Melee and Smash4/U code, so you don't have to keep swapping 
     
     if you are on Ultimate code
       
-      you will neutral b
-`    
+      you will neutral b `    
 
  *  If you are in the wrong mode, you can either unplug and try again, or you can use this button combonation to switch modes mid game.  
  `    Down+Right+Mod1+B+X+A`
