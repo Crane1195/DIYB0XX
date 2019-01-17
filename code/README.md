@@ -1,10 +1,10 @@
 ## I did not create this program. The edits I have made are listed below, and I have received the permission of its creator and other editors to add it to this repo to have all do it yourself B0XX information in one place, for the purpose of organization.
 
-These utilize the Nicohood Library. They were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
+This utilize the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
 
 I then modified aspects of that code to make it function in Smash 4 and Smash Ultimate.
 I have combined the Melee and Smash4/U code, so you don't have to keep swapping profiles.
- *  To launch in Melee mode, just plug in normally
+ *  To launch in Melee mode, just plug in normally.
  *  To launch in Ultimate/4 mode, hold Start and B while plugging in.
  
  *    To tell if you are using the Melee mode in Ultimate, with tap jump on
