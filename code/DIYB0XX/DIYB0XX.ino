@@ -17,7 +17,7 @@
 
  * The Melee and Smash4/U code have been combined, so you don't have to keep swapping profiles.
  *  To launch in Melee mode, just plug in normally
- *  To launch in Ultimate/4 mode, hold Start and B while plugging in.
+ *  To launch in Ultimate/4 mode, hold B while plugging in.
  *    
  *    To tell if you are using the Melee mode in Ultimate, with tap jump on
  *      if you press mod1 and up
@@ -105,7 +105,7 @@ void setup()
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
 
-  if (digitalRead(START) == LOW && digitalRead(B) == LOW)
+  if (digitalRead(B) == LOW)
     isMelee = false;
   
   
