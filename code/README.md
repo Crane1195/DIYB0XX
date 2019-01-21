@@ -1,17 +1,18 @@
-## This program was originally made by simple. The edits I have made are listed below, and I have received the permission of its creator and other editors to add it to this repo.
+#### This program was originally made by simple. The edits I have made are listed below, and I have received the permission of its creator and other editors to add it to this repo.
 
 This utilize the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
 
 I then modified aspects of that code to make it function in Project M, Smash 4, Smash Ultimate, and to have 2ip as a SOCD option.
+# My Edits
 ## 2ip or Neutral SOCD
-I have edited the left/right simultaneous opposite cardinal directions (SOCD) so you have the option to pick from 2ip or neutral.
+I have edited the left/right simultaneous opposite cardinal directions (SOCD) so you now have the option to pick from 2ip or neutral.
 
-#### 2ip works like so.
+#### 2ip works like this
 * Press left. Character moves left.
 * While still pressing left, press right. Character moves right.
 * While still pressing left, stop pressing right. Character moves left again. 
 
-#### Neutral works like so.
+#### Neutral works like this
 * Press left. Character moves left.
 * While still pressing left, press right. Character stops moving.
 * While still pressing left, stop pressing right. Character moves left again.
@@ -41,4 +42,4 @@ I plan to implement 1ip SOCD as an option soon.
  * FFox angles (B0XX method, c stick) now almost work properly. Mod1+diagonal+cright/left do not work in Smash4, but do in Ultimate.
  * C stickless firefox angles function now.
 
-All the names above are the Discord names of users in the 20XX Discord, where this code is shared.
+All the names above are the Discord names of users in the 20XX Discord, where the original code was shared.
