@@ -85,7 +85,7 @@ https://www.neutrik.com/media/8070/download/ethercon-cable-connector-ne8mc.pdf?v
 ## Installation Into a Fightstick
 
 ![image](https://i.imgur.com/IVrTkXu.jpg)
-12. I used a unibit to drill a ~24mm hole in this aluminum case, inserted the faceplate into hole, marked where the screw holes should be, and drilled 1/8" holes for them.
+12. I used a unibit to drill a ~24mm hole in this aluminum case, inserted the NE8FDP faceplate into the hole, marked where the screw holes should be, and drilled 1/8" holes for them.
 
 ![image](https://i.imgur.com/GIs4zBX.jpg)
 13. Inside the case, I cut that ethernet breakout cable down very short, and trimmed the wires to as short as possible, and then soldered them into the place. For more information about this wiring schematic, check out the README here https://github.com/Crane1195/DIYB0XX/edit/master/MiniAluminum/README.md
