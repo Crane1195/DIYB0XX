@@ -32,10 +32,9 @@ Anyway, enough of the intro, lets get into the build.
 
 ![image](https://i.imgur.com/A4ihq5s.jpg)
 
-For a joke, I made the greatest piece of tech that the world has ever seen with the shoeb0xx, which you can see the build of here
-https://imgur.com/a/qtF6WEd
+For a joke, I made the greatest piece of tech that the world has ever seen with the shoeb0xx.
 
-Pictured is the wood used to create a more sturdy B0XX. For a thinner, more slim B0XX, you could use metal, plastic, plexi, or plywood for the top, but I wanted a sturdy platform so I used 0.75 inch thick wood, as I don't have the tools to work with metal, plastic, etc. The actual size of the B0XX is 16" x 8" x 1.4", however I could not find a piece of wood exactly 8 inches, with the closest I found being 9.75". I don't have a saw that can make the cut, so I stuck with the 9.75" depth. I don't mind it, as I can use the extra depth to rest my wrists.
+Pictured is the wood used to create a more sturdy B0XX. For a thinner, more slim B0XX, you could use metal, plastic, plexi, or plywood for the top. I wanted a sturdy platform so I used 0.75 inch thick wood, as I don't have the tools to work with metal, plastic, etc. The actual size of the B0XX is 16" x 8" x 1.4", however I could not find a piece of wood exactly 8 inches deep, with the closest I found being 9.75". I don't have a saw that can make the cut, so I stuck with the 9.75" depth. I don't mind it, as I can use the extra depth to rest my wrists.
 
 ![image](https://i.imgur.com/RY6jwJm.jpg)
 
@@ -43,15 +42,15 @@ Cut the wood to about the correct size using a compound miter saw.
 
 ![image](https://i.imgur.com/PBBv8ep.jpg)
 
-Using wood glue, and clamps, I joined the sides together.
+Using wood glue and clamps, I joined the sides together.
 
 ![image](https://i.imgur.com/MEVnEXd.jpg)
 
-Testing the fit of the top with the curing walls
+Testing the fit of the top with the curing walls.
 
 ![image](https://i.imgur.com/8UplXpV.jpg)
 
-Glued the top to the walls, and applied tons of pressure using clamps, and some textbooks to join the wood.
+Glued the top to the walls, and applied tons of pressure using clamps and some textbooks to join the wood.
 
 ![image](https://i.imgur.com/8v1nStO.jpg)
 
@@ -59,11 +58,11 @@ The only picture I could find of the finished pure wooden B0XX, with the Arduino
 
 ![image](https://i.imgur.com/mLYnbQ7.jpg)
 
-Heres a link to the template I used. Print the document on 8.5"x11" paper, and cut along the lines, to get your 8"x16" template.
+Here's a link to the template I used. Print the document on 8.5"x11" paper, and cut along the lines, to get your 8"x16" template.
 
 https://drive.google.com/file/d/1a7MxgeOgtNVZLJR3XxBTWMSy3c9NhZ1_/view?usp=sharing
 
-Taped the template to my B0XX, marking with a thumbtack.
+Taped the template to my B0XX, marking the center points with a thumbtack.
 
 ![image](https://i.imgur.com/yBqV9HB.jpg)
 
