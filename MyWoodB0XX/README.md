@@ -31,7 +31,7 @@ This utilizes the Nicohood Nintendo library found here https://github.com/NicoHo
 Anyway, enough of the intro, lets get into the build.
 
 ### Part List
-  * Arduino Mega 2560
+  * Arduino Mega 2560 (Third party ones are cheaper, and work just as well. Mine is ELEGOO)
   * Logic Controller 3.3V - 5V (I used this one https://www.amazon.com/gp/product/B0148BLZGE/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
   * 18 Sanwa OBSF-24 buttons
   * GameCube controller cable. This can be either the cable from an OEM controller as shown in this build, a 3rd party controller cable, or a 3rd party extension cable. You can make this cable detachable by following the guide here https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
