@@ -8,7 +8,7 @@ Hax$ (https://twitter.com/ssbmhax)
 
 Streamlord (https://twitter.com/StreamlordSSBM)
 
-SimpleControllers(https://github.com/SimpleControllers)
+SimpleControllers (https://github.com/SimpleControllers)
 
 Their website, where the B0XX is now available to preorder, is http://b0xx.com/
 
