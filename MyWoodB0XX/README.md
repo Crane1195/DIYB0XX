@@ -38,7 +38,7 @@ Pictured is the wood used to create a more sturdy B0XX. For a thinner, more slim
 
 ![image](https://i.imgur.com/RY6jwJm.jpg)
 
-Cut the wood to about the correct size using a compound miter saw.
+I cut the wood to about the correct size using a compound miter saw.
 
 ![image](https://i.imgur.com/PBBv8ep.jpg)
 
@@ -46,43 +46,51 @@ Using wood glue and clamps, I joined the sides together.
 
 ![image](https://i.imgur.com/MEVnEXd.jpg)
 
-Testing the fit of the top with the curing walls.
+I tested the fit of the top with the curing walls.
 
 ![image](https://i.imgur.com/8UplXpV.jpg)
 
-Glued the top to the walls, and applied tons of pressure using clamps and some textbooks to join the wood.
+I wood glued the top to the walls, and applied tons of pressure using clamps and some textbooks to join the wood.
 
 ![image](https://i.imgur.com/8v1nStO.jpg)
 
-The only picture I could find of the finished pure wooden B0XX, with the Arduino that just showed up.
+This is the only picture I could find of the finished pure wooden B0XX, with the Arduino that just showed up.
 
 ![image](https://i.imgur.com/mLYnbQ7.jpg)
 
-Here's a link to the template I used. Print the document on 8.5"x11" paper, and cut along the lines, to get your 8"x16" template.
+Here's a link to the template I used. Print the document on 8.5"x11" paper, and cut along the lines to get your 8"x16" template.
 
 https://drive.google.com/file/d/1a7MxgeOgtNVZLJR3XxBTWMSy3c9NhZ1_/view?usp=sharing
 
-Taped the template to my B0XX, marking the center points with a thumbtack.
+Taping the template to my B0XX, I marked the center points with a thumbtack.
 
 ![image](https://i.imgur.com/yBqV9HB.jpg)
 
-B0XX after cutting the holes with a 15/16" spade bit.
+This is the B0XX after cutting the holes with a 15/16" spade bit.
 
 ![image](https://i.imgur.com/M9v4XDy.jpg)
 
-Cut a piece of 2' x 2' piece of plywood to be the bottom. As I write this, the paint is drying on the bottom. Did this last.
+I cut a piece of 2' x 2' piece of plywood to be the bottom. As I write this, the paint is drying on the bottom. I did this last.
 
 ![image](https://i.imgur.com/lebgWjP.jpg)
 
-Painted the top, and sides using multiple layers of spraypaint, and then brushed on 3 layers of minwax polycrylic to make it smoother and a bit more protected.
+I painted the top and sides using multiple layers of spray paint, and then brushed on 3 layers of minwax polycrylic to make it smoother and a bit more protected.
 
 ![image](https://i.imgur.com/nJz8njy.jpg)
 
-Next up was the internals. Here you can see the OBSF24 Blues, and the cables I spliced together to connect the buttons to the Arduino. Bought a pack of 10 double ended cables with .110" QCD's, cut them in half, and spliced them to jumper cables that I also cut in half, soldering and heatshrinking them. Also pictured is a gamecube controller cable that I desoldered from a dead GCC I bought from ebay.
+Next up was the internals. Here you can see the OBSF-24 Blues and the cables I spliced together to connect the buttons to the Arduino.
+
+Custom wire process:
+* Bought a pack of 10 double ended cables with .110" QDC's and cut them in half
+* Cut male to male jumper wires in half
+* Strip the ends of these wires
+* Solder the ends together, and put heat shrink over the joint.
+
+Also pictured is a Gamecube controller cable that I desoldered from a dead GCC I bought from ebay.
 
 ![image](https://i.imgur.com/eLWxTKm.jpg)
 
-Wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common groundcable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did.
+The wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common ground daisy chain cable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did.
 
 ![image](https://i.imgur.com/z4oZP2O.jpg)
 
@@ -98,11 +106,11 @@ The color scheme was done to match my mechanical keyboard.
 
 ![image](https://i.imgur.com/C6hWFK3.jpg)
 
-Another Angle
+Another angle
 
 ![image](https://i.imgur.com/bWkMDLI.jpg)
 
-Immediately after drilling a 3/8 inch hole for the Arduino's USB port, I remembered that I have a jigsaw. Used a knife to square it out a bit so the usb could fit, but it isn't as clean as a jigsaw could've been.
+Immediately after drilling a 3/8 inch hole for the Arduino's USB port, I remembered that I have a jigsaw. Used a knife to square it out a bit so the usb could fit, but it isn't as clean as a jigsaw would've been.
 
 ![image](https://i.imgur.com/UNmyYfB.png)
 
