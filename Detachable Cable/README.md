@@ -75,7 +75,7 @@ Row 2 shows which channels the wires from my GCC extension cable are in, Row 3 s
 ![image](https://i.imgur.com/xyE5hu6.jpg)
 10. To double check this, you can check the wires voltages as well. Using the same setup as before, with GCC to RJ45 to Neutrik to RJ45 to breakout. Make sure the exposed wires stay fanned out like in the picture to prevent a short circuit. Hook up the GCC plug to a GC/Wii/Adapter, and read the difference in voltage between the wires you think are 5V/3.3V/Data and ground. The 5V one will read ~4.7V, the 3.3V one will read ~3.1V, and the data one changes, but is less than ~3.3V and greater than ~0.1V.
 
-Using both of these methods, I derived the chart you see above for my cable. If you use a different extension cable, or different RJ45 ethernet cable, or different wire order, our charts will not be the same. If you use a Raphnet extension cable, and line up its wires just like I did, it'll probably be the same, but you should check anyway just to be safe.
+Using both of these methods, I derived the chart you see above for my cable. If you use a different extension cable, or a different standard of RJ45 ethernet cable, or different wire order, our charts will not be the same. If you use a Kitsch-Bent extension cable, and line up its wires just like I did, it'll probably be the same, but you should check anyway just to be safe.
 
 ![image](https://i.imgur.com/bK22Elt.jpg)
 11. Follow the instructions here to install the NE8MC around your new cables RJ45 plug
