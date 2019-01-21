@@ -10,23 +10,23 @@ Streamlord (https://twitter.com/StreamlordSSBM)
 
 SimpleControllers(https://github.com/SimpleControllers)
 
-Their website, where the B0XX is now available to preorder http://b0xx.com/
+Their website, where the B0XX is now available to preorder, is http://b0xx.com/
 
 
 Here you can find the B0XX manifesto explaining how the B0XX attempts to be in line with the gamecube controller for SSBM, as well as the 20XX community Discord where you can keep up to date with the progress of the B0XX development, as well as ask questions to Streamlord or Simple about the B0XX, or myself (Crane) and others any DIY questions.
 
 Here's the Discord invite link https://discord.gg/6wcEaDU
 
-Huge shout out to Simple for his excellent guide detailing how to DIY a smashbox found here
+Huge shout out to Simple for his excellent guide detailing how to DIY a Smash Box found here.
 https://docs.google.com/document/d/1ndV4E_w2ThAv9LpbjEzRDWwMj0uBWB9YqbvkHV35X5w/edit
 
-His guide is an incredible resource for how the wiring works.
+His guide is an incredible resource for how the wiring works. I have also added my own wiring schematic to this guide.
 
-Also, a shout out to to Snapple and Danny who modified Simples Smashbox arduino code to be accurate to the B0XX manifesto and work with the B0XX's 2 modifiers, found here. I further modified this code with a few tweaks to make it function for Smash4 and Smash Ultimate.
+Also, a shout out to Snapple and Danny who modified Simples Smash Box Arduino code to be accurate to the B0XX manifesto and work with the B0XX's 2 modifiers. I have modified this code to work with Project M, Smash4, and Smash Ultimate. I have also made 2ip SOCD an option. This code can be found here. Read the README to see my edits, how to select a mode, and an explanation of SOCD.
 
 https://github.com/Crane1195/DIYB0XX/tree/master/code
 
-These utilize the Nicohood Nintendo library found here https://github.com/NicoHood/Nintendo
+This utilizes the Nicohood Nintendo library found here https://github.com/NicoHood/Nintendo
 
 Anyway, enough of the intro, lets get into the build.
 
@@ -83,7 +83,7 @@ Next up was the internals. Here you can see the OBSF24 Blues, and the cables I s
 
 ![image](https://i.imgur.com/eLWxTKm.jpg)
 
-Wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common groundcable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did. 
+Wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common groundcable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did.
 
 ![image](https://i.imgur.com/z4oZP2O.jpg)
 
