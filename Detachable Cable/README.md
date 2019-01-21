@@ -67,7 +67,7 @@ Row 2 shows which channels the wires from my GCC extension cable are in, Row 3 s
 7. To find which cable does what, I then cut a ethernet cable in half, cut open its out shell, and strip the ends of the wires. I used a 26 gauge wire stripper for this.
 
 ![image](https://i.imgur.com/3NI6gs5.jpg)
-8. I then plugged the GCC to RJ45 cable and the cut ethernet cable into the Neutrik ethernet passthrough
+8. I then plugged the GCC to RJ45 cable and the cut ethernet cable into the Neutrik ethernet passthrough.
 
 ![image](https://i.imgur.com/6bA8qXR.jpg)
 9. Using a multimeter on continuity mode, attach one lead to one of the exposed ethernet wires, and then stick the other lead into the GCC male connector, and find which pin corresponds to which wire.
@@ -78,7 +78,7 @@ Row 2 shows which channels the wires from my GCC extension cable are in, Row 3 s
 Using both of these methods, I derived the chart you see above for my cable. If you use a different extension cable, or a different standard of RJ45 ethernet cable, or different wire order, our charts will not be the same. If you use a Kitsch-Bent extension cable, and line up its wires just like I did, it'll probably be the same, but you should check anyway just to be safe.
 
 ![image](https://i.imgur.com/bK22Elt.jpg)
-11. Follow the instructions here to install the NE8MC around your new cables RJ45 plug
+11. Follow the instructions here to install the NE8MC around your new cables RJ45 plug.
 
 https://www.neutrik.com/media/8070/download/ethercon-cable-connector-ne8mc.pdf?v=1
 
@@ -88,7 +88,7 @@ https://www.neutrik.com/media/8070/download/ethercon-cable-connector-ne8mc.pdf?v
 12. I used a unibit to drill a ~24mm hole in this aluminum case, inserted the NE8FDP faceplate into the hole, marked where the screw holes should be, and drilled 1/8" holes for them.
 
 ![image](https://i.imgur.com/GIs4zBX.jpg)
-13. Inside the case, I cut that ethernet breakout cable down very short, trimmed the wires to be just long enough, and then soldered them into place. For more information about this wiring schematic, check out the README here https://github.com/Crane1195/DIYB0XX/edit/master/MiniAluminum/README.md
+13. Inside the case, I cut that ethernet breakout cable down very short, trimmed the wires to be just long enough, and then soldered them into place. For more information about this wiring schematic, check out the README here. https://github.com/Crane1195/DIYB0XX/edit/master/MiniAluminum/README.md
 
 ## Results
 ![image](https://i.imgur.com/GE0oSzS.jpg)
