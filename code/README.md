@@ -2,7 +2,24 @@
 
 This utilize the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
 
-I then modified aspects of that code to make it function in Project M, Smash 4, Smash Ultimate.
+I then modified aspects of that code to make it function in Project M, Smash 4, Smash Ultimate, and to have 2ip as a SOCD option.
+## 2ip or Neutral SOCD
+I have edited the left/right simultaneous opposite cardinal directions (SOCD) so you have the option to pick from 2ip or neutral.
+
+#### 2ip works like so.
+* Press left. Character moves left.
+* While still pressing left, press right. Character moves right.
+* While still pressing left, stop pressing right. Character moves left again. 
+
+#### Neutral works like so.
+* Press left. Character moves left.
+* While still pressing left, press right. Character stops moving.
+* While still pressing left, stop pressing right. Character moves left again.
+
+The official B0XX uses 1ip for its SOCD method. 1ip is the same as 2ip, but the third step does not occur, meaning that you need to press left again to go left.
+
+I plan to implement 1ip SOCD as an option soon.
+
 ## I have combined my Melee, Project M, and Smash4/Ultimate edits, so you don't have to keep swapping profiles.
  *  To launch in Melee mode, just plug in normally.
  *  To launch in Smash4/Ultimate mode, hold B while plugging in.
