@@ -2,17 +2,17 @@
 
 This utilizes the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
 
-I then modified aspects of that code to make it function in Project M, Smash 4, Smash Ultimate, and to have 2ip as a SOCD option.
+I then modified aspects of that code to make it function in Project M, Smash 4, and Smash Ultimate, as well as having 2ip as a SOCD option.
 # My Edits
 ## 2ip or Neutral SOCD
-I have edited the left/right simultaneous opposite cardinal directions (SOCD) so you now have the option to pick from 2ip or neutral.
+I have edited the left/right simultaneous opposite cardinal directions (SOCD) method so you now have the option to pick from 2ip or neutral.
 
-#### 2ip works like this
+#### 2ip works like this:
 * Press left. Character moves left.
 * While still pressing left, press right. Character moves right.
 * While still pressing left, stop pressing right. Character moves left again.
 
-#### Neutral works like this
+#### Neutral works like this:
 * Press left. Character moves left.
 * While still pressing left, press right. Character stops moving.
 * While still pressing left, stop pressing right. Character moves left again.
@@ -28,7 +28,9 @@ I plan to implement 1ip SOCD as an option soon.
 
  Be sure to do a button check before starting a set, to confirm you are in the right mode.
 
- If mod1+up makes you jump, or if mod1+down+B makes you neutral B, you are in the wrong mode. Check both of these.
+#### To confirm you are in the right mode:
+ * Enable tap jump.
+ * If mod1+up makes you jump, or if mod1+down+B makes you neutral B, you are in the wrong mode. Check both of these.
 
 ## Edits made for the Project M mode
  *  Tilts, firefox angles, shield drop angles (Axe method), and wavedash angles all fixed.
