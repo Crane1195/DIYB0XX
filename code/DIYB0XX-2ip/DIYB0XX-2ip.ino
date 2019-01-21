@@ -4,43 +4,40 @@
  * Code written by Simple Controllers and this code is open source.
  * Meaning its free to share, improve on, or anything you like!
  * Just remember to mention you used my code!
- * Version 2.0 I just suck at github
  * Edited by Danny for SmashB0XX
+ * 
  * [Crane] 
  * For Smash4/U mode, 
- * Mod running, tilts, triggers(shields), and most firefox angles edited.
- * Mods change running/walking speed, they likely aren't optimal. Notably though, Direction, then mod1 gives perfect speed to ledgerun in smash4.
- * Tilts now work with mod1.
- * Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
- * FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
-   C stickless firefox angles function now, but not perfectly.
-
- * The Melee and Smash4/U code have been combined, so you don't have to keep swapping profiles.
+ *  Mod running, tilts, triggers(shields), and most firefox angles edited.
+ *  Mods change running/walking speed. Direction, then mod1 gives perfect speed to ledgerun in smash4.
+ *  Tilts now work with mod1.
+ *  Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
+ *  FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
+    C stickless firefox angles function now.
+ *
+ * For Project M mode
+ *  Tilts, firefox angles, shield drop angles (Axe method), and wavedash angles all fixed. 
+ *  Fixed bug where left and down were not working on SSS and menus.
+ *  
+ *  All three modes are in this one program, so you don't have to keep swapping.
+ * 
  *  To launch in Melee mode, just plug in normally
  *  To launch in Ultimate/4 mode, hold B while plugging in.
- *    
- *    To tell if you are using the Melee mode in Ultimate, with tap jump on
- *      if you press mod1 and up
- *        if you are on Ultimate code
- *          you will not jump
- *        if you are on Melee code
- *          you will jump
- *          
- *    To tell if you are using the Ultimate mode in Melee,
- *      Press mod1, down, and B
- *      if you are on Melee code
- *        you will down b
- *      if you are on Ultimate code
- *        you will neutral b
- *        
- *  If you are in the wrong mode, you can either unplug and try again, or you can use this button combonation to switch modes mid game.  
- *    Down+Right+Mod1+B+X+A
- *  If using the standard B0XX layout, this is both hands index/middle fingers and thumbs
- *        
+ *  To launch in Project M mode, hold X while plugging in.
+ * 
+ * Be sure to button check before starting a set, to confirm you are in the right mode. 
+ * If mod1+up makes you jump, or if mod1+down+B makes you neutral B, you are in the wrong mode. Check both of these.       
  */
 //This makes the controller bidirection data line on pin number8
 CGamecubeConsole GamecubeConsole(8);      //Defines a "Gamecube Console" sending data to the console on pin 8
 Gamecube_Data_t d = defaultGamecubeData;   //Structure for data to be sent to console
+
+enum game
+{
+  Melee,
+  PM,
+  Ultimate
+};
 
 //This is needed but you don't need a controller on pin 7
 CGamecubeController GamecubeController1(7);
@@ -72,7 +69,10 @@ const int CRIGHT = 50;
 const int CUP = 30;
 const int CDOWN = 51;
 
-bool isMelee = true;
+bool isLeft = false;
+bool isRight = true;
+
+game currentGame = Melee;
 
 void setup()
 {
@@ -106,7 +106,9 @@ void setup()
   digitalWrite(LED_BUILTIN, LOW);
 
   if (digitalRead(B) == LOW)
-    isMelee = false;
+    currentGame = Ultimate;
+  if (digitalRead(X) == LOW)
+    currentGame = PM;
   
   
   
@@ -158,35 +160,43 @@ void loop()
   int cDown = 0;
   int cLeft = 0;
   int cRight = 0;
-
-  if (digitalRead(MOD1) == LOW && digitalRead(RIGHT) == LOW && digitalRead(DOWN) == LOW
-   && digitalRead(B) == LOW && digitalRead(X) == LOW && digitalRead(A) == LOW)
-   {
-    if (isMelee == true)
-      isMelee = false;
-    else
-      isMelee = true;
-   }
   
   if (digitalRead(MOD1) == LOW && digitalRead(MOD2) == HIGH)mod1 = 1;
   if (digitalRead(MOD2) == LOW && digitalRead(MOD1) == HIGH)mod2 = 1;
 
-  //This reads control stick as neutral when both left/right or up/down is pressed at the same time.
-  if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW){
+  //SOCD method for left/right is 2ip
+  if (digitalRead(LEFT) == LOW && isRight == true)
+  {
+    pinxAxis = 128-127;
+    leftOne = 1;
+  }
+  else if (digitalRead(RIGHT) == LOW && isLeft == true)
+  {
     pinxAxis = 128+127;
     rightOne = 1;
   }
-  if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH){
-    pinxAxis = 128-128;
-    leftOne = 1;
+  
+  if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW){
+    pinxAxis = 128+127;
+    rightOne = 1;
+    isRight = true;
+    isLeft = false;
   }
-    
+  if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH){
+    pinxAxis = 128-127;
+    leftOne = 1;
+    isLeft = true;
+    isRight = false;
+  }
+  //   
+
+  //SOCD method for up/down is neutral
   if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW){
     pinyAxis = 128+127;
     upOne = 1;
   }
   if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH){
-    pinyAxis = 128-128;
+    pinyAxis = 128-127;
     downOne = 1;
   }
 
@@ -228,7 +238,7 @@ void loop()
     pinLLIGHT = 125;
   }
 
-  if (isMelee == true)
+  if (currentGame == Melee)
   {
     if(mod1){
     if(leftOne || rightOne){
@@ -276,14 +286,15 @@ void loop()
     if(upOne || downOne){
       pinyAxis = 128 + ((upOne - downOne)*59);
     }
-    if((leftOne || rightOne) && (upOne || downOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*23);
-      pinyAxis = 128 + ((upOne - downOne)*59);
-    }
     //Keeps B Reversals Fair
     if((leftOne || rightOne) && pinB){
       pinxAxis = 128 + ((rightOne - leftOne)*59); 
     }
+    if((leftOne || rightOne) && (upOne || downOne)){
+      pinxAxis = 128 + ((rightOne - leftOne)*23);
+      pinyAxis = 128 + ((upOne - downOne)*59);
+    }
+    
     //Ambiguous DI
     if((leftOne || rightOne) && pinA){
       pinxAxis = 128 + ((rightOne - leftOne)*35); 
@@ -307,7 +318,7 @@ void loop()
     }
   }
   }
-  else
+  else if (currentGame == Ultimate)
   {
   if(mod1){
     if(leftOne || rightOne){
@@ -317,8 +328,8 @@ void loop()
       pinyAxis = 128 + ((upOne - downOne)*42);
     }
     if((leftOne || rightOne) && (upOne || downOne)){      
-      pinxAxis = 128 + ((rightOne - leftOne)*59);
-      pinyAxis = 128 + ((upOne - downOne)*27);
+      pinxAxis = 128 + ((rightOne - leftOne)*80);
+      pinyAxis = 128 + ((upOne - downOne)*30);
     }
     //Ambiguous DI
     if((leftOne || rightOne) && pinA){
@@ -363,14 +374,15 @@ void loop()
     if(upOne || downOne){
       pinyAxis = 128 + ((upOne - downOne)*59);
     }
-    if((leftOne || rightOne) && (upOne || downOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*27);
-      pinyAxis = 128 + ((upOne - downOne)*110);
-    }
     //Keeps B Reversals Fair
     if((leftOne || rightOne) && pinB){
       pinxAxis = 128 + ((rightOne - leftOne)*59); 
     }
+    if((leftOne || rightOne) && (upOne || downOne)){
+      pinxAxis = 128 + ((rightOne - leftOne)*30);
+      pinyAxis = 128 + ((upOne - downOne)*80);
+    }
+    
     //Ambiguous DI
     if((leftOne || rightOne) && pinA){
       pinxAxis = 128 + ((rightOne - leftOne)*35); 
@@ -402,6 +414,103 @@ void loop()
     }
   }
   }
+  else if (currentGame == PM)
+  {
+  if(mod1){
+    if(leftOne || rightOne){
+      pinxAxis = 128 + ((rightOne - leftOne)*49);
+    }
+    if(upOne || downOne){
+      pinyAxis = 128 + ((upOne - downOne)*65);
+    }
+    if((leftOne || rightOne) && (upOne || downOne)){      
+      pinxAxis = 128 + ((rightOne - leftOne)*68);
+      pinyAxis = 128 + ((upOne - downOne)*28);
+    }
+    //Ambiguous DI
+    if((leftOne || rightOne) && pinA){
+      pinxAxis = 128 + ((rightOne - leftOne)*47);
+    }
+    //FireFox Angles with cButtons
+    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*53);
+      pinyAxis = 128 + ((upOne - downOne)*37);
+      pinxAxisC = 128;
+      pinyAxisC = 128;
+    }
+    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*62);
+      pinyAxis = 128 + ((upOne - downOne)*30);
+      pinxAxisC = 128;
+      pinyAxisC = 128;
+    }
+    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*63);
+      pinyAxis = 128 + ((upOne - downOne)*37);
+      pinxAxisC = 128;
+      pinyAxisC = 128;
+    }
+    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*51);
+      pinyAxis = 128 + ((upOne - downOne)*42);
+      pinxAxisC = 128;
+      pinyAxisC = 128;
+    }
+    //Up and Down Forward Smash
+    if((upOne||downOne)&&(cLeft||cRight)){
+      pinxAxisC = 128 + ((cRight - cLeft)*127);
+      pinyAxisC = 128 + ((upOne - downOne)*41);
+    }
+  }
+
+  if(mod2){
+    if(leftOne || rightOne){
+      pinxAxis = 128 + ((rightOne - leftOne)*33);
+    }
+    if(upOne || downOne){
+      pinyAxis = 128 + ((upOne - downOne)*59);
+    }
+    //Keeps B Reversals Fair
+    if((leftOne || rightOne) && pinB){
+      pinxAxis = 128 + ((rightOne - leftOne)*59); 
+    }
+    if((leftOne || rightOne) && (upOne || downOne)){
+      pinxAxis = 128 + ((rightOne - leftOne)*28);
+      pinyAxis = 128 + ((upOne - downOne)*68);
+    }
+    
+    //Ambiguous DI
+    if((leftOne || rightOne) && pinA){
+      pinxAxis = 128 + ((rightOne - leftOne)*35); 
+    }
+    //FireFox Angles with cButtons
+    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*44);
+      pinyAxis = 128 + ((upOne - downOne)*63);
+      pinxAxisC = 128;
+      pinyAxisC = 128;
+    }
+    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*31);
+      pinyAxis = 128 + ((upOne - downOne)*64);
+      pinxAxisC = 128;
+      pinyAxisC = 128;
+    }
+    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*37);
+      pinyAxis = 128 + ((upOne - downOne)*63);
+      pinxAxisC = 128;
+      pinyAxisC = 128;
+    }
+    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
+      pinxAxis = 128 + ((rightOne - leftOne)*47);
+      pinyAxis = 128 + ((upOne - downOne)*57);
+      pinxAxisC = 128;
+      pinyAxisC = 128;
+    }
+  }
+  }
+  
   //Manual Shield Tilt with R
   if(pinR){
     if(downOne){
@@ -416,8 +525,16 @@ void loop()
     }
     //Wavedash with R and Mod1
     if(((leftOne || rightOne) && downOne)&& mod1){
-      pinxAxis = 128 + ((rightOne - leftOne)*127);
-      pinyAxis = 128 - 75;
+      if (currentGame == (Melee || Ultimate))
+      {
+        pinxAxis = 128 + ((rightOne - leftOne)*127);
+        pinyAxis = 128 - 75;
+      }
+      if (currentGame == PM)
+      {
+        pinxAxis = 128 + ((rightOne - leftOne)*123);
+        pinyAxis = 128 - 37;
+      }
     }
     //Wavedash with R and Mod2
     if(((leftOne || rightOne) && downOne)&& mod2){
@@ -434,9 +551,19 @@ void loop()
     }
 
     //Axe Method Shield Drop
-    if(downOne && (leftOne || rightOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*96);
-      pinyAxis = 128 - 91;
+    if (currentGame == Melee)
+    {
+      if(downOne && (leftOne || rightOne)){
+        pinxAxis = 128 + ((rightOne - leftOne)*96);
+        pinyAxis = 128 - 91;
+      }
+    }
+    else
+    {
+      if(downOne && (leftOne || rightOne)){
+        pinxAxis = 128 + ((rightOne - leftOne)*96);
+        pinyAxis = 128 - 99;
+      }
     }
     if(mod1){
       pinLLIGHT = 74;
