@@ -80,6 +80,8 @@ Using both of these methods, I derived the chart you see above for my cable. If 
 ![image](https://i.imgur.com/bK22Elt.jpg)
 11. Follow the instructions here to install the NE8MC around your new cables RJ45 plug
 
+https://www.neutrik.com/media/8070/download/ethercon-cable-connector-ne8mc.pdf?v=1
+
 ## Installation Into a Fightstick
 
 ![image](https://i.imgur.com/IVrTkXu.jpg)
