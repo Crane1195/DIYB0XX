@@ -6,15 +6,15 @@ When printing these,
     Uses #6 Countersunk Flat head screws 3/4".
     Design is in inches, so make sure you convert to 2540% scale if using mm."
         -simple
-I converted simples stl files for the MiniB0XX to ipt files, and then edited those to have holes for Neutrik passthroughs. These ipt files are found in .ipts
+I converted simples stl files for the MiniB0XX to ipt files, and then edited those to have holes for Neutrik passthroughs. These ipt files are found in the `.ipts` folder.
 
-The Neutrik passthroughs on the MiniB0XX allow for a detatchable RJ45 male to Gamecube male cable and/or an external usb port to connect to the arduino for updating software.
+The Neutrik passthroughs on the MiniB0XX allow for a detatchable RJ45 male to Gamecube male cable and/or an external usb port to connect to the Arduino for updating software.
 
-The folder Both contains the stl files for having both ports, and the JustRJ45/JustUSB folders have the files for just one port.
+The folder `Both` contains the stl files for having both ports, and the JustRJ45/JustUSB folders have the files for just one port.
 
-For JustRJ45, you will have to open the MiniB0XX up to change the software
+For `JustRJ45`, you will have to open the MiniB0XX up to change the software
 
-For JustUSB, you will have a non detatchable Gamecube cable.
+For `JustUSB`, you will have a non detatchable Gamecube cable.
 
 For more information regarding how to make a RJ45 male to Gamecube male cable and how to use one in a DIYB0XX, check this guide out
 
