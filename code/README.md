@@ -38,9 +38,9 @@ I plan to implement 1ip SOCD as an option soon.
 
 ## Edits made for the Smash4/Ultimate mode
  * Mods + cardinals, tilts, triggers(shields), and most firefox angles edited.
- * Mods change running/walking speed. Direction, then mod1 gives perfect speed to ledgerun in smash4.
+ * Mod1/2 + cardinal has slow run/walking speed. Mod1 + cardinal gives perfect speed to ledgerun in smash4.
  * Tilts now work with mod1.
- * Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this.
+ * Triggers now give the analog value needed to shield. LRAStart now works too because of this.
  * FFox angles (B0XX method, c stick) now almost work properly. Mod1+diagonal+cright/left do not work in Smash4, but do in Ultimate.
  * C stickless firefox angles function now.
 
