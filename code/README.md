@@ -3,7 +3,7 @@
 This utilize the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
 
 I then modified aspects of that code to make it function in Project M, Smash 4, Smash Ultimate.
-## I have combined the Melee, Project M, and Smash4/Ultimate code, so you don't have to keep swapping profiles.
+## I have combined my Melee, Project M, and Smash4/Ultimate edits, so you don't have to keep swapping profiles.
  *  To launch in Melee mode, just plug in normally.
  *  To launch in Smash4/Ultimate mode, hold B while plugging in.
  *  To launch in Project M mode, hold X while plugging in.
