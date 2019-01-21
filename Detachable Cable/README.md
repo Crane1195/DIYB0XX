@@ -41,7 +41,7 @@ GCC stands for GameCube Controller. I will use this acryonym a lot.
 
 ![image](https://i.imgur.com/5HPw1Qv.png)
 
-2. Strip off the ~ 1 cm of the outer shell. The wires here are too long, so I trimmed them down to as long as seen below, using a wire cutter.
+2. Strip off about 1 cm of the outer shell. The wires here are too long, so I trimmed them down as seen below, using a wire cutter.
 
 ![image](https://i.imgur.com/wFUA6A8.jpg)
 
