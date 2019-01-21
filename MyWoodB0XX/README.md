@@ -30,6 +30,18 @@ This utilizes the Nicohood Nintendo library found here https://github.com/NicoHo
 
 Anyway, enough of the intro, lets get into the build.
 
+### Part List
+  * Arduino Mega 2560
+  * Logic Controller 3.3V - 5V (I used this one https://www.amazon.com/gp/product/B0148BLZGE/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
+  * 18 Sanwa OBSF-24 buttons
+  * GameCube controller cable. This can be either the cable from an OEM controller as shown in this build, a 3rd party controller cable, or a 3rd party extension cable. You can make this cable detachable by following the guide here https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
+  * The wooden case
+  * 15/16" spade bit
+  * 18 .110" QDC button wires
+  * .110" daisy chain ground wire
+  * Male to male jumper wires
+  * Heat shrink kit
+
 ![image](https://i.imgur.com/A4ihq5s.jpg)
 
 For a joke, I made the greatest piece of tech that the world has ever seen with the shoeb0xx.
