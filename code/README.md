@@ -17,9 +17,9 @@ I have edited the left/right simultaneous opposite cardinal directions (SOCD) me
 * While still pressing left, press right. Character stops moving.
 * While still pressing left, stop pressing right. Character moves left again.
 
-The official B0XX uses 1ip for its SOCD method. 1ip is the same as 2ip, but the third step does not occur, meaning that you need to press left again to go left.
+The official B0XX uses 2ip without reactivation for its SOCD method. This is the same as 2ip, but the third step does not occur, meaning that you need to press left again to go left.
 
-I plan to implement 1ip SOCD as an option soon.
+I plan to implement the B0XX SOCD as an option soon.
 
 ## I have combined my Melee, Project M, and Smash4/Ultimate edits, so you don't have to keep swapping profiles.
  *  To launch in Melee mode, just plug in normally.
