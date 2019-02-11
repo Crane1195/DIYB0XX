@@ -9,7 +9,7 @@
  * 
  * [Jack "Hexadecimal" Stensrud]
  * For all modes,
- *  Added 1ip SOCD controls for the left/right inputs. Should be more in line with what the B0XX uses.
+ *  Added 2ip without reactivation SOCD controls for the left/right inputs. Should be more in line with what the B0XX uses.
  *
  * [Crane] 
  * For Smash4/U mode, 
@@ -171,7 +171,7 @@ void loop()
   if (digitalRead(MOD1) == LOW && digitalRead(MOD2) == HIGH)mod1 = 1;
   if (digitalRead(MOD2) == LOW && digitalRead(MOD1) == HIGH)mod2 = 1;
 
-  //SOCD method for left/right is 1ip
+  //SOCD method for left/right is 2ip without reactivation
   if (digitalRead(LEFT) == LOW && isRight == true)
   {
 	//if left is pressed and isRight is true(if you press left while holding right):
