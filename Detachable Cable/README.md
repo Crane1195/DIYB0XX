@@ -88,7 +88,7 @@ https://www.neutrik.com/media/8070/download/ethercon-cable-connector-ne8mc.pdf?v
 12. I used a unibit to drill a ~24mm hole in this aluminum case, inserted the NE8FDP faceplate into the hole, marked where the screw holes should be, and drilled 1/8" holes for them.
 
 ![image](https://i.imgur.com/GIs4zBX.jpg)
-13. Inside the case, I cut that ethernet breakout cable down very short, trimmed the wires to be just long enough, and then soldered them into place. For more information about this wiring schematic, check out the README here. https://github.com/Crane1195/DIYB0XX/edit/master/MiniAluminum/README.md
+13. Inside the case, I cut that ethernet breakout cable down very short, trimmed the wires to be just long enough, and then soldered them into place. For more information about this wiring schematic, check out the README here. https://github.com/Crane1195/DIYB0XX/tree/master/MyAluminumB0XX
 
 ## Results
 ![image](https://i.imgur.com/GE0oSzS.jpg)
