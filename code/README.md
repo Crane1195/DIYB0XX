@@ -3,23 +3,27 @@
 This utilizes the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
 
 I then modified aspects of that code to make it function in Project M, Smash 4, and Smash Ultimate, as well as having 2ip as a SOCD option.
+
+Hexadecimal has added 2ip with no reactivation as a SOCD method.
+
 # My Edits
-## 2ip or Neutral SOCD
-I have edited the left/right simultaneous opposite cardinal directions (SOCD) method so you now have the option to pick from 2ip or neutral.
+## 2ip or 2ip with no reactivation or Neutral SOCD
+I have edited the left/right simultaneous opposite cardinal directions (SOCD) method so you now have the option to pick from 2ip or neutral. Hexadecimal added 2ip with no reactivation which is the method the B0XX uses.
 
 #### 2ip works like this:
 * Press left. Character moves left.
 * While still pressing left, press right. Character moves right.
 * While still pressing left, stop pressing right. Character moves left again.
 
+#### 2ip with no reactivation (The method the B0XX uses) works like this:
+* Press left. Character moves left.
+* While still pressing left, press right. Character moves right.
+* While still pressing left, stop pressing right. Character will not move.
+
 #### Neutral works like this:
 * Press left. Character moves left.
 * While still pressing left, press right. Character stops moving.
 * While still pressing left, stop pressing right. Character moves left again.
-
-The official B0XX uses 2ip without reactivation for its SOCD method. This is the same as 2ip, but the third step does not occur, meaning that you need to press left again to go left.
-
-I plan to implement the B0XX SOCD as an option soon.
 
 ## I have combined my Melee, Project M, and Smash4/Ultimate edits, so you don't have to keep swapping profiles.
  *  To launch in Melee mode, just plug in normally.
