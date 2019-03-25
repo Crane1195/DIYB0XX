@@ -220,7 +220,7 @@ void loop()
     pinLLIGHT = 125;
   }
 
-  if (currentGame == Melee)
+if (currentGame == Melee)
   {
     if(mod1){
     if(leftOne || rightOne){
@@ -519,8 +519,8 @@ void loop()
       }
       if (currentGame == PM)
       {
-        pinxAxis = 128 + ((rightOne - leftOne)*123);
-        pinyAxis = 128 - 37;
+        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinyAxis = 128 - 65;
       }
     }
     //Wavedash with R and Mod2
