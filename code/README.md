@@ -25,6 +25,11 @@ I have edited the left/right simultaneous opposite cardinal directions (SOCD) me
 * While still pressing left, press right. Character stops moving.
 * While still pressing left, stop pressing right. Character moves left again.
 
+## Choose your SOCD
+You can choose your horizontal SOCD method for each game profile.
+
+To do so, change the value to the right of the equal sign on line 92 for Melee, 129 for Ultimate, and 134 for PM to Neutral, TwoIP, or TwoIPNoReactivate. I do not advise changing these though, as the default settings match the B0XX.
+
 ## I have combined my Melee, Project M, and Smash4/Ultimate edits, so you don't have to keep swapping profiles.
  *  To launch in Melee mode, just plug in normally.
  *  To launch in Smash4/Ultimate mode, hold B while plugging in.
