@@ -27,10 +27,10 @@
  *
  * Be sure to button check before starting a set, to confirm you are in the right mode.
  * If mod1+up makes you jump, or if mod1+down+B makes you neutral B, you are in the wrong mode. Check both of these.
- * 
+ *
  * [Jack "Hexadecimal" Stensrud]
  *  Added 2ip without reactivation SOCD controls for the left/right inputs. Should be more in line with what the B0XX uses.
- *  
+ *
  * [Crane]
  *  Combined the three SOCD versions of the code. If you want to change SOCD for a specific game, you can do so on
  *  line 93 for Melee, line 129 for Ultimate, or line 134 for PM. The official B0XX methods are the default, and I
@@ -126,13 +126,13 @@ void setup()
   if (digitalRead(B) == LOW)
   {
     currentGame = Ultimate;
-    currentSOCD = TwoIP;
+    currentSOCD = TwoIPNoReactivate;
   }
   if (digitalRead(X) == LOW)
   {
     currentGame = PM;
     currentSOCD = TwoIPNoReactivate;
-  }  
+  }
 
 
 
@@ -190,7 +190,7 @@ void loop()
 
 //SOCD method for left/right is 2ip without reactivation
 if (currentSOCD == TwoIPNoReactivate)
-{  
+{
   if (digitalRead(LEFT) == LOW && isRight == true)
   {
 	//if left is pressed and isRight is true(if you press left while holding right):
@@ -413,15 +413,15 @@ if (currentSOCD == Neutral)
     if(upOne || downOne){
       pinyAxis = 128 + ((upOne - downOne)*42);
     }
-    
+
 /******************/
-    
+
     if((leftOne || rightOne) && pinB){
       pinxAxis = 128 + ((rightOne - leftOne)*33);
     }
 
 /*******************/
-    
+
     if((leftOne || rightOne) && (upOne || downOne)){
       pinxAxis = 128 + ((rightOne - leftOne)*80);
       pinyAxis = 128 + ((upOne - downOne)*30);
@@ -645,14 +645,14 @@ if (currentSOCD == Neutral)
   }
 
   if(pinL){
-    
+
     if(rightOne||leftOne){
       pinxAxis = 128 + ((rightOne - leftOne)*127);
     }
     if (upOne||downOne){
       pinyAxis = 128 + ((upOne - downOne)*127);
     }
-    
+
     if(upOne && (leftOne || rightOne)){
       pinxAxis = 128 + ((rightOne - leftOne)*52);
       pinyAxis = 128 + 52;
@@ -673,7 +673,7 @@ if (currentSOCD == Neutral)
         pinyAxis = 128 - 99;
       }
     }
-    
+
     if(mod1){
       pinLLIGHT = 80;
       pinL = 0;
