@@ -33,7 +33,7 @@ This case's edges are pretty sharp, the holes on mine did not match up exactly t
 
 A bit of sanding solves the sharp edges.
 
-I highly reccomend measuring the holes on your unit if you are making a panel for the top like I did. I might have been unlucky, and they usually are up to spec with the datasheet, but it might be normal.
+I highly reccomend measuring the holes on your unit if you are making a panel for the top like I did. I might have been unlucky, but it might be normal.
 
 It comes with an adhesive protective film on all sides if I recall correctly. Leave these on the case while working on it.
 
