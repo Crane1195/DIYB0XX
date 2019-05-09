@@ -71,16 +71,18 @@ The screw holes in the drawing file I linked is based on the 12" x 8" case's dat
 Personally, I use just one 3mm acrylic panel for the top. If you push in the middle of it, there is a bit of flex, but it is not enough to bother me. If this would bother you, or you want to easily use art under the buttons, you can get a second panel, but with 28mm holes to put under the top 24mm holes panel. This way, the buttons snap into the top panel, and just pass through the second. For art, you could get a clear top, and whatever color bottom, and put the art inbetween. Once again, if anyone who can not use a drawing editor wants me to make this into a file, let me know.
 
 ### Detachable RJ45 to GCC Cable
-This is a massive upgrade over the attached cable used previously. Besides the fact that the cable I used was in bad shape and from a beat up OEM controller I found on eBay, an attached cable does not really have anywhere to go outside of a box controller. Wrapping it around damages the cable, and it makes the controller much more of a hassle to travel with. To see how this cable is made, check out this guide I wrote on the topic https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
+![image](https://camo.githubusercontent.com/8c6c392c081724a795778e1a34ffaf427c57ec16/68747470733a2f2f692e696d6775722e636f6d2f4745306f537a532e6a7067)
+This is a massive upgrade over the attached cable used previously. Besides the fact that the cable I used was in bad shape and from a beat up OEM controller I found on eBay, an attached cable does not really have anywhere to go outside of a box controller. Wrapping it around damages the cable, and it makes the controller much more of a hassle to travel with. To see how this cable is made, check out this guide I wrote on the topic: https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
 
 ### Internal GCC to USB adapter
+![image](https://i.imgur.com/PZbbE8u.jpg)
 This is an interesting addition that could be quite useful for some people, but I am not really one of them. Basically, you solder wires to the pads of a GC port on a Gamecube to USB adapter, and route those to the same lines of your normal GCC cable. What this means is that you can use the controller like a normal Gamecube controller with the RJ45 to GCC cable, or you can plug the GC adapters USB cable into a Switch/WiiU/PC to avoid using an external controller adapter.
 
 
 
 
 
-Wiring Schematic
+### Wiring Schematic
 ![image](https://camo.githubusercontent.com/e8696673eb8698e2e7a6e50c574682dc869a7e0e/68747470733a2f2f692e696d6775722e636f6d2f7a346f5a50324f2e6a7067)
 
 
