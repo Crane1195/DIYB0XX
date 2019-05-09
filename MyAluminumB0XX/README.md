@@ -20,6 +20,8 @@ On top of this, I have done two modifications to the design which increase overa
 
 The first of which a detachable RJ45 to Gamecube cable, and the second is an internal Gamecube to USB adapter with the extra three ports available to use outside the case.
 
+If you have any questions regarding this build, feel free to ask me in the 20XX Discord's #diy-discussion channel (https://discord.gg/6wcEaDU) or in direct message @Crane#1195 .
+
 ## Components
 
 ### Aluminum Case
