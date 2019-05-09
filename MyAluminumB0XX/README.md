@@ -58,9 +58,15 @@ I sent drawing file (.dwg) to Pololu, who have an affordable acrylic laser cutti
 
 https://www.pololu.com/product/749
 
+![image](https://i.imgur.com/Cc4ZUtd.png)
+
+They have tons of options, and I chose this one. It is a slightly translucent matte finish white panel (the bottom side is glossy, but it is inside the case).
+
 I highly recommend them. I have ordered two panels from them so far, and both turned out perfect. Do note though, this panel is below their minimum cost of $25, so if you have anything else you would like laser cut, they can add that to the order to be cost efficient.
 
 The screw holes in the drawing file I linked is based on the 12" x 8" case's datasheet's screw placements, and as previously mentioned, these did not work perfectly for my case. I had to use different screws and angle them for the top two. Measuring your own case and editing the drawing file would be ideal, and if you do not know how to use a CAD software, or do not have one, I can edit the drawing for you given your measurements. Alternatively you could just roll the dice and hope your case is good enough, or angle screws like I did.
+
+Personally, I use just one 3mm acrylic panel for the top. If you push in the middle of it, there is a bit of flex, but it is not enough to bother me. If this would bother you, or you want to easily use art under the buttons, you can get a second panel, but with 28mm holes to put under the top 24mm holes panel. This way, the buttons snap into the top panel, and just pass through the second. For art, you could get a clear top, and whatever color bottom, and put the art inbetween. Once again, if anyone who can not use a drawing editor wants me to make this into a file, let me know.
 
 ### Detachable RJ45 to GCC Cable
 This is a massive upgrade over the attached cable used previously. Besides the fact that the cable I used was in bad shape and from a beat up OEM controller I found on eBay, an attached cable does not really have anywhere to go outside of a box controller. Wrapping it around damages the cable, and it makes the controller much more of a hassle to travel with. To see how this cable is made, check out this guide I wrote on the topic https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
