@@ -37,15 +37,30 @@ I highly reccomend measuring the holes on your unit if you are making a panel fo
 
 It comes with an adhesive protective film on all sides if I recall correctly. Leave these on the case while working on it.
 
-They also make a similar case to this one, but in a 16" x 8" x 2" form factor. The larger size comes in both aluminum
+They also make a similar case to this one, but in a 16" x 8" x 2" form factor. The larger size comes in both aluminum:
 
 https://www.digikey.com/product-detail/en/hammond-manufacturing/1444-26/HM269-ND/247998
 
-and steel
+and steel:
 
 https://www.digikey.com/product-detail/en/hammond-manufacturing/1441-26BK3/HM1493-ND/460097
 
 I have not used the steel variant, but I would imagine it would be more scratch resistant and probably stronger.
+
+### Laser Cut Acrylic Button Panel
+![image](https://i.imgur.com/0ZhgDX8.jpg)
+
+I designed this button panel based on the layout of the MiniB0XX made by Simple. You can find drawing/PDF files of this layout here:
+
+https://github.com/Crane1195/DIYB0XX/tree/master/MyAluminumB0XX/AcrylicPlate
+
+I sent drawing file (.dwg) to Pololu, who have an affordable acrylic laser cutting service that you can find here:
+
+https://www.pololu.com/product/749
+
+I highly recommend them. I have ordered two panels from them so far, and both turned out perfect. Do note though, this panel is below their minimum cost of $25, so if you have anything else you would like laser cut, they can add that to the order to be cost efficient.
+
+The screw holes in the drawing file I linked is based on the 12" x 8" case's datasheet's screw placements, and as previously mentioned, these did not work perfectly for my case. I had to use different screws and angle them for the top two. Measuring your own case and editing the drawing file would be ideal, and if you do not know how to use a CAD software, or do not have one, I can edit the drawing for you given your measurements. Alternatively you could just roll the dice and hope your case is good enough, or angle screws like I did.
 
 ### Detachable RJ45 to GCC Cable
 This is a massive upgrade over the attached cable used previously. Besides the fact that the cable I used was in bad shape and from a beat up OEM controller I found on eBay, an attached cable does not really have anywhere to go outside of a box controller. Wrapping it around damages the cable, and it makes the controller much more of a hassle to travel with. To see how this cable is made, check out this guide I wrote on the topic https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
