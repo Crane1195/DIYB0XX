@@ -195,6 +195,7 @@ void loop()
 //SOCD method for left/right is 2ip without reactivation
 if (currentSOCD == TwoIPNoReactivate)
 {
+  // X Axis
   if (digitalRead(LEFT) == LOW && isRight == true)
   {
 	//if left is pressed and isRight is true(if you press left while holding right):
@@ -238,7 +239,7 @@ if (currentSOCD == TwoIPNoReactivate)
 	  isRight = false;
   }
   /*************************************/
-  //DOWN IS LEFT, UP IS RIGHT
+  // Y Axis
   if (digitalRead(DOWN) == LOW && isUp == true)
   {
 	//if down is pressed and isUp is true(if you press down while holding up):
@@ -286,6 +287,7 @@ if (currentSOCD == TwoIPNoReactivate)
 //SOCD method for left/right is 2ip
 if (currentSOCD == TwoIP)
 {
+  // X Axis
   if (digitalRead(LEFT) == LOW && isRight == true)
   {
     pinxAxis = 128-127;
@@ -311,7 +313,7 @@ if (currentSOCD == TwoIP)
   }
 
   /*************************************/
-  //DOWN IS LEFT, UP IS RIGHT
+  // Y Axis
   if (digitalRead(DOWN) == LOW && isUp == true)
   {
     pinyAxis = 128-127;
