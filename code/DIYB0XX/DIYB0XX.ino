@@ -348,7 +348,7 @@ if (currentSOCD == Neutral)
   }
   if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH){
     pinxAxis = 128-127;
-    downOne = 1;
+    leftOne = 1;
   }
   if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW){
     pinyAxis = 128+127;
