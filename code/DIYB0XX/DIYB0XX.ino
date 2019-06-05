@@ -54,8 +54,8 @@ enum SOCD
   TwoIPNoReactivate
 };
 
-//This is needed but you don't need a controller on pin 7
-CGamecubeController GamecubeController1(7);
+//Not needed
+//CGamecubeController GamecubeController1(7);
 
 //This is the pinout of the controller.  Can be changed to your liking.  I may have mixed up some of the tilt pins but you can change that physically in your build or through the code.  Just do test runs along the way.
 const int A = 46;
@@ -140,8 +140,8 @@ void setup()
 
 
 
-  //This is needed to run the code.
-  GamecubeController1.read();
+  //Not needed
+  //GamecubeController1.read();
 }
 
 void loop()
