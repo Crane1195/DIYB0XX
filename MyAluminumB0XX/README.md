@@ -86,4 +86,4 @@ This is an interesting addition that could be quite useful for some people, but 
 ![image](https://camo.githubusercontent.com/e8696673eb8698e2e7a6e50c574682dc869a7e0e/68747470733a2f2f692e696d6775722e636f6d2f7a346f5a50324f2e6a7067)
 
 
-The guide will be complete soon.
+The build log will be complete soon.
