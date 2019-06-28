@@ -1,41 +1,41 @@
 #include "Nintendo.h"
 /* This code uses the Nicohood Library
- * Use this code at your own risk
- * Code written by Simple Controllers and this code is open source.
- * Meaning its free to share, improve on, or anything you like!
- * Just remember to mention you used my code!
- * Edited by Danny for SmashB0XX
- *
- * [Crane]
- * For Smash4/U mode,
- *  Mod running, tilts, triggers(shields), and most firefox angles edited.
- *  Mods change running/walking speed. Direction, then mod1 gives perfect speed to ledgerun in smash4.
- *  Tilts now work with mod1.
- *  Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
- *  FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
+   Use this code at your own risk
+   Code written by Simple Controllers and this code is open source.
+   Meaning its free to share, improve on, or anything you like!
+   Just remember to mention you used my code!
+   Edited by Danny for SmashB0XX
+
+   [Crane]
+   For Smash4/U mode,
+    Mod running, tilts, triggers(shields), and most firefox angles edited.
+    Mods change running/walking speed. Direction, then mod1 gives perfect speed to ledgerun in smash4.
+    Tilts now work with mod1.
+    Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
+    FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
     C stickless firefox angles function now.
- *
- * For Project M mode
- *  Tilts, firefox angles, shield drop angles (Axe method), and wavedash angles all fixed.
- *  Fixed bug where left and down were not working on SSS and menus.
- *
- *  All three modes are in this one program, so you don't have to keep swapping.
- *
- *  To launch in Melee mode, just plug in normally
- *  To launch in Ultimate/4 mode, hold B while plugging in.
- *  To launch in Project M mode, hold X while plugging in.
- *
- * Be sure to button check before starting a set, to confirm you are in the right mode.
- * If mod1+up makes you jump, or if mod1+down+B makes you neutral B, you are in the wrong mode. Check both of these.
- *
- * [Jack "Hexadecimal" Stensrud]
- *  Added 2ip without reactivation SOCD controls for the left/right inputs. Should be more in line with what the B0XX uses.
- *
- * [Crane]
- *  Combined the three SOCD versions of the code. If you want to change SOCD for a specific game, you can do so on
- *  line 93 for Melee, line 129 for Ultimate, or line 134 for PM. The official B0XX methods are the default, and I
- *  advise against editing them. currentSOCD can set to "Neutral", "TwoIP", or "TwoIPNoReactivate", without the quotes.
- */
+
+   For Project M mode
+    Tilts, firefox angles, shield drop angles (Axe method), and wavedash angles all fixed.
+    Fixed bug where left and down were not working on SSS and menus.
+
+    All three modes are in this one program, so you don't have to keep swapping.
+
+    To launch in Melee mode, just plug in normally
+    To launch in Ultimate/4 mode, hold B while plugging in.
+    To launch in Project M mode, hold X while plugging in.
+
+   Be sure to button check before starting a set, to confirm you are in the right mode.
+   If mod1+up makes you jump, or if mod1+down+B makes you neutral B, you are in the wrong mode. Check both of these.
+
+   [Jack "Hexadecimal" Stensrud]
+    Added 2ip without reactivation SOCD controls for the left/right inputs. Should be more in line with what the B0XX uses.
+
+   [Crane]
+    Combined the three SOCD versions of the code. If you want to change SOCD for a specific game, you can do so on
+    line 93 for Melee, line 129 for Ultimate, or line 134 for PM. The official B0XX methods are the default, and I
+    advise against editing them. currentSOCD can set to "Neutral", "TwoIP", or "TwoIPNoReactivate", without the quotes.
+*/
 //This makes the controller bidirection data line on pin number8
 CGamecubeConsole GamecubeConsole(8);      //Defines a "Gamecube Console" sending data to the console on pin 8
 Gamecube_Data_t d = defaultGamecubeData;   //Structure for data to be sent to console
@@ -192,188 +192,188 @@ void loop()
   if (digitalRead(MOD1) == LOW && digitalRead(MOD2) == HIGH)mod1 = 1;
   if (digitalRead(MOD2) == LOW && digitalRead(MOD1) == HIGH)mod2 = 1;
 
-//SOCD method for left/right is 2ip without reactivation
-if (currentSOCD == TwoIPNoReactivate)
-{
-  // X Axis
-  if (digitalRead(LEFT) == LOW && isRight == true)
+  //SOCD method for left/right is 2ip without reactivation
+  if (currentSOCD == TwoIPNoReactivate)
   {
-	//if left is pressed and isRight is true(if you press left while holding right):
-		pinxAxis = 128-127;
-		leftOne = 1;
-		isHoldingRight = true;
-  }
-  else if (digitalRead(RIGHT) == LOW && isLeft == true)
-  {
-	//else, if right is pressed and isLeft is true (if you press right while holding left):
-		pinxAxis = 128+127;
-		rightOne = 1;
-		isHoldingLeft = true;
+    // X Axis
+    if (digitalRead(LEFT) == LOW && isRight == true)
+    {
+      //if left is pressed and isRight is true(if you press left while holding right):
+      pinxAxis = 128 - 127;
+      leftOne = 1;
+      isHoldingRight = true;
+    }
+    else if (digitalRead(RIGHT) == LOW && isLeft == true)
+    {
+      //else, if right is pressed and isLeft is true (if you press right while holding left):
+      pinxAxis = 128 + 127;
+      rightOne = 1;
+      isHoldingLeft = true;
+    }
+
+    if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW) {
+      //if left is not pressed and right is pressed:
+      if (isHoldingRight == false) {
+        pinxAxis = 128 + 127;
+        rightOne = 1;
+      }
+      isRight = true;
+      isLeft = false;
+      isHoldingLeft = false;
+    }
+    if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH) {
+      //if left is pressed and right is not pressed:
+      if (isHoldingLeft == false) {
+        pinxAxis = 128 - 127;
+        leftOne = 1;
+      }
+      isLeft = true;
+      isRight = false;
+      isHoldingRight = false;
+    }
+    if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == HIGH) {
+      //if neither button is being pressed, set all left/right booleans to false
+      isHoldingLeft = false;
+      isHoldingRight = false;
+      isLeft = false;
+      isRight = false;
+    }
+    /*************************************/
+    // Y Axis
+    if (digitalRead(DOWN) == LOW && isUp == true)
+    {
+      //if down is pressed and isUp is true(if you press down while holding up):
+      pinyAxis = 128 - 127;
+      downOne = 1;
+      isHoldingUp = true;
+    }
+    else if (digitalRead(UP) == LOW && isDown == true)
+    {
+      //else, if up is pressed and isDown is true (if you press up while holding down):
+      pinyAxis = 128 + 127;
+      upOne = 1;
+      isHoldingDown = true;
+    }
+
+    if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW) {
+      //if down is not pressed and up is pressed:
+      if (isHoldingUp == false) {
+        pinyAxis = 128 + 127;
+        upOne = 1;
+      }
+      isUp = true;
+      isDown = false;
+      isHoldingDown = false;
+    }
+    if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH) {
+      //if down is pressed and up is not pressed:
+      if (isHoldingDown == false) {
+        pinyAxis = 128 - 127;
+        downOne = 1;
+      }
+      isDown = true;
+      isUp = false;
+      isHoldingUp = false;
+    }
+    if (digitalRead(DOWN) == HIGH && digitalRead(UP) == HIGH) {
+      //if neither button is being pressed, set all down/up booleans to false
+      isHoldingDown = false;
+      isHoldingUp = false;
+      isDown = false;
+      isUp = false;
+    }
   }
 
-  if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW){
-	//if left is not pressed and right is pressed:
-	if(isHoldingRight == false){
-		pinxAxis = 128+127;
-		rightOne = 1;
-	}
-    isRight = true;
-    isLeft = false;
-	isHoldingLeft = false;
-  }
-  if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH){
-	//if left is pressed and right is not pressed:
-	if(isHoldingLeft == false){
-		pinxAxis = 128-127;
-		leftOne = 1;
-	}
-    isLeft = true;
-    isRight = false;
-	isHoldingRight = false;
-  }
-  if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == HIGH){
-	  //if neither button is being pressed, set all left/right booleans to false
-	  isHoldingLeft = false;
-	  isHoldingRight = false;
-	  isLeft = false;
-	  isRight = false;
-  }
-  /*************************************/
-  // Y Axis
-  if (digitalRead(DOWN) == LOW && isUp == true)
+  //SOCD method for left/right is 2ip
+  if (currentSOCD == TwoIP)
   {
-	//if down is pressed and isUp is true(if you press down while holding up):
-		pinyAxis = 128-127;
-		downOne = 1;
-		isHoldingUp = true;
-  }
-  else if (digitalRead(UP) == LOW && isDown == true)
-  {
-	//else, if up is pressed and isDown is true (if you press up while holding down):
-		pinyAxis = 128+127;
-		upOne = 1;
-		isHoldingDown = true;
+    // X Axis
+    if (digitalRead(LEFT) == LOW && isRight == true)
+    {
+      pinxAxis = 128 - 127;
+      leftOne = 1;
+    }
+    else if (digitalRead(RIGHT) == LOW && isLeft == true)
+    {
+      pinxAxis = 128 + 127;
+      rightOne = 1;
+    }
+
+    if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW) {
+      pinxAxis = 128 + 127;
+      rightOne = 1;
+      isRight = true;
+      isLeft = false;
+    }
+    if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH) {
+      pinxAxis = 128 - 127;
+      leftOne = 1;
+      isLeft = true;
+      isRight = false;
+    }
+
+    /*************************************/
+    // Y Axis
+    if (digitalRead(DOWN) == LOW && isUp == true)
+    {
+      pinyAxis = 128 - 127;
+      downOne = 1;
+    }
+    else if (digitalRead(UP) == LOW && isDown == true)
+    {
+      pinyAxis = 128 + 127;
+      upOne = 1;
+    }
+
+    if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW) {
+      pinyAxis = 128 + 127;
+      upOne = 1;
+      isUp = true;
+      isDown = false;
+    }
+    if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH) {
+      pinyAxis = 128 - 127;
+      downOne = 1;
+      isDown = true;
+      isUp = false;
+    }
   }
 
-  if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW){
-	//if down is not pressed and up is pressed:
-	if(isHoldingUp == false){
-		pinyAxis = 128+127;
-		upOne = 1;
-	}
-    isUp = true;
-    isDown = false;
-	isHoldingDown = false;
-  }
-  if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH){
-	//if down is pressed and up is not pressed:
-	if(isHoldingDown == false){
-		pinyAxis = 128-127;
-		downOne = 1;
-	}
-    isDown = true;
-    isUp = false;
-	isHoldingUp = false;
-  }
-  if (digitalRead(DOWN) == HIGH && digitalRead(UP) == HIGH){
-	  //if neither button is being pressed, set all down/up booleans to false
-	  isHoldingDown = false;
-	  isHoldingUp = false;
-	  isDown = false;
-	  isUp = false;
-  }
-}
-
-//SOCD method for left/right is 2ip
-if (currentSOCD == TwoIP)
-{
-  // X Axis
-  if (digitalRead(LEFT) == LOW && isRight == true)
+  //SOCD method for left/right is neutral
+  if (currentSOCD == Neutral)
   {
-    pinxAxis = 128-127;
-    leftOne = 1;
+    if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW) {
+      pinxAxis = 128 + 127;
+      rightOne = 1;
+    }
+    if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH) {
+      pinxAxis = 128 - 127;
+      leftOne = 1;
+    }
+    if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW) {
+      pinyAxis = 128 + 127;
+      upOne = 1;
+    }
+    if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH) {
+      pinyAxis = 128 - 127;
+      downOne = 1;
+    }
   }
-  else if (digitalRead(RIGHT) == LOW && isLeft == true)
-  {
-    pinxAxis = 128+127;
-    rightOne = 1;
-  }
-
-  if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW){
-    pinxAxis = 128+127;
-    rightOne = 1;
-    isRight = true;
-    isLeft = false;
-  }
-  if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH){
-    pinxAxis = 128-127;
-    leftOne = 1;
-    isLeft = true;
-    isRight = false;
-  }
-
-  /*************************************/
-  // Y Axis
-  if (digitalRead(DOWN) == LOW && isUp == true)
-  {
-    pinyAxis = 128-127;
-    downOne = 1;
-  }
-  else if (digitalRead(UP) == LOW && isDown == true)
-  {
-    pinyAxis = 128+127;
-    upOne = 1;
-  }
-
-  if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW){
-    pinyAxis = 128+127;
-    upOne = 1;
-    isUp = true;
-    isDown = false;
-  }
-  if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH){
-    pinyAxis = 128-127;
-    downOne = 1;
-    isDown = true;
-    isUp = false;
-  }
-}
-
-//SOCD method for left/right is neutral
-if (currentSOCD == Neutral)
-{
-  if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW){
-    pinxAxis = 128+127;
-    rightOne = 1;
-  }
-  if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH){
-    pinxAxis = 128-127;
-    leftOne = 1;
-  }
-  if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW){
-    pinyAxis = 128+127;
-    upOne = 1;
-  }
-  if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH){
-    pinyAxis = 128-127;
-    downOne = 1;
-  }
-}
 
   //Reads CStick pins, same logic as controlstick values.
-  if (digitalRead(CLEFT) == HIGH && digitalRead(CRIGHT) == LOW){
+  if (digitalRead(CLEFT) == HIGH && digitalRead(CRIGHT) == LOW) {
     pinxAxisC = 255;
     cRight = 1;
   }
-  if (digitalRead(CLEFT) == LOW && digitalRead(CRIGHT) == HIGH){
+  if (digitalRead(CLEFT) == LOW && digitalRead(CRIGHT) == HIGH) {
     pinxAxisC = 0;
     cLeft = 1;
   }
-  if (digitalRead(CDOWN) == HIGH && digitalRead(CUP) == LOW){
+  if (digitalRead(CDOWN) == HIGH && digitalRead(CUP) == LOW) {
     pinyAxisC = 255;
     cUp = 1;
   }
-  if (digitalRead(CDOWN) == LOW && digitalRead(CUP) == HIGH){
+  if (digitalRead(CDOWN) == LOW && digitalRead(CUP) == HIGH) {
     pinyAxisC = 0;
     cDown = 1;
   }
@@ -400,417 +400,417 @@ if (currentSOCD == Neutral)
 
   if (currentGame == Melee)
   {
-    if(mod1){
-    if(leftOne || rightOne){
-      pinxAxis = 128 + ((rightOne - leftOne)*59);
-    }
-    if(upOne || downOne){
-      pinyAxis = 128 + ((upOne - downOne)*52);
-    }
-    if((leftOne || rightOne) && (upOne || downOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*59);
-      pinyAxis = 128 + ((upOne - downOne)*23);
-    }
-    //Ambiguous DI
-    if((leftOne || rightOne) && pinA){
-      pinxAxis = 128 + ((rightOne - leftOne)*47);
-    }
-    //FireFox Angles with cButtons
-    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*53);
-      pinyAxis = 128 + ((upOne - downOne)*37);
-    }
-    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*62);
-      pinyAxis = 128 + ((upOne - downOne)*30);
-    }
-    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*63);
-      pinyAxis = 128 + ((upOne - downOne)*37);
-    }
-    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*51);
-      pinyAxis = 128 + ((upOne - downOne)*42);
-    }
-    //Up and Down Forward Smash
-    if((upOne||downOne)&&(cLeft||cRight)){
-      pinxAxisC = 128 + ((cRight - cLeft)*127);
-      pinyAxisC = 128 + ((upOne - downOne)*41);
-    }
-  }
-
-  if(mod2){
-    if(leftOne || rightOne){
-      pinxAxis = 128 + ((rightOne - leftOne)*23);
-    }
-    if(upOne || downOne){
-      pinyAxis = 128 + ((upOne - downOne)*59);
-    }
-    //Keeps B Reversals Fair
-    if((leftOne || rightOne) && pinB){
-      pinxAxis = 128 + ((rightOne - leftOne)*59);
-    }
-    if((leftOne || rightOne) && (upOne || downOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*23);
-      pinyAxis = 128 + ((upOne - downOne)*59);
+    if (mod1) {
+      if (leftOne || rightOne) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 59);
+      }
+      if (upOne || downOne) {
+        pinyAxis = 128 + ((upOne - downOne) * 52);
+      }
+      if ((leftOne || rightOne) && (upOne || downOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 59);
+        pinyAxis = 128 + ((upOne - downOne) * 23);
+      }
+      //Ambiguous DI
+      if ((leftOne || rightOne) && pinA) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 47);
+      }
+      //FireFox Angles with cButtons
+      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 53);
+        pinyAxis = 128 + ((upOne - downOne) * 37);
+      }
+      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 62);
+        pinyAxis = 128 + ((upOne - downOne) * 30);
+      }
+      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 63);
+        pinyAxis = 128 + ((upOne - downOne) * 37);
+      }
+      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 51);
+        pinyAxis = 128 + ((upOne - downOne) * 42);
+      }
+      //Up and Down Forward Smash
+      if ((upOne || downOne) && (cLeft || cRight)) {
+        pinxAxisC = 128 + ((cRight - cLeft) * 127);
+        pinyAxisC = 128 + ((upOne - downOne) * 41);
+      }
     }
 
-    //Ambiguous DI
-    if((leftOne || rightOne) && pinA){
-      pinxAxis = 128 + ((rightOne - leftOne)*35);
+    if (mod2) {
+      if (leftOne || rightOne) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 23);
+      }
+      if (upOne || downOne) {
+        pinyAxis = 128 + ((upOne - downOne) * 59);
+      }
+      //Keeps B Reversals Fair
+      if ((leftOne || rightOne) && pinB) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 59);
+      }
+      if ((leftOne || rightOne) && (upOne || downOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 23);
+        pinyAxis = 128 + ((upOne - downOne) * 59);
+      }
+
+      //Ambiguous DI
+      if ((leftOne || rightOne) && pinA) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 35);
+      }
+      //FireFox Angles with cButtons
+      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 44);
+        pinyAxis = 128 + ((upOne - downOne) * 63);
+      }
+      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 31);
+        pinyAxis = 128 + ((upOne - downOne) * 64);
+      }
+      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 37);
+        pinyAxis = 128 + ((upOne - downOne) * 63);
+      }
+      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 47);
+        pinyAxis = 128 + ((upOne - downOne) * 57);
+      }
     }
-    //FireFox Angles with cButtons
-    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*44);
-      pinyAxis = 128 + ((upOne - downOne)*63);
-    }
-    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*31);
-      pinyAxis = 128 + ((upOne - downOne)*64);
-    }
-    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*37);
-      pinyAxis = 128 + ((upOne - downOne)*63);
-    }
-    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*47);
-      pinyAxis = 128 + ((upOne - downOne)*57);
-    }
-  }
   }
   else if (currentGame == Ultimate)
   {
-  if(mod1){
-    if(leftOne || rightOne){
-      pinxAxis = 128 + ((rightOne - leftOne)*53);
-    }
-    if(upOne || downOne){
-      pinyAxis = 128 + ((upOne - downOne)*51);
+    if (mod1) {
+      if (leftOne || rightOne) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 53);
+      }
+      if (upOne || downOne) {
+        pinyAxis = 128 + ((upOne - downOne) * 51);
+      }
+
+      /******************/
+
+      if ((leftOne || rightOne) && pinB) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 41);
+      }
+
+      /*******************/
+
+      if ((leftOne || rightOne) && (upOne || downOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 53);
+        pinyAxis = 128 + ((upOne - downOne) * 40);
+      }
+      //Ambiguous DI
+      if ((leftOne || rightOne) && pinA) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 47);
+      }
+      //FireFox Angles with cButtons
+      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 71);
+        pinyAxis = 128 + ((upOne - downOne) * 35);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 61);
+        pinyAxis = 128 + ((upOne - downOne) * 49);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 66);
+        pinyAxis = 128 + ((upOne - downOne) * 42);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 75);
+        pinyAxis = 128 + ((upOne - downOne) * 27);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      //Up and Down Forward Smash
+      if ((upOne || downOne) && (cLeft || cRight)) {
+        pinxAxisC = 128 + ((cRight - cLeft) * 65);
+        pinyAxisC = 128 + 40;
+      }
     }
 
-/******************/
+    if (mod2) {
+      if (leftOne || rightOne) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 26);
+      }
+      if (upOne || downOne) {
+        pinyAxis = 128 + ((upOne - downOne) * 51);
+      }
+      //Keeps B Reversals Fair
+      if ((leftOne || rightOne) && pinB) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 41);
+      }
 
-    if((leftOne || rightOne) && pinB){
-      pinxAxis = 128 + ((rightOne - leftOne)*41);
-    }
+      if ((leftOne || rightOne) && (upOne || downOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 40);
+        pinyAxis = 128 + ((upOne - downOne) * 68);
+      }
 
-/*******************/
+      //Ambiguous DI
+      if ((leftOne || rightOne) && pinA) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 35);
+      }
+      //FireFox Angles with cButtons
+      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 35);
+        pinyAxis = 128 + ((upOne - downOne) * 71);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 49);
+        pinyAxis = 128 + ((upOne - downOne) * 61);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 42);
+        pinyAxis = 128 + ((upOne - downOne) * 66);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 27);
+        pinyAxis = 128 + ((upOne - downOne) * 75);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      //Up and Down Forward Smash
+      if ((upOne || downOne) && (cLeft || cRight)) {
+        pinxAxisC = 128 + ((cRight - cLeft) * 65);
+        pinyAxisC = 128 - 40;
+      }
 
-    if((leftOne || rightOne) && (upOne || downOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*53);
-      pinyAxis = 128 + ((upOne - downOne)*40);
     }
-    //Ambiguous DI
-    if((leftOne || rightOne) && pinA){
-      pinxAxis = 128 + ((rightOne - leftOne)*47);
-    }
-    //FireFox Angles with cButtons
-    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*71);
-      pinyAxis = 128 + ((upOne - downOne)*35);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*61);
-      pinyAxis = 128 + ((upOne - downOne)*49);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*66);
-      pinyAxis = 128 + ((upOne - downOne)*42);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*75);
-      pinyAxis = 128 + ((upOne - downOne)*27);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    //Up and Down Forward Smash
-    if((upOne||downOne)&&(cLeft||cRight)){
-      pinxAxisC = 128 + ((cRight - cLeft)*65);
-      pinyAxisC = 128 + 40;
-    }
-  }
-
-  if(mod2){
-    if(leftOne || rightOne){
-      pinxAxis = 128 + ((rightOne - leftOne)*26);
-    }
-    if(upOne || downOne){
-      pinyAxis = 128 + ((upOne - downOne)*51);
-    }
-    //Keeps B Reversals Fair
-    if((leftOne || rightOne) && pinB){
-      pinxAxis = 128 + ((rightOne - leftOne)*41);
-    }
-
-    if((leftOne || rightOne) && (upOne || downOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*40);
-      pinyAxis = 128 + ((upOne - downOne)*68);
-    }
-
-    //Ambiguous DI
-    if((leftOne || rightOne) && pinA){
-      pinxAxis = 128 + ((rightOne - leftOne)*35);
-    }
-    //FireFox Angles with cButtons
-    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*35);
-      pinyAxis = 128 + ((upOne - downOne)*71);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*49);
-      pinyAxis = 128 + ((upOne - downOne)*61);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*42);
-      pinyAxis = 128 + ((upOne - downOne)*66);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*27);
-      pinyAxis = 128 + ((upOne - downOne)*75);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    //Up and Down Forward Smash
-    if((upOne||downOne)&&(cLeft||cRight)){
-      pinxAxisC = 128 + ((cRight - cLeft)*65);
-      pinyAxisC = 128 - 40;
-    }
-
-  }
   }
   else if (currentGame == PM)
   {
-  if(mod1){
-    if(leftOne || rightOne){
-      pinxAxis = 128 + ((rightOne - leftOne)*49);
+    if (mod1) {
+      if (leftOne || rightOne) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 49);
+      }
+      if (upOne || downOne) {
+        pinyAxis = 128 + ((upOne - downOne) * 65);
+      }
+      if ((leftOne || rightOne) && (upOne || downOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 68);
+        pinyAxis = 128 + ((upOne - downOne) * 28);
+      }
+      //Ambiguous DI
+      if ((leftOne || rightOne) && pinA) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 47);
+      }
+      //FireFox Angles with cButtons
+      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 53);
+        pinyAxis = 128 + ((upOne - downOne) * 37);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 62);
+        pinyAxis = 128 + ((upOne - downOne) * 30);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 63);
+        pinyAxis = 128 + ((upOne - downOne) * 37);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 51);
+        pinyAxis = 128 + ((upOne - downOne) * 42);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      //Up and Down Forward Smash
+      if ((upOne || downOne) && (cLeft || cRight)) {
+        pinxAxisC = 128 + ((cRight - cLeft) * 127);
+        pinyAxisC = 128 + ((upOne - downOne) * 41);
+      }
     }
-    if(upOne || downOne){
-      pinyAxis = 128 + ((upOne - downOne)*65);
-    }
-    if((leftOne || rightOne) && (upOne || downOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*68);
-      pinyAxis = 128 + ((upOne - downOne)*28);
-    }
-    //Ambiguous DI
-    if((leftOne || rightOne) && pinA){
-      pinxAxis = 128 + ((rightOne - leftOne)*47);
-    }
-    //FireFox Angles with cButtons
-    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*53);
-      pinyAxis = 128 + ((upOne - downOne)*37);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*62);
-      pinyAxis = 128 + ((upOne - downOne)*30);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*63);
-      pinyAxis = 128 + ((upOne - downOne)*37);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*51);
-      pinyAxis = 128 + ((upOne - downOne)*42);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    //Up and Down Forward Smash
-    if((upOne||downOne)&&(cLeft||cRight)){
-      pinxAxisC = 128 + ((cRight - cLeft)*127);
-      pinyAxisC = 128 + ((upOne - downOne)*41);
+
+    if (mod2) {
+      if (leftOne || rightOne) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 33);
+      }
+      if (upOne || downOne) {
+        pinyAxis = 128 + ((upOne - downOne) * 59);
+      }
+      //Keeps B Reversals Fair
+      if ((leftOne || rightOne) && pinB) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 59);
+      }
+      if ((leftOne || rightOne) && (upOne || downOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 28);
+        pinyAxis = 128 + ((upOne - downOne) * 68);
+      }
+
+      //Ambiguous DI
+      if ((leftOne || rightOne) && pinA) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 35);
+      }
+      //FireFox Angles with cButtons
+      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 44);
+        pinyAxis = 128 + ((upOne - downOne) * 63);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 31);
+        pinyAxis = 128 + ((upOne - downOne) * 64);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 37);
+        pinyAxis = 128 + ((upOne - downOne) * 63);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
+      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 47);
+        pinyAxis = 128 + ((upOne - downOne) * 57);
+        pinxAxisC = 128;
+        pinyAxisC = 128;
+      }
     }
   }
 
-  if(mod2){
-    if(leftOne || rightOne){
-      pinxAxis = 128 + ((rightOne - leftOne)*33);
+
+  if (pinL) {
+
+    if (rightOne || leftOne) {
+      pinxAxis = 128 + ((rightOne - leftOne) * 127);
     }
-    if(upOne || downOne){
-      pinyAxis = 128 + ((upOne - downOne)*59);
-    }
-    //Keeps B Reversals Fair
-    if((leftOne || rightOne) && pinB){
-      pinxAxis = 128 + ((rightOne - leftOne)*59);
-    }
-    if((leftOne || rightOne) && (upOne || downOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*28);
-      pinyAxis = 128 + ((upOne - downOne)*68);
+    if (upOne || downOne) {
+      pinyAxis = 128 + ((upOne - downOne) * 127);
     }
 
-    //Ambiguous DI
-    if((leftOne || rightOne) && pinA){
-      pinxAxis = 128 + ((rightOne - leftOne)*35);
-    }
-    //FireFox Angles with cButtons
-    if(cUp && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*44);
-      pinyAxis = 128 + ((upOne - downOne)*63);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cDown && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*31);
-      pinyAxis = 128 + ((upOne - downOne)*64);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cLeft && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*37);
-      pinyAxis = 128 + ((upOne - downOne)*63);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-    if(cRight && ((leftOne ||rightOne) && (upOne || downOne))){
-      pinxAxis = 128 + ((rightOne - leftOne)*47);
-      pinyAxis = 128 + ((upOne - downOne)*57);
-      pinxAxisC = 128;
-      pinyAxisC = 128;
-    }
-  }
-  }
-
-
-  if(pinL){
-
-    if(rightOne||leftOne){
-      pinxAxis = 128 + ((rightOne - leftOne)*127);
-    }
-    if (upOne||downOne){
-      pinyAxis = 128 + ((upOne - downOne)*127);
-    }
-
-    if(upOne && (leftOne || rightOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*52);
+    if (upOne && (leftOne || rightOne)) {
+      pinxAxis = 128 + ((rightOne - leftOne) * 52);
       pinyAxis = 128 + 52;
     }
 
     //Axe Method Shield Drop
     if (currentGame == Melee)
     {
-      if(downOne && (leftOne || rightOne)){
-        pinxAxis = 128 + ((rightOne - leftOne)*96);
+      if (downOne && (leftOne || rightOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 96);
         pinyAxis = 128 - 91;
       }
     }
     else
     {
-      if(downOne && (leftOne || rightOne)){
-        pinxAxis = 128 + ((rightOne - leftOne)*96);
+      if (downOne && (leftOne || rightOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 96);
         pinyAxis = 128 - 99;
       }
     }
 
-    if(mod1){
+    if (mod1) {
       pinLLIGHT = 80;
       pinL = 0;
     }
-    if(mod2){
+    if (mod2) {
       pinLLIGHT = 80;
       pinL = 0;
     }
 
     //Wavedash with L and Mod1
-    if(((leftOne || rightOne) && downOne)&& mod1){
+    if (((leftOne || rightOne) && downOne) && mod1) {
       if (currentGame == Melee)
       {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinxAxis = 128 + ((rightOne - leftOne) * 110);
         pinyAxis = 128 - 65;
       }
       if (currentGame == Ultimate)
       {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinxAxis = 128 + ((rightOne - leftOne) * 110);
         pinyAxis = 128 - 65;
       }
       if (currentGame == PM)
       {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinxAxis = 128 + ((rightOne - leftOne) * 110);
         pinyAxis = 128 - 65;
       }
     }
     //Wavedash with L and Mod2
-    if(((leftOne || rightOne) && downOne)&& mod2){
-      pinxAxis = 128 + ((rightOne - leftOne)*65);
+    if (((leftOne || rightOne) && downOne) && mod2) {
+      pinxAxis = 128 + ((rightOne - leftOne) * 65);
       pinyAxis = 128 - 110;
     }
   }
 
   //Manual Shield Tilt with R
-  if(pinR){
+  if (pinR) {
 
-    if(currentGame == Ultimate)
+    if (currentGame == Ultimate)
     {
-      if(downOne || upOne){
-        pinyAxis = 128 + ((upOne - downOne)*51);
+      if (downOne || upOne) {
+        pinyAxis = 128 + ((upOne - downOne) * 51);
       }
-      if(leftOne || rightOne){
-        pinxAxis = 128 + ((rightOne - leftOne)*51);
+      if (leftOne || rightOne) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 51);
       }
-      if((leftOne || rightOne) && (downOne || upOne)){
-        pinxAxis = 128 + ((rightOne - leftOne)*51);
-        pinyAxis = 128 + ((upOne - downOne)*51);
+      if ((leftOne || rightOne) && (downOne || upOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 51);
+        pinyAxis = 128 + ((upOne - downOne) * 51);
       }
     }
     else
     {
-      if(downOne || upOne){
-        pinyAxis = 128 + ((upOne - downOne)*52);
+      if (downOne || upOne) {
+        pinyAxis = 128 + ((upOne - downOne) * 52);
       }
-      if(leftOne || rightOne){
-        pinxAxis = 128 + ((rightOne - leftOne)*55);
+      if (leftOne || rightOne) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 55);
       }
-      if((leftOne || rightOne) && (downOne || upOne)){
-        pinxAxis = 128 + ((rightOne - leftOne)*52);
-        pinyAxis = 128 + ((upOne - downOne)*52);
+      if ((leftOne || rightOne) && (downOne || upOne)) {
+        pinxAxis = 128 + ((rightOne - leftOne) * 52);
+        pinyAxis = 128 + ((upOne - downOne) * 52);
       }
     }
 
     //Wavedash with R and Mod1
-    if(((leftOne || rightOne) && downOne)&& mod1){
+    if (((leftOne || rightOne) && downOne) && mod1) {
       if (currentGame == Melee)
       {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinxAxis = 128 + ((rightOne - leftOne) * 110);
         pinyAxis = 128 - 65;
       }
       if (currentGame == Ultimate)
       {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinxAxis = 128 + ((rightOne - leftOne) * 110);
         pinyAxis = 128 - 65;
       }
       if (currentGame == PM)
       {
-        pinxAxis = 128 + ((rightOne - leftOne)*110);
+        pinxAxis = 128 + ((rightOne - leftOne) * 110);
         pinyAxis = 128 - 65;
       }
     }
     //Wavedash with R and Mod2
-    if(((leftOne || rightOne) && downOne)&& mod2){
-      pinxAxis = 128 + ((rightOne - leftOne)*65);
+    if (((leftOne || rightOne) && downOne) && mod2) {
+      pinxAxis = 128 + ((rightOne - leftOne) * 65);
       pinyAxis = 128 - 110;
     }
   }
 
 
-  if(pinZ){
-    if(upOne && (leftOne || rightOne)){
-      pinxAxis = 128 + ((rightOne - leftOne)*127);
+  if (pinZ) {
+    if (upOne && (leftOne || rightOne)) {
+      pinxAxis = 128 + ((rightOne - leftOne) * 127);
       pinyAxis = 128 + 112;
     }
   }
@@ -818,21 +818,21 @@ if (currentSOCD == Neutral)
 
 
   //D-Pad
- if(digitalRead(MOD1)==LOW && digitalRead(MOD2)==LOW){
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      if(digitalRead(CRIGHT)==HIGH && digitalRead(CLEFT)==LOW){
-          pinDLEFT=1;
-      }
-      else if(digitalRead(CUP)==HIGH && digitalRead(CDOWN)==LOW){
-          pinDDOWN=1;
-      }
-      else if(digitalRead(CDOWN)==HIGH  && digitalRead(CUP)==LOW){
-         pinDUP=1;
-      }
-      else if(digitalRead(CLEFT)==HIGH  && digitalRead(CRIGHT)==LOW){
-         pinDRIGHT=1;
-      }
+  if (digitalRead(MOD1) == LOW && digitalRead(MOD2) == LOW) {
+    pinxAxisC = 128;
+    pinyAxisC = 128;
+    if (digitalRead(CRIGHT) == HIGH && digitalRead(CLEFT) == LOW) {
+      pinDLEFT = 1;
+    }
+    else if (digitalRead(CUP) == HIGH && digitalRead(CDOWN) == LOW) {
+      pinDDOWN = 1;
+    }
+    else if (digitalRead(CDOWN) == HIGH  && digitalRead(CUP) == LOW) {
+      pinDUP = 1;
+    }
+    else if (digitalRead(CLEFT) == HIGH  && digitalRead(CRIGHT) == LOW) {
+      pinDRIGHT = 1;
+    }
   }
 
 
