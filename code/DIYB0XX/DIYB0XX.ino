@@ -1,44 +1,24 @@
-#include "Nintendo.h"
-/* This code uses the Nicohood Library
-   Use this code at your own risk
-   Code written by Simple Controllers and this code is open source.
-   Meaning its free to share, improve on, or anything you like!
-   Just remember to mention you used my code!
-   Edited by Danny for SmashB0XX
+/*
+  DIY B0XX v1.0 code by Crane.
+  This code utilizes
+    Nicohood's Nintendo library
 
-   [Crane]
-   For Smash4/U mode,
-    Mod running, tilts, triggers(shields), and most firefox angles edited.
-    Mods change running/walking speed. Direction, then mod1 gives perfect speed to ledgerun in smash4.
-    Tilts now work with mod1.
-    Triggers now give the analog value needed to shield in smash4/Ultimate. LRAStart now works too because of this
-    FFox angles (b0xx method, c stick) now almost work properly. only mod1+diagonal+cright/left do not work (in smash4, not Ultimate). Can't figure out why.
-    C stickless firefox angles function now.
+  This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc.
+  A version of this code is available with native USB joystick support and nunchuk support for controllers using the 32u4
+  chip such as my Arduino Micro based GCCPCB. You can probably use it on a Micro/Leonardo/Pro Micro DIY, but do so at your own risk.
+  Heres a link to it : https://github.com/Crane1195/GCCPCB/tree/master/code
 
-   For Project M mode
-    Tilts, firefox angles, shield drop angles (Axe method), and wavedash angles all fixed.
-    Fixed bug where left and down were not working on SSS and menus.
-
-    All three modes are in this one program, so you don't have to keep swapping.
-
-    To launch in Melee mode, just plug in normally
-    To launch in Ultimate/4 mode, hold B while plugging in.
-    To launch in Project M mode, hold X while plugging in.
-
-   Be sure to button check before starting a set, to confirm you are in the right mode.
-   If mod1+up makes you jump, or if mod1+down+B makes you neutral B, you are in the wrong mode. Check both of these.
-
-   [Jack "Hexadecimal" Stensrud]
-    Added 2ip without reactivation SOCD controls for the left/right inputs. Should be more in line with what the B0XX uses.
-
-   [Crane]
-    Combined the three SOCD versions of the code. If you want to change SOCD for a specific game, you can do so on
-    line 93 for Melee, line 129 for Ultimate, or line 134 for PM. The official B0XX methods are the default, and I
-    advise against editing them. currentSOCD can set to "Neutral", "TwoIP", or "TwoIPNoReactivate", without the quotes.
+  Read the README file for whichever of these you are using for more information.
 */
-//This makes the controller bidirection data line on pin number8
-CGamecubeConsole GamecubeConsole(8);      //Defines a "Gamecube Console" sending data to the console on pin 8
-Gamecube_Data_t d = defaultGamecubeData;   //Structure for data to be sent to console
+#include "Nintendo.h"
+
+uint8_t fTwoIPNoReactivate(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH, bool& lockLOW, bool& lockHIGH);
+uint8_t fTwoIP(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH);
+uint8_t fNeutral(bool isLOW, bool isHIGH);
+
+// Change the number inside the parentheses to whichever pin you have your data line plugged into.
+CGamecubeConsole GamecubeConsole(A5);
+Gamecube_Data_t d = defaultGamecubeData;
 
 enum game
 {
@@ -54,809 +34,577 @@ enum SOCD
   TwoIPNoReactivate
 };
 
-//Not needed
-//CGamecubeController GamecubeController1(7);
+bool wasLEFT = false;
+bool wasRIGHT = false;
+bool wasUP = false;
+bool wasDOWN = false;
 
-//This is the pinout of the controller.  Can be changed to your liking.  I may have mixed up some of the tilt pins but you can change that physically in your build or through the code.  Just do test runs along the way.
-const int A = 46;
-const int B = 44;
-const int X = 49;
-const int Y = 31;
-const int Z = 41;
-const int START = 39;
+bool wasCLEFT = false;
+bool wasCRIGHT = false;
+bool wasCUP = false;
+bool wasCDOWN = false;
 
-const int R = 24;
-const int L = 34;
-//const int RLIGHT = 36; Only if using LightShield Button
-//This is the value of analog shielding 74 is lightest possible on gamecube.  It varies from gamecube to dolphin no idea why.
-//const int RLIGHTv = 74;
+bool lockLEFT = false;
+bool lockRIGHT = false;
+bool lockUP = false;
+bool lockDOWN = false;
 
-const int LEFT = 26;
-const int RIGHT = 40;
-const int UP = 48;
-const int DOWN = 35;
+bool lockCLEFT = false;
+bool lockCRIGHT = false;
+bool lockCUP = false;
+bool lockCDOWN = false;
 
-const int MOD1 = 38;
-const int MOD2 = 22;
-
-const int CLEFT = 28;
-const int CRIGHT = 50;
-const int CUP = 30;
-const int CDOWN = 51;
-
-bool isLeft = false;
-bool isRight = true;
-bool isUp = false;
-bool isDown = true;
-bool isHoldingLeft = false;
-bool isHoldingRight = false;
-bool isHoldingUp = false;
-bool isHoldingDown = false;
-
+// This is the mode that will occur when you plug in while holding down nothing.
+// Change it if you want to.
 game currentGame = Melee;
 SOCD currentSOCD = TwoIPNoReactivate;
 
+// Here are your pin assignments. Change the number after the equals sign to wherever each button is plugged into.
+const int L = 16;
+const int LEFT = 1;
+const int DOWN = 0;
+const int RIGHT = 4;
+const int MOD1 = 5;
+const int MOD2 = 6;
+
+const int START = 7;
+const int B = A2;
+const int X = A1;
+const int Z = A0;
+const int UP = 13;
+const int R = A4;
+const int Y = A3;
+
+const int CDOWN = 12;
+const int A = 15;
+const int CRIGHT = 14;
+const int CLEFT = 9;
+const int CUP = 8;
+
+const uint8_t minValue = 48;
+const uint8_t maxValue = 208;
+
 void setup()
 {
-  //This is establishing the pin assignments up there to input pins
-  pinMode(A, INPUT_PULLUP);
-  pinMode(B, INPUT_PULLUP);
-  pinMode(X, INPUT_PULLUP);
-  pinMode(Y, INPUT_PULLUP);
-  pinMode(Z, INPUT_PULLUP);
-  pinMode(START, INPUT_PULLUP);
-
-  pinMode(R, INPUT_PULLUP);
   pinMode(L, INPUT_PULLUP);
-  //pinMode(RLIGHT, INPUT_PULLUP);
-
   pinMode(LEFT, INPUT_PULLUP);
-  pinMode(RIGHT, INPUT_PULLUP);
-  pinMode(UP, INPUT_PULLUP);
   pinMode(DOWN, INPUT_PULLUP);
-
+  pinMode(RIGHT, INPUT_PULLUP);
   pinMode(MOD1, INPUT_PULLUP);
   pinMode(MOD2, INPUT_PULLUP);
-
-  pinMode(CLEFT, INPUT_PULLUP);
-  pinMode(CRIGHT, INPUT_PULLUP);
-  pinMode(CUP, INPUT_PULLUP);
+  pinMode(START, INPUT_PULLUP);
+  pinMode(B, INPUT_PULLUP);
+  pinMode(X, INPUT_PULLUP);
+  pinMode(Z, INPUT_PULLUP);
+  pinMode(UP, INPUT_PULLUP);
+  pinMode(R, INPUT_PULLUP);
+  pinMode(Y, INPUT_PULLUP);
   pinMode(CDOWN, INPUT_PULLUP);
+  pinMode(A, INPUT_PULLUP);
+  pinMode(CRIGHT, INPUT_PULLUP);
+  pinMode(CLEFT, INPUT_PULLUP);
+  pinMode(CUP, INPUT_PULLUP);
 
-  //this is just to turn off built in LED at start
-  pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, LOW);
-
+  // Here are the settings for a second mode. By default, holding B while plugging in switches
+  // to Ultimate, with 2ip no reactivation. Change any of these you want to.
   if (digitalRead(B) == LOW)
   {
     currentGame = Ultimate;
-    currentSOCD = TwoIP;
+    currentSOCD = TwoIPNoReactivate;
   }
+
+  // Here are the settings for a third mode. By default, holding X while plugging in switches
+  // to PM, with 2ip no reactivation. Change any of these you want to.
   if (digitalRead(X) == LOW)
   {
     currentGame = PM;
     currentSOCD = TwoIPNoReactivate;
   }
-
-
-
-  //Not needed
-  //GamecubeController1.read();
 }
 
 void loop()
 {
-  //This resets and establishes all the values after the controller sends them to the console and helps with initial "zeroing"
-  int pinA = 0;
-  int pinB = 0;
-  int pinX = 0;
-  int pinY = 0;
-  int pinZ = 0;
-  int pinSTART = 0;
+  bool isL      = (digitalRead(L) == LOW);
+  bool isLEFT   = (digitalRead(LEFT) == LOW);
+  bool isDOWN   = (digitalRead(DOWN) == LOW);
+  bool isRIGHT  = (digitalRead(RIGHT) == LOW);
+  bool isMOD1   = (digitalRead(MOD1) == LOW);
+  bool isMOD2   = (digitalRead(MOD2) == LOW);
+  bool isSTART  = (digitalRead(START) == LOW);
+  bool isB      = (digitalRead(B) == LOW);
+  bool isX      = (digitalRead(X) == LOW);
+  bool isZ      = (digitalRead(Z) == LOW);
+  bool isUP     = (digitalRead(UP) == LOW);
+  bool isR      = (digitalRead(R) == LOW);
+  bool isY      = (digitalRead(Y) == LOW);
+  bool isCDOWN  = (digitalRead(CDOWN) == LOW);
+  bool isA      = (digitalRead(A) == LOW);
+  bool isCRIGHT = (digitalRead(CRIGHT) == LOW);
+  bool isCLEFT  = (digitalRead(CLEFT) == LOW);
+  bool isCUP    = (digitalRead(CUP) == LOW);
 
-  int pinR = 0;
-  int pinL = 0;
-  int pinRLIGHT = 0;
-  int pinLLIGHT = 0;
+  bool isDPADUP = false;
+  bool isDPADDOWN = false;
+  bool isDPADLEFT = false;
+  bool isDPADRIGHT = false;
 
-  int pinDLEFT = 0;
-  int pinDRIGHT = 0;
-  int pinDUP = 0;
-  int pinDDOWN = 0;
+  uint8_t controlX = 128;
+  uint8_t controlY = 128;
+  uint8_t cstickX = 128;
+  uint8_t cstickY = 128;
+  uint8_t RLight = 0;
+  uint8_t LLight = 0;
 
-  int mod1 = 0;
-  int mod2 = 0;
+  int8_t positionX = 0;
+  int8_t positionY = 0;
+  int8_t positionCX = 0;
+  int8_t positionCY = 0;
 
-  int pinCLEFT = 0;
-  int pinCRIGHT = 0;
-  int pinCUP = 0;
-  int pinCDOWN = 0;
+  bool HORIZONTAL = false;
+  bool VERTICAL = false;
+  bool DIAGONAL = false;
+  bool paluShorten = false;
 
-  int pinxAxisC = 128;
-  int pinyAxisC = 128;
-
-  int pinxAxis = 128;
-  int xmod = 0;
-  int pinyAxis = 128;
-
-  int rightOne = 0;
-  int leftOne = 0;
-  int downOne = 0;
-  int upOne = 0;
-
-  int cUp = 0;
-  int cDown = 0;
-  int cLeft = 0;
-  int cRight = 0;
-
-  if (digitalRead(MOD1) == LOW && digitalRead(MOD2) == HIGH)mod1 = 1;
-  if (digitalRead(MOD2) == LOW && digitalRead(MOD1) == HIGH)mod2 = 1;
-
-  //SOCD method for left/right is 2ip without reactivation
-  if (currentSOCD == TwoIPNoReactivate)
-  {
-    // X Axis
-    if (digitalRead(LEFT) == LOW && isRight == true)
-    {
-      //if left is pressed and isRight is true(if you press left while holding right):
-      pinxAxis = 128 - 127;
-      leftOne = 1;
-      isHoldingRight = true;
-    }
-    else if (digitalRead(RIGHT) == LOW && isLeft == true)
-    {
-      //else, if right is pressed and isLeft is true (if you press right while holding left):
-      pinxAxis = 128 + 127;
-      rightOne = 1;
-      isHoldingLeft = true;
-    }
-
-    if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW) {
-      //if left is not pressed and right is pressed:
-      if (isHoldingRight == false) {
-        pinxAxis = 128 + 127;
-        rightOne = 1;
-      }
-      isRight = true;
-      isLeft = false;
-      isHoldingLeft = false;
-    }
-    if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH) {
-      //if left is pressed and right is not pressed:
-      if (isHoldingLeft == false) {
-        pinxAxis = 128 - 127;
-        leftOne = 1;
-      }
-      isLeft = true;
-      isRight = false;
-      isHoldingRight = false;
-    }
-    if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == HIGH) {
-      //if neither button is being pressed, set all left/right booleans to false
-      isHoldingLeft = false;
-      isHoldingRight = false;
-      isLeft = false;
-      isRight = false;
-    }
-    /*************************************/
-    // Y Axis
-    if (digitalRead(DOWN) == LOW && isUp == true)
-    {
-      //if down is pressed and isUp is true(if you press down while holding up):
-      pinyAxis = 128 - 127;
-      downOne = 1;
-      isHoldingUp = true;
-    }
-    else if (digitalRead(UP) == LOW && isDown == true)
-    {
-      //else, if up is pressed and isDown is true (if you press up while holding down):
-      pinyAxis = 128 + 127;
-      upOne = 1;
-      isHoldingDown = true;
-    }
-
-    if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW) {
-      //if down is not pressed and up is pressed:
-      if (isHoldingUp == false) {
-        pinyAxis = 128 + 127;
-        upOne = 1;
-      }
-      isUp = true;
-      isDown = false;
-      isHoldingDown = false;
-    }
-    if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH) {
-      //if down is pressed and up is not pressed:
-      if (isHoldingDown == false) {
-        pinyAxis = 128 - 127;
-        downOne = 1;
-      }
-      isDown = true;
-      isUp = false;
-      isHoldingUp = false;
-    }
-    if (digitalRead(DOWN) == HIGH && digitalRead(UP) == HIGH) {
-      //if neither button is being pressed, set all down/up booleans to false
-      isHoldingDown = false;
-      isHoldingUp = false;
-      isDown = false;
-      isUp = false;
-    }
+  /********* SOCD *********/
+  if (currentSOCD == TwoIPNoReactivate) {
+    controlX = fTwoIPNoReactivate(isLEFT, isRIGHT, wasLEFT, wasRIGHT, lockLEFT, lockRIGHT);
+    controlY = fTwoIPNoReactivate(isDOWN, isUP, wasDOWN, wasUP, lockDOWN, lockUP);
+    cstickX = fTwoIPNoReactivate(isCLEFT, isCRIGHT, wasCLEFT, wasCRIGHT, lockCLEFT, lockCRIGHT);
+    cstickY = fTwoIPNoReactivate(isCDOWN, isCUP, wasCDOWN, wasCUP, lockCDOWN, lockCUP);
   }
 
-  //SOCD method for left/right is 2ip
-  if (currentSOCD == TwoIP)
-  {
-    // X Axis
-    if (digitalRead(LEFT) == LOW && isRight == true)
-    {
-      pinxAxis = 128 - 127;
-      leftOne = 1;
-    }
-    else if (digitalRead(RIGHT) == LOW && isLeft == true)
-    {
-      pinxAxis = 128 + 127;
-      rightOne = 1;
-    }
-
-    if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW) {
-      pinxAxis = 128 + 127;
-      rightOne = 1;
-      isRight = true;
-      isLeft = false;
-    }
-    if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH) {
-      pinxAxis = 128 - 127;
-      leftOne = 1;
-      isLeft = true;
-      isRight = false;
-    }
-
-    /*************************************/
-    // Y Axis
-    if (digitalRead(DOWN) == LOW && isUp == true)
-    {
-      pinyAxis = 128 - 127;
-      downOne = 1;
-    }
-    else if (digitalRead(UP) == LOW && isDown == true)
-    {
-      pinyAxis = 128 + 127;
-      upOne = 1;
-    }
-
-    if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW) {
-      pinyAxis = 128 + 127;
-      upOne = 1;
-      isUp = true;
-      isDown = false;
-    }
-    if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH) {
-      pinyAxis = 128 - 127;
-      downOne = 1;
-      isDown = true;
-      isUp = false;
-    }
+  if (currentSOCD == TwoIP) {
+    controlX = fTwoIP(isLEFT, isRIGHT, wasLEFT, wasRIGHT);
+    controlY = fTwoIP(isDOWN, isUP, wasDOWN, wasUP);
+    cstickX = fTwoIP(isCLEFT, isCRIGHT, wasCLEFT, wasCRIGHT);
+    cstickY = fTwoIP(isCDOWN, isCUP, wasCDOWN, wasCUP);
   }
 
-  //SOCD method for left/right is neutral
-  if (currentSOCD == Neutral)
-  {
-    if (digitalRead(LEFT) == HIGH && digitalRead(RIGHT) == LOW) {
-      pinxAxis = 128 + 127;
-      rightOne = 1;
-    }
-    if (digitalRead(LEFT) == LOW && digitalRead(RIGHT) == HIGH) {
-      pinxAxis = 128 - 127;
-      leftOne = 1;
-    }
-    if (digitalRead(DOWN) == HIGH && digitalRead(UP) == LOW) {
-      pinyAxis = 128 + 127;
-      upOne = 1;
-    }
-    if (digitalRead(DOWN) == LOW && digitalRead(UP) == HIGH) {
-      pinyAxis = 128 - 127;
-      downOne = 1;
-    }
+  if (currentSOCD == Neutral) {
+    controlX = fNeutral(isLEFT, isRIGHT);
+    controlY = fNeutral(isDOWN, isUP);
+    cstickX = fNeutral(isCLEFT, isCRIGHT);
+    cstickY = fNeutral(isCDOWN, isCUP);
   }
 
-  //Reads CStick pins, same logic as controlstick values.
-  if (digitalRead(CLEFT) == HIGH && digitalRead(CRIGHT) == LOW) {
-    pinxAxisC = 255;
-    cRight = 1;
+  if (controlX != 128) {
+    HORIZONTAL = true;
+    if (controlX == minValue) positionX = -1;
+    else positionX = 1;
   }
-  if (digitalRead(CLEFT) == LOW && digitalRead(CRIGHT) == HIGH) {
-    pinxAxisC = 0;
-    cLeft = 1;
+  if (controlY != 128) {
+    VERTICAL = true;
+    if (controlY == minValue) positionY = -1;
+    else positionY = 1;
   }
-  if (digitalRead(CDOWN) == HIGH && digitalRead(CUP) == LOW) {
-    pinyAxisC = 255;
-    cUp = 1;
+  if (HORIZONTAL && VERTICAL) DIAGONAL = true;
+
+  if (cstickX != 128) {
+    if (cstickX == minValue) positionCX = -1;
+    else positionCX = 1;
   }
-  if (digitalRead(CDOWN) == LOW && digitalRead(CUP) == HIGH) {
-    pinyAxisC = 0;
-    cDown = 1;
+  if (cstickY != 128) {
+    if (cstickY == minValue) positionCY = -1;
+    else positionCY = 1;
   }
 
-  if (digitalRead(A) == LOW)pinA = 1;
-  if (digitalRead(B) == LOW)pinB = 1;
-  if (digitalRead(X) == LOW)pinX = 1;
-  if (digitalRead(Y) == LOW)pinY = 1;
-  if (digitalRead(Z) == LOW)pinZ = 1;
-  if (digitalRead(START) == LOW)pinSTART = 1;
-
-
-
-  //This is for digital shield.
-  //[Crane] Also does a bit of analog shield for Smash4 and Ultimate
-  if (digitalRead(R) == LOW) {
-    pinR = 1;
-    pinRLIGHT = 125;
-  }
-  if (digitalRead(L) == LOW) {
-    pinL = 1;
-    pinLLIGHT = 125;
-  }
-
-  if (currentGame == Melee)
-  {
-    if (mod1) {
-      if (leftOne || rightOne) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 59);
-      }
-      if (upOne || downOne) {
-        pinyAxis = 128 + ((upOne - downOne) * 52);
-      }
-      if ((leftOne || rightOne) && (upOne || downOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 59);
-        pinyAxis = 128 + ((upOne - downOne) * 23);
-      }
-      //Ambiguous DI
-      if ((leftOne || rightOne) && pinA) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 47);
-      }
-      //FireFox Angles with cButtons
-      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 53);
-        pinyAxis = 128 + ((upOne - downOne) * 37);
-      }
-      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 62);
-        pinyAxis = 128 + ((upOne - downOne) * 30);
-      }
-      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 63);
-        pinyAxis = 128 + ((upOne - downOne) * 37);
-      }
-      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 51);
-        pinyAxis = 128 + ((upOne - downOne) * 42);
-      }
-      //Up and Down Forward Smash
-      if ((upOne || downOne) && (cLeft || cRight)) {
-        pinxAxisC = 128 + ((cRight - cLeft) * 127);
-        pinyAxisC = 128 + ((upOne - downOne) * 41);
-      }
+  /********* Modifiers *********/
+  if (isMOD1) {
+    if (HORIZONTAL) {
+      if (currentGame == Melee) controlX = 128 + (positionX * 59);
+      if (currentGame == Ultimate) controlX = 128 + (positionX * 40);
+      if (currentGame == PM) controlX = 128 + (positionX * 49);
     }
-
-    if (mod2) {
-      if (leftOne || rightOne) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 23);
-      }
-      if (upOne || downOne) {
-        pinyAxis = 128 + ((upOne - downOne) * 59);
-      }
-      //Keeps B Reversals Fair
-      if ((leftOne || rightOne) && pinB) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 59);
-      }
-      if ((leftOne || rightOne) && (upOne || downOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 23);
-        pinyAxis = 128 + ((upOne - downOne) * 59);
-      }
-
-      //Ambiguous DI
-      if ((leftOne || rightOne) && pinA) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 35);
-      }
-      //FireFox Angles with cButtons
-      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 44);
-        pinyAxis = 128 + ((upOne - downOne) * 63);
-      }
-      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 31);
-        pinyAxis = 128 + ((upOne - downOne) * 64);
-      }
-      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 37);
-        pinyAxis = 128 + ((upOne - downOne) * 63);
-      }
-      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 47);
-        pinyAxis = 128 + ((upOne - downOne) * 57);
-      }
+    if (VERTICAL) {
+      if (currentGame == Melee) controlY = 128 + (positionY * 52);
+      if (currentGame == Ultimate) controlY = 128 + (positionY * 49);
+      if (currentGame == PM) controlY = 128 + (positionY * 65);
     }
-  }
-  else if (currentGame == Ultimate)
-  {
-    if (mod1) {
-      if (leftOne || rightOne) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 53);
-      }
-      if (upOne || downOne) {
-        pinyAxis = 128 + ((upOne - downOne) * 51);
-      }
-
-      /******************/
-
-      if ((leftOne || rightOne) && pinB) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 41);
-      }
-
-      /*******************/
-
-      if ((leftOne || rightOne) && (upOne || downOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 53);
-        pinyAxis = 128 + ((upOne - downOne) * 40);
-      }
-      //Ambiguous DI
-      if ((leftOne || rightOne) && pinA) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 47);
-      }
-      //FireFox Angles with cButtons
-      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 71);
-        pinyAxis = 128 + ((upOne - downOne) * 35);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 61);
-        pinyAxis = 128 + ((upOne - downOne) * 49);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 66);
-        pinyAxis = 128 + ((upOne - downOne) * 42);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 75);
-        pinyAxis = 128 + ((upOne - downOne) * 27);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      //Up and Down Forward Smash
-      if ((upOne || downOne) && (cLeft || cRight)) {
-        pinxAxisC = 128 + ((cRight - cLeft) * 65);
-        pinyAxisC = 128 + 40;
-      }
+    if (isA) {
+      if (currentGame == Melee) controlX = 128 + (positionX * 47);
+      if (currentGame == Ultimate) controlX = 128 + (positionX * 47);
+      if (currentGame == PM) controlX = 128 + (positionX * 47);
     }
-
-    if (mod2) {
-      if (leftOne || rightOne) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 26);
+    if (isB) {
+      if (currentGame == Melee) controlX = 128 + (positionX * 59);
+      if (currentGame == Ultimate) {
+        controlX = 128 + (positionX * 47);
+        controlY = 128 + (positionY * 41);
       }
-      if (upOne || downOne) {
-        pinyAxis = 128 + ((upOne - downOne) * 51);
-      }
-      //Keeps B Reversals Fair
-      if ((leftOne || rightOne) && pinB) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 41);
-      }
-
-      if ((leftOne || rightOne) && (upOne || downOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 40);
-        pinyAxis = 128 + ((upOne - downOne) * 68);
-      }
-
-      //Ambiguous DI
-      if ((leftOne || rightOne) && pinA) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 35);
-      }
-      //FireFox Angles with cButtons
-      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 35);
-        pinyAxis = 128 + ((upOne - downOne) * 71);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 49);
-        pinyAxis = 128 + ((upOne - downOne) * 61);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 42);
-        pinyAxis = 128 + ((upOne - downOne) * 66);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 27);
-        pinyAxis = 128 + ((upOne - downOne) * 75);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      //Up and Down Forward Smash
-      if ((upOne || downOne) && (cLeft || cRight)) {
-        pinxAxisC = 128 + ((cRight - cLeft) * 65);
-        pinyAxisC = 128 - 40;
-      }
-
+      if (currentGame == PM) controlX = 128 + (positionX * 59);
     }
-  }
-  else if (currentGame == PM)
-  {
-    if (mod1) {
-      if (leftOne || rightOne) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 49);
-      }
-      if (upOne || downOne) {
-        pinyAxis = 128 + ((upOne - downOne) * 65);
-      }
-      if ((leftOne || rightOne) && (upOne || downOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 68);
-        pinyAxis = 128 + ((upOne - downOne) * 28);
-      }
-      //Ambiguous DI
-      if ((leftOne || rightOne) && pinA) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 47);
-      }
-      //FireFox Angles with cButtons
-      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 53);
-        pinyAxis = 128 + ((upOne - downOne) * 37);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 62);
-        pinyAxis = 128 + ((upOne - downOne) * 30);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 63);
-        pinyAxis = 128 + ((upOne - downOne) * 37);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 51);
-        pinyAxis = 128 + ((upOne - downOne) * 42);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
-      }
-      //Up and Down Forward Smash
-      if ((upOne || downOne) && (cLeft || cRight)) {
-        pinxAxisC = 128 + ((cRight - cLeft) * 127);
-        pinyAxisC = 128 + ((upOne - downOne) * 41);
-      }
+    if (positionCX != 0) {
+      cstickX = 128 + (positionCX * 65);
+      cstickY = 128 + 40;
     }
-
-    if (mod2) {
-      if (leftOne || rightOne) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 33);
+    if (DIAGONAL) {
+      if (currentGame == Melee) {
+        controlX = 128 + (positionX * 59);
+        controlY = 128 + (positionY * 23);
       }
-      if (upOne || downOne) {
-        pinyAxis = 128 + ((upOne - downOne) * 59);
+      if (currentGame == Ultimate) {
+        controlX = 128 + (positionX * 40);
+        controlY = 128 + (positionY * 40);
+        if (isB) controlX = 128 + (positionX * 53);
       }
-      //Keeps B Reversals Fair
-      if ((leftOne || rightOne) && pinB) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 59);
-      }
-      if ((leftOne || rightOne) && (upOne || downOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 28);
-        pinyAxis = 128 + ((upOne - downOne) * 68);
+      if (currentGame == PM) {
+        controlX = 128 + (positionX * 68);
+        controlY = 128 + (positionY * 28);
       }
 
-      //Ambiguous DI
-      if ((leftOne || rightOne) && pinA) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 35);
+      if (isCUP) {
+        if (currentGame == Melee) {
+          controlX = 128 + (positionX * 53);
+          controlY = 128 + (positionY * 37);
+        }
+        if (currentGame == Ultimate) {
+          controlX = 128 + (positionX * 71);
+          controlY = 128 + (positionY * 35);
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 53);
+          controlY = 128 + (positionY * 37);
+        }
       }
-      //FireFox Angles with cButtons
-      if (cUp && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 44);
-        pinyAxis = 128 + ((upOne - downOne) * 63);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
+
+      if (isCDOWN) {
+        if (currentGame == Melee) {
+          controlX = 128 + (positionX * 62);
+          controlY = 128 + (positionY * 30);
+        }
+        if (currentGame == Ultimate) {
+          controlX = 128 + (positionX * 61);
+          controlY = 128 + (positionY * 49);
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 62);
+          controlY = 128 + (positionY * 30);
+        }
       }
-      if (cDown && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 31);
-        pinyAxis = 128 + ((upOne - downOne) * 64);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
+
+      if (isCLEFT) {
+        if (currentGame == Melee) {
+          controlX = 128 + (positionX * 63);
+          controlY = 128 + (positionY * 37);
+        }
+        if (currentGame == Ultimate) {
+          controlX = 128 + (positionX * 66);
+          controlY = 128 + (positionY * 42);
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 63);
+          controlY = 128 + (positionY * 37);
+        }
       }
-      if (cLeft && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 37);
-        pinyAxis = 128 + ((upOne - downOne) * 63);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
+
+      if (isCRIGHT) {
+        if (currentGame == Melee) {
+          controlX = 128 + (positionX * 51);
+          controlY = 128 + (positionY * 42);
+        }
+        if (currentGame == Ultimate) {
+          controlX = 128 + (positionX * 75);
+          controlY = 128 + (positionY * 27);
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 51);
+          controlY = 128 + (positionY * 42);
+        }
       }
-      if (cRight && ((leftOne || rightOne) && (upOne || downOne))) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 47);
-        pinyAxis = 128 + ((upOne - downOne) * 57);
-        pinxAxisC = 128;
-        pinyAxisC = 128;
+
+      if (isL && (currentGame == Ultimate)) {
+        if ((positionCX == 0) && (positionCY == 0)) {
+          controlX = ((controlX - 128) * 0.9) + 128;
+          controlY = ((controlY - 128) * 0.9) + 128;
+        }
+        else if (positionCX == 1) { /********/
+          cstickX = 128;
+          cstickY = 128 + 80;
+          controlX = 128 + (positionX * 45);
+          controlY = 128 + (positionY * 22);
+        }
+        else if (positionCY == -1) { /********/
+          cstickX = 128;
+          cstickY = 128 - 20;
+          controlX = 128 + (positionX * 42);
+          controlY = 128 + (positionY * 26);
+        }
+        else {
+          controlX = ((controlX - 128) * 0.6375) + 128;
+          controlY = ((controlY - 128) * 0.6375) + 128;
+        }
+        paluShorten = true;
       }
     }
   }
 
-
-  if (pinL) {
-
-    if (rightOne || leftOne) {
-      pinxAxis = 128 + ((rightOne - leftOne) * 127);
+  if (isMOD2) {
+    if (HORIZONTAL) {
+      if (currentGame == Melee) controlX = 128 + (positionX * 23);
+      if (currentGame == Ultimate) controlX = 128 + (positionX * 27);
+      if (currentGame == PM) controlX = 128 + (positionX * 33);
     }
-    if (upOne || downOne) {
-      pinyAxis = 128 + ((upOne - downOne) * 127);
+    if (VERTICAL) {
+      if (currentGame == Melee) controlY = 128 + (positionY * 59);
+      if (currentGame == Ultimate) controlY = 128 + (positionY * 51);
+      if (currentGame == PM) controlY = 128 + (positionY * 59);
     }
-
-    if (upOne && (leftOne || rightOne)) {
-      pinxAxis = 128 + ((rightOne - leftOne) * 52);
-      pinyAxis = 128 + 52;
+    if (isA) {
+      if (currentGame == Melee) controlX = 128 + (positionX * 35);
+      if (currentGame == Ultimate) controlX = 128 + (positionX * 41);
+      if (currentGame == PM) controlX = 128 + (positionX * 35);
     }
+    if (isB) {
+      if (currentGame == Melee) controlX = 128 + (positionX * 59);
+      if (currentGame == Ultimate) {
+        controlX = 128 + (positionX * 41);
+        controlY = 128 + (positionY * 61);
+      }
+      if (currentGame == PM) controlX = 128 + (positionX * 59);
+    }
+    if (positionCX != 0) {
+      cstickX = 128 + (positionCX * 65);
+      cstickY = 128 - 40;
+    }
+    if (DIAGONAL) {
+      if (currentGame == Melee) {
+        controlX = 128 + (positionX * 23);
+        controlY = 128 + (positionY * 59);
+      }
+      if (currentGame == Ultimate) {
+        controlX = 128 + (positionX * 39);
+        controlY = 128 + (positionY * 51);
+      }
+      if (currentGame == PM) {
+        controlX = 128 + (positionX * 28);
+        controlY = 128 + (positionY * 68);
+      }
 
-    //Axe Method Shield Drop
-    if (currentGame == Melee)
-    {
-      if (downOne && (leftOne || rightOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 96);
-        pinyAxis = 128 - 91;
+      if (isCUP) {
+        if (currentGame == Melee) {
+          controlX = 128 + (positionX * 44);
+          controlY = 128 + (positionY * 63);
+        }
+        if (currentGame == Ultimate) {
+          controlX = 128 + (positionX * 35);
+          controlY = 128 + (positionY * 71);
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 44);
+          controlY = 128 + (positionY * 63);
+        }
+      }
+
+      if (isCDOWN) {
+        if (currentGame == Melee) {
+          controlX = 128 + (positionX * 31);
+          controlY = 128 + (positionY * 64);
+        }
+        if (currentGame == Ultimate) {
+          controlX = 128 + (positionX * 49);
+          controlY = 128 + (positionY * 61);
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 31);
+          controlY = 128 + (positionY * 64);
+        }
+      }
+
+      if (isCLEFT) {
+        if (currentGame == Melee) {
+          controlX = 128 + (positionX * 37);
+          controlY = 128 + (positionY * 63);
+        }
+        if (currentGame == Ultimate) {
+          controlX = 128 + (positionX * 42);
+          controlY = 128 + (positionY * 66);
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 37);
+          controlY = 128 + (positionY * 63);
+        }
+      }
+
+      if (isCRIGHT) {
+        if (currentGame == Melee) {
+          controlX = 128 + (positionX * 47);
+          controlY = 128 + (positionY * 57);
+        }
+        if (currentGame == Ultimate) {
+          controlX = 128 + (positionX * 27);
+          controlY = 128 + (positionY * 75);
+        }
+        if (currentGame == PM) {
+          controlX = 128 + (positionX * 47);
+          controlY = 128 + (positionY * 57);
+        }
+      }
+
+      if (isL && (currentGame == Ultimate)) {
+        if ((positionCX == 0) && (positionCY == 0)) {
+          controlX = ((controlX - 128) * 0.9) + 128;
+          controlY = ((controlY - 128) * 0.9) + 128;
+        }
+        else if ((positionCX == 1) || (positionCY == 1)) {
+          controlX = 128 + (positionX * 26);
+          controlY = 128 + (positionY * 42);
+        }
+        else {
+          controlX = ((controlX - 128) * 0.6375) + 128;
+          controlY = ((controlY - 128) * 0.6375) + 128;
+        }
+        paluShorten = true;
       }
     }
-    else
-    {
-      if (downOne && (leftOne || rightOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 96);
-        pinyAxis = 128 - 99;
+  }
+
+  if (isL && (paluShorten == false)) {
+    LLight = 140;
+    if (HORIZONTAL) controlX = 128 + (positionX * 80);
+    if (VERTICAL) controlY = 128 + (positionY * 80);
+    if (HORIZONTAL && (positionY == 1)) {
+      controlX = 128 + (positionX * 52);
+      controlY = 128 + 52;
+    }
+    if (HORIZONTAL && (positionY == -1)) {
+      controlX = 128 + (positionX * 58);
+      if (currentGame == Melee) controlY = 128 - 55;
+      else controlY = 128 - 55;
+    }
+    if (isMOD1 || isMOD2) {
+      isL = false;
+      LLight = 80;
+      if (DIAGONAL) {
+        if (isMOD1) {
+          controlX = 128 + (positionX * 68);
+          controlY = 128 + (positionY * 40);
+        }
+        if (isMOD2) {
+          controlX = 128 + (positionX * 40);
+          controlY = 128 + (positionY * 68);
+        }
       }
     }
+  }
 
-    if (mod1) {
-      pinLLIGHT = 80;
-      pinL = 0;
-    }
-    if (mod2) {
-      pinLLIGHT = 80;
-      pinL = 0;
-    }
-
-    //Wavedash with L and Mod1
-    if (((leftOne || rightOne) && downOne) && mod1) {
-      if (currentGame == Melee)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne) * 110);
-        pinyAxis = 128 - 65;
-      }
+  if (isR) {
+    RLight = 140;
+    if (HORIZONTAL) {
       if (currentGame == Ultimate)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne) * 110);
-        pinyAxis = 128 - 65;
-      }
-      if (currentGame == PM)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne) * 110);
-        pinyAxis = 128 - 65;
-      }
+        controlX = 128 + (positionX * 51);
+      else
+        controlX = 128 + (positionX * 55);
     }
-    //Wavedash with L and Mod2
-    if (((leftOne || rightOne) && downOne) && mod2) {
-      pinxAxis = 128 + ((rightOne - leftOne) * 65);
-      pinyAxis = 128 - 110;
-    }
-  }
-
-  //Manual Shield Tilt with R
-  if (pinR) {
-
-    if (currentGame == Ultimate)
-    {
-      if (downOne || upOne) {
-        pinyAxis = 128 + ((upOne - downOne) * 51);
-      }
-      if (leftOne || rightOne) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 51);
-      }
-      if ((leftOne || rightOne) && (downOne || upOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 51);
-        pinyAxis = 128 + ((upOne - downOne) * 51);
-      }
-    }
-    else
-    {
-      if (downOne || upOne) {
-        pinyAxis = 128 + ((upOne - downOne) * 52);
-      }
-      if (leftOne || rightOne) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 55);
-      }
-      if ((leftOne || rightOne) && (downOne || upOne)) {
-        pinxAxis = 128 + ((rightOne - leftOne) * 52);
-        pinyAxis = 128 + ((upOne - downOne) * 52);
-      }
-    }
-
-    //Wavedash with R and Mod1
-    if (((leftOne || rightOne) && downOne) && mod1) {
-      if (currentGame == Melee)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne) * 110);
-        pinyAxis = 128 - 65;
-      }
+    if (VERTICAL) {
       if (currentGame == Ultimate)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne) * 110);
-        pinyAxis = 128 - 65;
+        controlY = 128 + (positionY * 51);
+      else
+        controlY = 128 + (positionY * 52);
+    }
+    if (DIAGONAL)
+      if (currentGame != Ultimate) controlX = 128 + (positionX * 52);
+    if (HORIZONTAL && isDOWN) {
+      if (isMOD1) {
+        controlX = 128 + (positionX * 68);
+        controlY = 128 + (positionY * 40);
       }
-      if (currentGame == PM)
-      {
-        pinxAxis = 128 + ((rightOne - leftOne) * 110);
-        pinyAxis = 128 - 65;
+      if (isMOD2) {
+        controlX = 128 + (positionX * 40);
+        controlY = 128 + (positionY * 68);
       }
     }
-    //Wavedash with R and Mod2
-    if (((leftOne || rightOne) && downOne) && mod2) {
-      pinxAxis = 128 + ((rightOne - leftOne) * 65);
-      pinyAxis = 128 - 110;
-    }
   }
 
-
-  if (pinZ) {
-    if (upOne && (leftOne || rightOne)) {
-      pinxAxis = 128 + ((rightOne - leftOne) * 127);
-      pinyAxis = 128 + 112;
-    }
+  /********* DPAD *********/
+  if (isMOD1 && isMOD2) {
+    cstickX = 128;
+    cstickY = 128;
+    if (isCUP) isDPADUP = true;
+    if (isCDOWN) isDPADDOWN = true;
+    if (isCLEFT) isDPADLEFT = true;
+    if (isCRIGHT) isDPADRIGHT = true;
   }
 
+  /********* GC Report *********/
+  d.report.l = isL;
+  d.report.start = isSTART;
+  d.report.b = isB;
+  d.report.x = isX;
+  d.report.z = isZ;
+  d.report.r = isR;
+  d.report.y = isY;
+  d.report.a = isA;
+  d.report.dup = isDPADUP;
+  d.report.ddown = isDPADDOWN;
+  d.report.dleft = isDPADLEFT;
+  d.report.dright = isDPADRIGHT;
 
-
-  //D-Pad
-  if (digitalRead(MOD1) == LOW && digitalRead(MOD2) == LOW) {
-    pinxAxisC = 128;
-    pinyAxisC = 128;
-    if (digitalRead(CRIGHT) == HIGH && digitalRead(CLEFT) == LOW) {
-      pinDLEFT = 1;
-    }
-    else if (digitalRead(CUP) == HIGH && digitalRead(CDOWN) == LOW) {
-      pinDDOWN = 1;
-    }
-    else if (digitalRead(CDOWN) == HIGH  && digitalRead(CUP) == LOW) {
-      pinDUP = 1;
-    }
-    else if (digitalRead(CLEFT) == HIGH  && digitalRead(CRIGHT) == LOW) {
-      pinDRIGHT = 1;
-    }
-  }
-
-
-
-  //reports data
-  d.report.a = pinA;
-  d.report.b = pinB;
-  d.report.x = pinX;
-  d.report.y = pinY;
-  d.report.z = pinZ;
-  d.report.start = pinSTART;
-  d.report.r = pinR;
-  d.report.l = pinL;
-  d.report.left = pinLLIGHT;
-  d.report.right = pinRLIGHT;
-  d.report.xAxis = pinxAxis;
-  d.report.yAxis = pinyAxis;
-  d.report.cxAxis = pinxAxisC;
-  d.report.cyAxis = pinyAxisC;
-  d.report.dup = pinDUP;
-  d.report.dright = pinDRIGHT;
-  d.report.ddown = pinDDOWN;
-  d.report.dleft = pinDLEFT;
-  //sends the complied data to console when console polls for the input
+  d.report.xAxis = controlX;
+  d.report.yAxis = controlY;
+  d.report.cxAxis = cstickX;
+  d.report.cyAxis = cstickY;
+  d.report.right = RLight;
+  d.report.left = LLight;
   GamecubeConsole.write(d);
+}
 
+uint8_t fTwoIPNoReactivate(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH, bool& lockLOW, bool& lockHIGH) {
+  uint8_t control = 128;
+  if (isLOW && isHIGH) {
+    if (wasHIGH) {
+      control = minValue;
+      lockHIGH = true;
+    }
+    if (wasLOW) {
+      control = maxValue;
+      lockLOW = true;
+    }
+  }
+  if (!isLOW && isHIGH && (lockHIGH == false)) {
+    control = maxValue;
+    wasHIGH = true;
+    wasLOW = false;
+    lockLOW = false;
+  }
+  if (isLOW && !isHIGH && (lockLOW == false)) {
+    control = minValue;
+    wasLOW = true;
+    wasHIGH = false;
+    lockHIGH = false;
+  }
+  if (!isLOW && !isHIGH) {
+    wasHIGH = false;
+    wasLOW = false;
+    lockLOW = false;
+    lockHIGH = false;
+  }
+  return control;
+}
+
+uint8_t fTwoIP(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH) {
+  uint8_t control = 128;
+  if (isLOW && wasHIGH)
+    control = minValue;
+  if (isHIGH && wasLOW)
+    control = maxValue;
+  if (!isLOW && isHIGH) {
+    control = maxValue;
+    wasHIGH = true;
+    wasLOW = false;
+  }
+  if (isLOW && !isHIGH) {
+    control = minValue;
+    wasLOW = true;
+    wasHIGH = false;
+  }
+  return control;
+}
+
+uint8_t fNeutral(bool isLOW, bool isHIGH) {
+  uint8_t control = 128;
+  if (!isLOW && isHIGH)
+    control = maxValue;
+  if (isLOW && !isHIGH)
+    control = minValue;
+  return control;
 }
