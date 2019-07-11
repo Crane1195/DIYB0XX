@@ -1,4 +1,5 @@
 DIY B0XX v1.0 code by Crane.
+
 This code utilizes Nicohood's Nintendo library.
 
 As of July 4th 2019 : I rewrote the entire program from scratch to increase efficiency, increase readability, to make adding new profiles easier, to improve the Smash Ultimate mode
