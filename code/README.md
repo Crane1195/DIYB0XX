@@ -39,3 +39,5 @@ You can change which is loaded with no button press at line 59 (and its SOCD at 
 More profiles can be added easily. Just add another game in the enum game declaration at line 23, add another block for picking a mode via a button press like lines 110-114, and everywhere you see a if(currentGame == XXXXX), you will need to add a code block like it for the new game mode. From there you can edit the coords for that mode.
 
 Let me know if you have any issues with the code, or any suggestions for the Ultimate/PM modes, as they are less concrete.
+
+Discord : @Crane#1195
