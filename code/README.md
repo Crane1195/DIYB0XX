@@ -1,14 +1,15 @@
-#### This program was originally made by simple. The edits I have made are listed below, and I have received the permission of its creator and other editors to add it to this repo.
+DIY B0XX v1.0 code by Crane.
 
-This utilizes the Nicohood Library. This were originally made by simple to make a Smashbox. Snapple and then Danny modified this code to work with the B0XX's two modifiers and to try and abide by the parameters set in the B0XX manifesto.
+This code utilizes Nicohood's Nintendo library.
 
-I then modified aspects of that code to make it function in Project M, Smash 4, and Smash Ultimate, as well as having 2ip as a SOCD option.
+As of July 4th 2019 : I rewrote the entire program from scratch to increase efficiency, increase readability, to make adding new profiles easier, to improve the Smash Ultimate mode
 
-Hexadecimal has added 2ip with no reactivation as a SOCD method.
+This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc. A version of this code is available with native USB joystick support and nunchuk support for controllers using the 32u4 chip such as my Arduino Micro based GCCPCB. You can probably use it on a Micro/Leonardo/Pro Micro DIY, but do so at your own risk.
 
-# My Edits
-## 2ip or 2ip with no reactivation or Neutral SOCD
-I have edited the left/right simultaneous opposite cardinal directions (SOCD) method so you now have the option to pick from 2ip or neutral. Hexadecimal added 2ip with no reactivation which is the method the B0XX uses.
+Heres a link to it : https://github.com/Crane1195/GCCPCB/tree/master/code
+
+## SOCD Options
+You can choose between 2ip, 2ip with no reactivation, and neutral to resolve simultaneous opposite cardinal direction (SOCD) inputs. This applies to both the control and c stick.
 
 #### 2ip works like this:
 * Press left. Character moves left.
@@ -25,32 +26,18 @@ I have edited the left/right simultaneous opposite cardinal directions (SOCD) me
 * While still pressing left, press right. Character stops moving.
 * While still pressing left, stop pressing right. Character moves left again.
 
-## Choose your SOCD
-You can choose your horizontal SOCD method for each game profile.
+## Game profiles
+Currently there are 3 game profiles. Melee, Ultimate, and PM.
+* One of these modes loads when the controller is plugged in while holding no buttons, by default this is Melee.
+* Another mode loads when the controller is plugged in while holding B, by default this is Ultimate.
+* The third mode loads when the controller is plugged in while holding X, by default this is PM.
 
-To do so, change the value to the right of the equal sign on line 92 for Melee, 129 for Ultimate, and 134 for PM to Neutral, TwoIP, or TwoIPNoReactivate. I do not advise changing these though, as the default settings match the B0XX.
+You can choose the SOCD method for each profile separately.
 
-## I have combined my Melee, Project M, and Smash4/Ultimate edits, so you don't have to keep swapping profiles.
- *  To launch in Melee mode, just plug in normally.
- *  To launch in Smash4/Ultimate mode, hold B while plugging in.
- *  To launch in Project M mode, hold X while plugging in.
+You can change which is loaded with no button press at line 59 (and its SOCD at line 60), and which are loaded with button presses starting at line 110. You can change the button required by changing whats inside the parenthesis of `if (digitalRead(**) == LOW)` as well as the game / SOCD like before.
 
- Be sure to do a button check before starting a set, to confirm you are in the right mode.
+More profiles can be added easily. Just add another game in the enum game declaration at line 23, add another block for picking a mode via a button press like lines 110-114, and everywhere you see a if(currentGame == XXXXX), you will need to add a code block like it for the new game mode. From there you can edit the coords for that mode.
 
-#### To confirm you are in the right mode:
- * Enable tap jump.
- * If mod1+up makes you jump, or if mod1+down+B makes you neutral B, you are in the wrong mode. Check both of these.
+Let me know if you have any issues with the code, or any suggestions for the Ultimate/PM modes, as they are less concrete.
 
-## Edits made for the Project M mode
- *  Tilts, firefox angles, shield drop angles (Axe method), and wavedash angles all fixed.
- *  Fixed bug where left and down were not working on SSS and menus.
-
-## Edits made for the Smash4/Ultimate mode
- * Mods + cardinals, tilts, triggers(shields), and most firefox angles edited.
- * Mod1/2 + cardinal has slow run/walking speed. Mod1 + cardinal gives perfect speed to ledgerun in smash4.
- * Tilts now work with mod1.
- * Triggers now give the analog value needed to shield. LRAStart now works too because of this.
- * FFox angles (B0XX method, c stick) now almost work properly. Mod1+diagonal+cright/left do not work in Smash4, but do in Ultimate.
- * C stickless firefox angles function now.
-
-All the names above are the Discord names of users in the 20XX Discord, where the original code was shared.
+Discord : @Crane#1195
