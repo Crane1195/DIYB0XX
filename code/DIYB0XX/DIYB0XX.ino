@@ -81,6 +81,8 @@ const int CRIGHT = 14;
 const int CLEFT = 9;
 const int CUP = 8;
 
+//const int DPADSWITCH = XX;
+
 const uint8_t minValue = 48;
 const uint8_t maxValue = 208;
 
@@ -104,6 +106,7 @@ void setup()
   pinMode(CRIGHT, INPUT_PULLUP);
   pinMode(CLEFT, INPUT_PULLUP);
   pinMode(CUP, INPUT_PULLUP);
+  //pinMode(DPADSWITCH, INPUT_PULLUP);
 
   // Here are the settings for a second mode. By default, holding B while plugging in switches
   // to Ultimate, with 2ip no reactivation. Change any of these you want to.
@@ -124,24 +127,25 @@ void setup()
 
 void loop()
 {
-  bool isL      = (digitalRead(L) == LOW);
-  bool isLEFT   = (digitalRead(LEFT) == LOW);
-  bool isDOWN   = (digitalRead(DOWN) == LOW);
-  bool isRIGHT  = (digitalRead(RIGHT) == LOW);
-  bool isMOD1   = (digitalRead(MOD1) == LOW);
-  bool isMOD2   = (digitalRead(MOD2) == LOW);
-  bool isSTART  = (digitalRead(START) == LOW);
-  bool isB      = (digitalRead(B) == LOW);
-  bool isX      = (digitalRead(X) == LOW);
-  bool isZ      = (digitalRead(Z) == LOW);
-  bool isUP     = (digitalRead(UP) == LOW);
-  bool isR      = (digitalRead(R) == LOW);
-  bool isY      = (digitalRead(Y) == LOW);
-  bool isCDOWN  = (digitalRead(CDOWN) == LOW);
-  bool isA      = (digitalRead(A) == LOW);
-  bool isCRIGHT = (digitalRead(CRIGHT) == LOW);
-  bool isCLEFT  = (digitalRead(CLEFT) == LOW);
-  bool isCUP    = (digitalRead(CUP) == LOW);
+  bool isL          = (digitalRead(L) == LOW);
+  bool isLEFT       = (digitalRead(LEFT) == LOW);
+  bool isDOWN       = (digitalRead(DOWN) == LOW);
+  bool isRIGHT      = (digitalRead(RIGHT) == LOW);
+  bool isMOD1       = (digitalRead(MOD1) == LOW);
+  bool isMOD2       = (digitalRead(MOD2) == LOW);
+  bool isSTART      = (digitalRead(START) == LOW);
+  bool isB          = (digitalRead(B) == LOW);
+  bool isX          = (digitalRead(X) == LOW);
+  bool isZ          = (digitalRead(Z) == LOW);
+  bool isUP         = (digitalRead(UP) == LOW);
+  bool isR          = (digitalRead(R) == LOW);
+  bool isY          = (digitalRead(Y) == LOW);
+  bool isCDOWN      = (digitalRead(CDOWN) == LOW);
+  bool isA          = (digitalRead(A) == LOW);
+  bool isCRIGHT     = (digitalRead(CRIGHT) == LOW);
+  bool isCLEFT      = (digitalRead(CLEFT) == LOW);
+  bool isCUP        = (digitalRead(CUP) == LOW);
+  //bool isDPADSWITCH = (digitalRead(DPADSWITCH) == LOW);
 
   bool isDPADUP = false;
   bool isDPADDOWN = false;
@@ -517,6 +521,7 @@ void loop()
 
   /********* DPAD *********/
   if (isMOD1 && isMOD2) {
+  //if (isDPADSWITCH) {
     cstickX = 128;
     cstickY = 128;
     if (isCUP) isDPADUP = true;
