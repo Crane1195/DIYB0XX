@@ -78,6 +78,15 @@ This is a massive upgrade over the attached cable used previously. Besides the f
 ![image](https://i.imgur.com/PZbbE8u.jpg)
 This is an interesting addition that could be quite useful for some people, but I am not really one of them. Basically, you solder wires to the pads of a GC port on a Gamecube to USB adapter, and route those to the same lines of your normal GCC cable. What this means is that you can use the controller like a normal Gamecube controller with the RJ45 to GCC cable, or you can plug the GC adapters USB cable into a Switch/WiiU/PC to avoid using an external controller adapter.
 
+To do this, I wanted to remove the gray usb cable to save space in the case, and solder wires to the back of the adapters PCB to access 5v, GND, 3v, and data.
+
+![image](https://i.imgur.com/1AMAWl0.jpg)
+Here is a spreadsheet detailing what each pin of the connector / header on board does. Basically you want to remove / cut wires 1, 2, and 5, and split the cable in half as seen below.
+
+![image](https://i.imgur.com/3algLk9.png)
+
+
+
 
 
 
