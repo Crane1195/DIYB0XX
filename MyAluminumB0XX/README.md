@@ -97,16 +97,31 @@ Initially, I had used the same Mega2560 and logic converter as before, and solde
 ![image](https://i.imgur.com/HH7MXpK.png)
 The wiring schematic is the same as my first DIY, but now has the GCC adapters lines attached as well.
 
+### Completed interior
+![image](https://i.imgur.com/42vVEyB.jpg)
+Not the cleanest thing ever, but here was the completed interior. The left Neutrik is for the Dween, the middle is for the RJ45 Gamecube port, and the right is for the GCC to USB adapter.
 
+### Updated interior
+![image](https://i.imgur.com/Yc3b0H8.jpg)
+I made a PCB to make building Gamecube controllers a lot easier and to have more features. I call it the GCCPCB. A brief synopsis of the benefits are:
 
+* The entire circuit is all done by the board.
+* Buttons don't need to be spliced to jumper cables and can just be plugged into screw terminals.
+* It's very compact.
+* A port for a detachable cable is built in (either RJ45 or USBC).
+* A 10x2 pin connector is on board to passthrough button signals to a Brook board.
+* Native PC controller support. No need for a GCC to USB adapter for PC.
+* Nunchuk port to use an analog stick instead of the digital stick / modifiers.
 
+If you are interested in finding out more about the GCCPCB, join this discord server and check out #info
 
+discord.gg/P2BxMVY
 
+![image](https://i.imgur.com/yPC4dIC.jpg)
+Here is the final interior. I put a four pin header on the board to allow access to the 5V, GND, 3V, and Data lines so I could hook up my GCC to USB adapter. I plugged the GCC adapter into the GCCPCB USB port, which means that it is accessible using a RJ45 to USB cable. The Arduino is plugged into a USB Neutrik, which I use for Native PC control and updating the firmware.
 
+### Conclusion / Contact
 
+Overall, this controller has been a really solid test bench for various projects I've been working on. First the internal USB to GCC adapter, then my mechanical switch boards that I used to replace the Sanwa SW68s (maybe more info on these coming soon, they aren't perfect yet), and now to work on my GCCPCB.
 
-
-
-
-
-The build log will be complete soon.
+If you have any questions about this build, the GCCPCB, or anything else, feel free to message me on Discord @Crane#1195, or to join my Discord server, discord.gg/P2BxMVY, where I'll be posting updates about the various projects I am working on.
