@@ -36,6 +36,6 @@ The process of making the detachable GameCube cable used with my Aluminum B0XX i
 
 The MiniB0XX folder contains files pertaining to a 3d printable case that is similar in size and potential functionality to my Aluminum B0XX. 
 
-The code folder includes the most up to date software for flashing to an Arduino and credit to its contributors.
+The code folder includes the most up to date software for flashing to an Arduino.
 
 If sharing any of the files/information found here, give credit where credit is due.
