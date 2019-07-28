@@ -94,7 +94,7 @@ Here is the finished modified GCC adapter. I forgot to get a labeled pinout of t
 Initially, I had used the same Mega2560 and logic converter as before, and soldered each of the GCC adapters lines (5v, GND, 3v, Data) to the RJ45 lines.
 
 ### Wiring Schematic
-![image](https://i.imgur.com/O4w5ZaZ.png)
+![image](https://i.imgur.com/HH7MXpK.png)
 The wiring schematic is the same as my first DIY, but now has the GCC adapters lines attached as well.
 
 
