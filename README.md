@@ -38,4 +38,4 @@ The MiniB0XX folder contains files pertaining to a 3d printable case that is sim
 
 The code folder includes the most up to date software for flashing to an Arduino and credit to its contributors.
 
-If sharing any of the files/information found here, give credit to their original creators.
+If sharing any of the files/information found here, give credit where credit is due.
