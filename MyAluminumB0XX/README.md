@@ -76,23 +76,37 @@ This is a massive upgrade over the attached cable used previously. Besides the f
 
 ### Internal GCC to USB adapter
 ![image](https://i.imgur.com/PZbbE8u.jpg)
-This is an interesting addition that could be quite useful for some people, but I am not really one of them. Basically, you solder wires to the pads of a GC port on a Gamecube to USB adapter, and route those to the same lines of your normal GCC cable. What this means is that you can use the controller like a normal Gamecube controller with the RJ45 to GCC cable, or you can plug the GC adapters USB cable into a Switch/WiiU/PC to avoid using an external controller adapter.
+This is an interesting addition that could be quite useful for some people, but I am not really one of them. Basically, you take the Nintendo GCC to USB adapter out of its case, solder wires to the pads of a GC port on a Gamecube to USB adapter, and route those to the same lines of your normal GCC cable. What this means is that you can use the controller like a normal Gamecube controller with the RJ45 to GCC cable, or you can plug the GC adapters USB cable into a Switch/WiiU/PC to avoid using an external controller adapter.
 
 To do this, I wanted to remove the gray usb cable to save space in the case, and solder wires to the back of the adapters PCB to access 5v, GND, 3v, and data.
 
 ![image](https://i.imgur.com/1AMAWl0.jpg)
-Here is a spreadsheet detailing what each pin of the connector / header on board does. Basically you want to remove / cut wires 1, 2, and 5, and split the cable in half as seen below.
+Here is a spreadsheet detailing what each pin of the connector / header on board does.
 
 ![image](https://i.imgur.com/3algLk9.png)
+Basically you want to remove / cut wires 1, 2, and 5, and split the cable in half as seen below.
 
+![image](https://i.imgur.com/XXBmsEZ.jpg)
+Here is the finished modified GCC adapter. I forgot to get a labeled pinout of the pads on the back of the adapter as to which is 5v, GND, 3V, and data, so if you want to do something like this, you'll need to use a multimeter continuity test to figure out which is which.
 
-
-
-
-
+### The Internals
+![image](https://i.imgur.com/hmlrhyG.jpg)
+Initially, I had used the same Mega2560 and logic converter as before, and soldered each of the GCC adapters lines (5v, GND, 3v, Data) to the RJ45 lines.
 
 ### Wiring Schematic
-![image](https://camo.githubusercontent.com/e8696673eb8698e2e7a6e50c574682dc869a7e0e/68747470733a2f2f692e696d6775722e636f6d2f7a346f5a50324f2e6a7067)
+![image](https://i.imgur.com/O4w5ZaZ.png)
+The wiring schematic is the same as my first DIY, but now has the GCC adapters lines attached as well.
+
+
+
+
+
+
+
+
+
+
+
 
 
 The build log will be complete soon.
