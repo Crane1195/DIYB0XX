@@ -17,7 +17,7 @@ Up until now, I haven't actually made a "perfect" DIY B0XX, which I define as th
 
 ## The Laser Cut Case
 ![image](https://i.imgur.com/MUbdEpq.jpg)
-The case is comprised of 5 laser cut layers, all cut by [Pololu](https://www.pololu.com/product/749).
+The case is comprised of 5 laser cut layers, all cut by [Pololu](https://www.pololu.com/product/749). A big shoutout goes to simple for the layered case idea.
 
 - Bottom Layer      : 1/4" Wood
 
