@@ -87,3 +87,9 @@ Unintentionally, the LED on the board ended up being almost directly under the s
 ![image](https://i.imgur.com/al1c5pm.jpg)
 
 ![image](https://i.imgur.com/kn0kdpJ.jpg)
+A few more angles.
+
+### Conclusion / Contact
+Overall I'm super happy with how this turned out. It isn't perfect, but it is about the best I could have done given my inexperience with fightstick art and laser cutting cases. I learned a lot and would it would definitely be easier the next time I do one like this.
+
+If you have any questions about this build, the GCCPCB, or anything else, feel free to message me on Discord @Crane#1195, or to join my Discord server, discord.gg/P2BxMVY, where I'll be posting updates about the various projects I am working on.
