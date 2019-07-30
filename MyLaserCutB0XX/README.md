@@ -85,8 +85,6 @@ Unintentionally, the LED on the board ended up being almost directly under the s
 
 ![image](https://i.imgur.com/DDajy5T.jpg)
 
-![image](https://i.imgur.com/al1c5pm.jpg)
-
 ![image](https://i.imgur.com/kn0kdpJ.jpg)
 A few more angles.
 
