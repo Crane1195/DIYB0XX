@@ -73,6 +73,7 @@ Here's a brief synopsis of its benefits over my previous method of making DIY Ga
 * It's very compact, which is crucial in this build considering how small the interior of the case is (15" x 7" x ~0.9")
 * A port for a detachable cable is built in (either RJ45 or USBC). I chose USB C for this build.
 * A 10x2 pin connector is on board to passthrough button signals to a Brook board (I won't be doing it for this build)
+* Gamecube/Wii and WiiU/Switch (with a GCC to USB adapter) supported with the USB-C to GCC cable [sold here](https://b0xx.com/products/usbc)
 * Native PC controller support. No need for a GCC to USB adapter for PC.
 * Nunchuk port to use an analog stick instead of the digital stick / modifiers.
 
