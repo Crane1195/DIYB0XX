@@ -66,7 +66,7 @@ I used [this](https://www.amazon.com/Loctite-Fun-Tak-Mounting-2-Ounce-1087306/dp
 
 ## Internals
 ![image](https://i.imgur.com/5R3F9Hd.jpg)
-Here you can see the internals. This board is the GCCPCB, made my me. If you are interested in learning more or have any questions about this board and its firmware, feel free to message me about it on Discord @Crane#1195, or to [join my Discord server](discord.gg/P2BxMVY) where I post updates about hardware I am working on or firmware updates.
+Here you can see the internals. This board is the GCCPCB, made my me. If you are interested in learning more or have any questions about this board and its firmware, feel free to message me about it on Discord @Crane#1195, or to [join my Discord server](https://discord.gg/P2BxMVY) where I post updates about hardware I am working on or firmware updates.
 Here's a brief synopsis of its benefits over my previous method of making DIY Gamecube Controllers.
 * The entire circuit is all done by the board.
 * Buttons don't need to be spliced to jumper cables and can just be plugged into screw terminals like on a Brook board.
