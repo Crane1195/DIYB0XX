@@ -39,7 +39,7 @@ The bottom wall panel has hexagons cut to hold hex nuts within the walls of the 
 The nuts now sit flush with the top of the wall. The second wall is glued on top of this wall, encasing the nuts within the walls.
 
 ![image](https://i.imgur.com/riOVcad.jpg)
-Here's how it looked after the bottom and the two walls were glued together. The top two panels get screws into the bottom 3.
+Here's how it looked after the bottom and the two walls were glued together. The top two panels get screwed into the bottom 3.
 
 ![image](https://i.imgur.com/seCmGHT.jpg)
 I didn't have a way to perfectly align the layers as they were being glued together, so the layers were about 0.3mm off at various points around the case. If anyone plans on doing a case like this, I reccomend figuring out a way to make sure they are perfectly aligned while gluing to prevent this. If I end up doing this again, I will put the same size hole as in the walls in the bottom panel and put a rod through all the panels holes to try and hold it in place. I'd probably then wood fill in the holes in the bottom panel.
