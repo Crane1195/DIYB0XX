@@ -473,7 +473,7 @@ void loop()
     if (HORIZONTAL && (positionY == -1)) {
       controlX = 128 + (positionX * 58);
       if (currentGame == Melee) controlY = 128 - 55;
-      else controlY = 128 - 55;
+      else controlX = 128 + (positionX * 80); controlY = minValue;;
     }
     if (isMOD1 || isMOD2) {
       isL = false;
