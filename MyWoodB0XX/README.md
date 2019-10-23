@@ -31,7 +31,7 @@ This utilizes the Nicohood Nintendo library found here https://github.com/NicoHo
 Anyway, enough of the intro, lets get into the build.
 
 ### Part List
-  * Arduino Mega 2560 (Third party ones are cheaper, and work just as well. Mine is ELEGOO)
+  * Arduino ~~Mega 2560~~ Micro (Third party ones are cheaper, and work just as well. Mine is ~~ELEGOO~~ RobotDyn. I used this one https://www.amazon.com/RobotDyn-ATmega32U4-Pinheaders-SOLDERED-Compatible/dp/B071LT3JDX/ref=sr_1_16?keywords=32u4&qid=1571794087&sr=8-16)
   * Logic Controller 3.3V - 5V (I used this one https://www.amazon.com/gp/product/B0148BLZGE/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
   * 18 Sanwa OBSF-24 buttons
   * GameCube controller cable. This can be either the cable from an OEM controller as shown in this build, a 3rd party controller cable, or a 3rd party extension cable. You can make this cable detachable by following the guide here https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
@@ -90,7 +90,13 @@ I painted the top and sides using multiple layers of spray paint, and then brush
 
 ![image](https://i.imgur.com/nJz8njy.jpg)
 
-Next up was the internals. Here you can see the OBSF-24 Blues and the cables I spliced together to connect the buttons to the Arduino.
+Next up was the internals. Here you can see the OBSF-24 Blues and the cables I spliced together to connect the buttons to the Arduino. 
+
+Edit : Do note, I used to use the Arduino Mega 2560 seen here, and solder spliced wires for the buttons. I reccomend not doing this though, and instead using an Arduino Micro like the one linked in the part list. I will update the wiring schematic below to show the difference, its pretty similar though.
+
+The reason to pick the Micro instead is that it can work as a controller on PC without a Gamecube Controller to USB adapter. The Mega2560 cannot. Also, just soldering the button wires to the board is a lot easier IMO then solder splicing wires.
+
+Message me if you have any questions about the Arduino Micro.
 
 Custom wire process:
 * Bought a pack of 10 double ended cables with .110" QDC's and cut them in half
@@ -106,7 +112,7 @@ The wiring is messy since I made the cables much longer than they need to be unf
 
 ![image](https://i.imgur.com/z4oZP2O.jpg)
 
-Here is a wiring diagram I made showing how it all works. For more info on how the wiring works, check out Simple's guide linked above, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID.
+Here is a wiring diagram I made showing how it all works. As previously mentioned, I will be adding another schematic showing the Arduino Micro soon, I highly reccomend using it instead of the Mega. For more info on how the wiring works, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID.
 
 ![image](https://i.imgur.com/0YlfuPZ.jpg)
 
