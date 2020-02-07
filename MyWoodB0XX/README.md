@@ -31,7 +31,7 @@ This utilizes the Nicohood Nintendo library found here https://github.com/NicoHo
 Anyway, enough of the intro, lets get into the build.
 
 ### Part List
-  * Arduino ~~Mega 2560~~ Micro (Third party ones are cheaper, and work just as well. Mine is ~~ELEGOO~~ RobotDyn. I used this one https://www.amazon.com/RobotDyn-ATmega32U4-Pinheaders-SOLDERED-Compatible/dp/B071LT3JDX/ref=sr_1_16?keywords=32u4&qid=1571794087&sr=8-16)
+  * Arduino ~~Mega 2560~~ Micro (Third party ones are cheaper, and work just as well. I have used this one https://www.amazon.com/gp/product/B00J1X5B7Y/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&psc=1)
   * Logic Controller 3.3V - 5V (I used this one https://www.amazon.com/gp/product/B0148BLZGE/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
   * 18 Sanwa OBSF-24 buttons
   * GameCube controller cable. This can be either the cable from an OEM controller as shown in this build, a 3rd party controller cable, or a 3rd party extension cable. You can make this cable detachable by following the guide here https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
