@@ -13,7 +13,7 @@ SimpleControllers (https://github.com/SimpleControllers)
 Their website, where the B0XX is now available to preorder, is http://b0xx.com/
 
 
-Here you can find the B0XX manifesto explaining how the B0XX attempts to be in line with the gamecube controller for SSBM, as well as the 20XX community Discord where you can keep up to date with the progress of the B0XX development, as well as ask questions to Streamlord or Simple about the B0XX, or myself (Crane) and others any DIY questions.
+Here you can find the B0XX manifesto explaining how the B0XX attempts to be in line with the gamecube controller for SSBM, as well as the 20XX community Discord where you can keep up to date with the B0XX development, as well as ask questions about the B0XX, or myself and others any DIY questions.
 
 Here's the Discord invite link https://discord.gg/6wcEaDU
 
