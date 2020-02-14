@@ -109,7 +109,7 @@ The wiring is messy since I made the cables much longer than they need to be unf
 
 ![image](https://i.imgur.com/JMRVMHo.jpg)
 
-Here is a wiring diagram I made showing how it all works. As previously mentioned, I will be adding another schematic showing the Arduino Micro soon, I highly reccomend using it instead of the Mega. For more info on how the wiring works, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID.
+Here is a wiring diagram I made showing how it all works. I previously used a Mega2560, but now I use an Arduino Micro. I've updated the schematic to show this. For more info on how the wiring works, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID.
 
 ![image](https://i.imgur.com/0YlfuPZ.jpg)
 
