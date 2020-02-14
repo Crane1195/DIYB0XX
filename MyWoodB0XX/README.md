@@ -17,10 +17,8 @@ Here you can find the B0XX manifesto explaining how the B0XX attempts to be in l
 
 Here's the Discord invite link https://discord.gg/6wcEaDU
 
-Huge shout out to Simple for his excellent guide detailing how to DIY a Smash Box found here.
+Huge shout out to Simple for his guide detailing how to DIY a Smash Box found here. This is how I learned how to wire up the controller. Since then I have made a cleaner and more updated wiring schematic so be sure to follow mine instead. Scroll down to see it.
 https://docs.google.com/document/d/1ndV4E_w2ThAv9LpbjEzRDWwMj0uBWB9YqbvkHV35X5w/edit
-
-His guide is an incredible resource for how the wiring works. I have also added my own wiring schematic to this guide.
 
 Also, a shout out to Snapple and Danny who modified Simples Smash Box Arduino code to be accurate to the B0XX manifesto and work with the B0XX's 2 modifiers. I have modified this code to work with Project M, Smash4, and Smash Ultimate. I have also made 2ip SOCD an option. This code can be found here. Read the README to see my edits, how to select a mode, and an explanation of SOCD.
 
@@ -92,8 +90,7 @@ I painted the top and sides using multiple layers of spray paint, and then brush
 
 Next up was the internals. Here you can see the OBSF-24 Blues and the cables I spliced together to connect the buttons to the Arduino. 
 
-Edit : Do note, I used to use the Arduino Mega 2560 seen here, and solder spliced wires for the buttons. I reccomend not doing this though, and instead using an Arduino Micro like the one linked in the part list. I will update the wiring schematic below to show the difference, its pretty similar though.
-
+Edit : Do note, I used to use the Arduino Mega 2560 seen here, and solder spliced wires for the buttons. I recommend not doing this though, and instead using an Arduino Micro like the one linked in the part list. The wiring schematic below has been updated to reflect this.
 The reason to pick the Micro instead is that it can work as a controller on PC without a Gamecube Controller to USB adapter. The Mega2560 cannot. Also, just soldering the button wires to the board is a lot easier IMO then solder splicing wires.
 
 Message me if you have any questions about the Arduino Micro.
@@ -110,7 +107,7 @@ Also pictured is a Gamecube controller cable that I desoldered from a dead GCC I
 
 The wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common ground daisy chain cable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did.
 
-![image](https://i.imgur.com/z4oZP2O.jpg)
+![image](https://i.imgur.com/JMRVMHo.jpg)
 
 Here is a wiring diagram I made showing how it all works. As previously mentioned, I will be adding another schematic showing the Arduino Micro soon, I highly reccomend using it instead of the Mega. For more info on how the wiring works, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID.
 
