@@ -20,7 +20,7 @@ Here's the Discord invite link https://discord.gg/6wcEaDU
 Huge shout out to Simple for his guide detailing how to DIY a Smash Box found here. This is how I learned how to wire up the controller. Since then I have made a cleaner and more updated wiring schematic so be sure to follow mine instead. Scroll down to see it.
 https://docs.google.com/document/d/1ndV4E_w2ThAv9LpbjEzRDWwMj0uBWB9YqbvkHV35X5w/edit
 
-I've made code for this DIYB0XXes that you can find here. It has Melee, PM, and Ultimate modes, and acts very similar to the official B0XX.
+I've made code for DIYB0XXes that you can find here. It has Melee, PM, and Ultimate modes, and acts very similar to the official B0XX.
 
 https://github.com/Crane1195/DIYB0XX/tree/master/code
 
