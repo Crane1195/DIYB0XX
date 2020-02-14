@@ -2,7 +2,7 @@
 
 ![image](https://i.imgur.com/nWhepdX.jpg)
 
-First, credit where credit is due. The B0XX is a product that will be brought to market soon™ by:
+First, credit where credit is due. The B0XX is a product made by:
 
 Hax$ (https://twitter.com/ssbmhax)
 
