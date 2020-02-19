@@ -123,7 +123,7 @@ void setup()
   if (digitalRead(B) == LOW)
   {
     currentGame = Ultimate;
-    currentSOCD = TwoIPNoReactivate;
+    currentSOCD = TwoIP;
   }
 
   // Here are the settings for a third mode. By default, holding X while plugging in switches
