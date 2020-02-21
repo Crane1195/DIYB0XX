@@ -1,4 +1,4 @@
-DIY B0XX v1.0 code by Crane.
+DIY B0XX v1.2 code by Crane.
 
 This code utilizes Nicohood's Nintendo library.
 
