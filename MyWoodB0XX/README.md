@@ -107,7 +107,7 @@ Also pictured is a Gamecube controller cable that I desoldered from a dead GCC I
 
 The wiring is messy since I made the cables much longer than they need to be unfortunately. I used a common ground daisy chain cable with 30 .110" connectors, a 5v to 3.3v converter, and a common ground / 5V panel from another project I did.
 
-![image](https://i.imgur.com/JMRVMHo.jpg)
+![image](https://i.imgur.com/9wG8kuw.jpg)
 
 Here is a wiring diagram I made showing how it all works. I previously used a Mega2560, but now I use an Arduino Micro. I've updated the schematic to show this. For more info on how the wiring works, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID.
 
