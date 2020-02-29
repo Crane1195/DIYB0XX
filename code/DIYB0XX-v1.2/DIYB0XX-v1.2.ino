@@ -89,8 +89,8 @@ const int EXTRA2 = 10;
 
 //const int DPADSWITCH = XX;
 
-const uint8_t minValue = 48;
-const uint8_t maxValue = 208;
+const uint8_t minValue = 28;
+const uint8_t maxValue = 228;
 
 void setup()
 {
