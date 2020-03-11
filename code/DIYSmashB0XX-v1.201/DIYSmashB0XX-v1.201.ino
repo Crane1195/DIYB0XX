@@ -13,7 +13,7 @@
 */
 #include "Nintendo.h"
 
-bool isLightShieldButtons = true;
+bool isLightShieldButtons = false;
 bool UseNewModVertical = true;
 
 uint8_t fTwoIPNoReactivate(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH, bool& lockLOW, bool& lockHIGH);
