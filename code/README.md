@@ -1,10 +1,8 @@
-DIY B0XX v1.2 code by Crane.
+DIY B0XX v1.201 code by Crane.
 
 This code utilizes Nicohood's Nintendo library.
 
-As of July 4th 2019 : I rewrote the entire program from scratch to increase efficiency, increase readability, to make adding new profiles easier, to improve the Smash Ultimate mode
-
-This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc. A version of this code is available with native USB joystick support and nunchuk support for controllers using the 32u4 chip such as my Arduino Micro based GCCPCB. You can probably use it on a Micro/Leonardo/Pro Micro DIY, but do so at your own risk.
+This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc. A version of this code is available with native USB joystick support and nunchuk support for controllers using the 32u4 chip such as my Arduino Micro based GCCPCB.
 
 Heres a link to it : https://github.com/Crane1195/GCCPCB/tree/master/code
 
