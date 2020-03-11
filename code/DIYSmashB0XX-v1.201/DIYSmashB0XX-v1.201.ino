@@ -1,11 +1,12 @@
 /*
-  DIY B0XX v1.2 code by Crane.
+  DIY B0XX v1.201 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
 
   This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc.
   A version of this code is available with native USB joystick support and nunchuk support for controllers using the 32u4
-  chip such as my Arduino Micro based GCCPCB. You can probably use it on a Micro/Leonardo/Pro Micro DIY, but do so at your own risk.
+  chip such as my Arduino Micro based GCCPCB. There is also a version there for native usb devices like the
+  Micro/Leonardo/Pro Micro DIY.
   Heres a link to it : https://github.com/Crane1195/GCCPCB/tree/master/code
 
   Read the README file for whichever of these you are using for more information.
@@ -20,7 +21,7 @@ uint8_t fTwoIP(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH);
 uint8_t fNeutral(bool isLOW, bool isHIGH);
 
 // Change the number inside the parentheses to whichever pin you have your data line plugged into.
-CGamecubeConsole GamecubeConsole(A5);
+CGamecubeConsole GamecubeConsole(52);
 Gamecube_Data_t d = defaultGamecubeData;
 
 enum game
@@ -63,26 +64,26 @@ game currentGame = Melee;
 SOCD currentSOCD = TwoIPNoReactivate;
 
 // Here are your pin assignments. Change the number after the equals sign to wherever each button is plugged into.
-const int L = 16;
-const int LEFT = 1;
-const int DOWN = 0;
-const int RIGHT = 4;
-const int MOD1 = 5;
-const int MOD2 = 6;
+const int L = 47;
+const int LEFT = 24;
+const int DOWN = 23;
+const int RIGHT = 25;
+const int MOD1 = 28;
+const int MOD2 = 29;
 
-const int START = 7;
-const int B = A2;
-const int X = A1;
-const int Z = A0;
-const int UP = 13;
-const int R = A4;
-const int Y = A3;
+const int START = 50;
+const int B = 44;
+const int X = 42;
+const int Z = 7;
+const int UP = 45;
+const int R = 41;
+const int Y = 43;
 
-const int CDOWN = 12;
-const int A = 15;
-const int CRIGHT = 14;
-const int CLEFT = 9;
-const int CUP = 8;
+const int CDOWN = 46;
+const int A = 35;
+const int CRIGHT = 37;
+const int CLEFT = 36;
+const int CUP = 34;
 
 const int EXTRA1 = 11;
 const int EXTRA2 = 10;
@@ -488,8 +489,10 @@ void loop()
     }
     if ((currentGame == Melee) && (isMOD1 || isMOD2)) {
       if (!isLightShieldButtons) {
-        isL = false;
-        LLight = 80;
+        if (!(isMOD1 && isMOD2)) {
+          isL = false;
+          LLight = 80;
+        }
       }
 
       if (DIAGONAL) {
