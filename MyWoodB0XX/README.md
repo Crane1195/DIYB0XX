@@ -68,9 +68,9 @@ This is the only picture I could find of the finished pure wooden B0XX, with the
 
 ![image](https://i.imgur.com/mLYnbQ7.jpg)
 
-Here's a link to the template I used. Print the document on 8.5"x11" paper, and cut along the lines to get your 8"x16" template.
+Here's a link to a 17" x 11" PDF of the layout https://drive.google.com/file/d/116dSc5dPDYolJdHSqDzw2esew3-IbX8M/view?usp=sharing
 
-https://drive.google.com/file/d/1a7MxgeOgtNVZLJR3XxBTWMSy3c9NhZ1_/view?usp=sharing
+I'll be making a folder on this repo soon with CAD files / more detailed instructions for making faceplates.
 
 Taping the template to my B0XX, I marked the center points with a thumbtack.
 
