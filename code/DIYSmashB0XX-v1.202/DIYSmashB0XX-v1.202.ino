@@ -1,19 +1,14 @@
 /*
-  DIY B0XX v1.201 code by Crane.
+  DIYSmashB0XX v1.202 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
 
-  This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc.
-  A version of this code is available with native USB joystick support and nunchuk support for controllers using the 32u4
-  chip such as my Arduino Micro based GCCPCB. There is also a version there for native usb devices like the
-  Micro/Leonardo/Pro Micro DIY.
-  Heres a link to it : https://github.com/Crane1195/GCCPCB/tree/master/code
-
-  Read the README file for whichever of these you are using for more information.
+  This fork has the Smashbox pinout prefilled in for ease of installation on
+  Smashboxes.
 */
 #include "Nintendo.h"
 
-bool isLightShieldButtons = false;
+bool isLightShieldButtons = true;
 bool UseNewModVertical = true;
 
 uint8_t fTwoIPNoReactivate(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH, bool& lockLOW, bool& lockHIGH);
@@ -68,8 +63,8 @@ const int L = 47;
 const int LEFT = 24;
 const int DOWN = 23;
 const int RIGHT = 25;
-const int MOD1 = 28;
-const int MOD2 = 29;
+const int MODX = 28;
+const int MODY = 29;
 
 const int START = 50;
 const int B = 44;
@@ -85,10 +80,8 @@ const int CRIGHT = 37;
 const int CLEFT = 36;
 const int CUP = 34;
 
-const int EXTRA1 = 11;
-const int EXTRA2 = 10;
-
-//const int DPADSWITCH = XX;
+const int LIGHTSHIELD = 40;
+const int MIDSHIELD = 12;
 
 const uint8_t minValue = 28;
 const uint8_t maxValue = 228;
@@ -99,8 +92,8 @@ void setup()
   pinMode(LEFT, INPUT_PULLUP);
   pinMode(DOWN, INPUT_PULLUP);
   pinMode(RIGHT, INPUT_PULLUP);
-  pinMode(MOD1, INPUT_PULLUP);
-  pinMode(MOD2, INPUT_PULLUP);
+  pinMode(MODX, INPUT_PULLUP);
+  pinMode(MODY, INPUT_PULLUP);
   pinMode(START, INPUT_PULLUP);
   pinMode(B, INPUT_PULLUP);
   pinMode(X, INPUT_PULLUP);
@@ -114,10 +107,9 @@ void setup()
   pinMode(CLEFT, INPUT_PULLUP);
   pinMode(CUP, INPUT_PULLUP);
   if (isLightShieldButtons) {
-    pinMode(EXTRA1, INPUT_PULLUP);
-    pinMode(EXTRA2, INPUT_PULLUP);
+    pinMode(LIGHTSHIELD, INPUT_PULLUP);
+    pinMode(MIDSHIELD, INPUT_PULLUP);
   }
-  //pinMode(DPADSWITCH, INPUT_PULLUP);
 
   // Here are the settings for a second mode. By default, holding B while plugging in switches
   // to Ultimate, with 2ip no reactivation. Change any of these you want to.
@@ -142,8 +134,8 @@ void loop()
   bool isLEFT       = (digitalRead(LEFT) == LOW);
   bool isDOWN       = (digitalRead(DOWN) == LOW);
   bool isRIGHT      = (digitalRead(RIGHT) == LOW);
-  bool isMOD1       = (digitalRead(MOD1) == LOW);
-  bool isMOD2       = (digitalRead(MOD2) == LOW);
+  bool isMODX       = (digitalRead(MODX) == LOW);
+  bool isMODY       = (digitalRead(MODY) == LOW);
   bool isSTART      = (digitalRead(START) == LOW);
   bool isB          = (digitalRead(B) == LOW);
   bool isX          = (digitalRead(X) == LOW);
@@ -156,9 +148,8 @@ void loop()
   bool isCRIGHT     = (digitalRead(CRIGHT) == LOW);
   bool isCLEFT      = (digitalRead(CLEFT) == LOW);
   bool isCUP        = (digitalRead(CUP) == LOW);
-  bool isEXTRA1     = (digitalRead(EXTRA1) == LOW);
-  bool isEXTRA2     = (digitalRead(EXTRA2) == LOW);
-  //bool isDPADSWITCH = (digitalRead(DPADSWITCH) == LOW);
+  bool isLIGHTSHIELD     = (digitalRead(LIGHTSHIELD) == LOW);
+  bool isMIDSHIELD     = (digitalRead(MIDSHIELD) == LOW);
 
   bool isDPADUP = false;
   bool isDPADDOWN = false;
@@ -225,7 +216,7 @@ void loop()
   }
   /********* Modifiers *********/
 
-  if (isMOD1) {
+  if (isMODX) {
     if (HORIZONTAL) {
       if (currentGame == Melee) controlX = 128 + (positionX * 53);
       if (currentGame == Ultimate) controlX = 128 + (positionX * 40);
@@ -331,7 +322,7 @@ void loop()
     }
   }
 
-  if (isMOD2) {
+  if (isMODY) {
     if (HORIZONTAL) {
       if (currentGame == Melee) controlX = 128 + (positionX * 27);
       if (currentGame == Ultimate) controlX = 128 + (positionX * 27);
@@ -433,16 +424,16 @@ void loop()
 
 
   if (isLightShieldButtons && (currentGame == Melee)) {
-    if (isEXTRA1 || isEXTRA2) {
-      if (isEXTRA1) LLight = 80;
-      if (isEXTRA2) LLight = 100;
+    if (isLIGHTSHIELD || isMIDSHIELD) {
+      if (isLIGHTSHIELD) RLight = 80;
+      if (isMIDSHIELD) RLight = 125;
 
       if (HORIZONTAL && (positionY == -1)) {
         controlX = 128 + (positionX * 57);
         controlY = 128 - 55;
       }
 
-      if (isMOD1) {
+      if (isMODX) {
         if (HORIZONTAL) {
           if (currentGame == Ultimate)
             controlX = 128 + (positionX * 51);
@@ -487,20 +478,20 @@ void loop()
       if (currentGame == Melee) controlY = 128 - 55;
       else {controlX = 128 + (positionX * 100); controlY = minValue;}
     }
-    if ((currentGame == Melee) && (isMOD1 || isMOD2)) {
+    if ((currentGame == Melee) && (isMODX || isMODY)) {
       if (!isLightShieldButtons) {
-        if (!(isMOD1 && isMOD2)) {
+        if (!(isMODX && isMODY)) {
           isL = false;
           LLight = 80;
         }
       }
 
       if (DIAGONAL) {
-        if (isMOD1) {
+        if (isMODX) {
           controlX = 128 + (positionX * 51);
           controlY = 128 + (positionY * 30);
         }
-        if (isMOD2) {
+        if (isMODY) {
           controlX = 128 + (positionX * 40);
           controlY = 128 + (positionY * 68);
         }
@@ -528,7 +519,7 @@ void loop()
     }
     if (DIAGONAL) {
       if (currentGame == Melee) controlX = 128 + (positionX * 43);
-      if (isMOD1) {
+      if (isMODX) {
         if (currentGame == Melee){
           controlX = 128 + (positionX * 51);
           controlY = 128 + (positionY * 30);
@@ -538,7 +529,7 @@ void loop()
           controlY = 128 + (positionY * 40);
         }
       }
-      if (isMOD2) {
+      if (isMODY) {
         controlX = 128 + (positionX * 40);
         controlY = 128 + (positionY * 68);
       }
@@ -546,8 +537,7 @@ void loop()
   }
 
   /********* DPAD *********/
-  if (isMOD1 && isMOD2) {
-  //if (isDPADSWITCH) {
+  if (isMODX && isMODY) {
     cstickX = 128;
     cstickY = 128;
     if (isCUP) isDPADUP = true;
