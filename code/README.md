@@ -2,9 +2,7 @@ DIY B0XX v1.202 code by Crane.
 
 This code utilizes Nicohood's Nintendo library.
 
-This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc. A version of this code is available with native USB joystick support and nunchuk support for controllers using the 32u4 chip such as my Arduino Micro based GCCPCB.
-
-Heres a link to it : https://github.com/Crane1195/GCCPCB/tree/master/code
+This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc. If your Arduino supports native USB like the Arduino Micro, use the nativeusb code.
 
 ## SOCD Options
 You can choose between 2ip, 2ip with no reactivation, and neutral to resolve simultaneous opposite cardinal direction (SOCD) inputs. This applies to both the control and c stick.
