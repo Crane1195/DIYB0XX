@@ -68,7 +68,7 @@ This is the only picture I could find of the finished pure wooden B0XX, with the
 
 ![image](https://i.imgur.com/mLYnbQ7.jpg)
 
-Here's a link to a 17" x 11" PDF of the layout https://drive.google.com/file/d/116dSc5dPDYolJdHSqDzw2esew3-IbX8M/view?usp=sharing
+Here's a link to a 17" x 11" PDF of the layout https://drive.google.com/drive/folders/1cv-wkTo0xmuKJOSA2eP_3mJmC4tP5-0d?usp=sharing
 
 I'll be making a folder on this repo soon with CAD files / more detailed instructions for making faceplates.
 
