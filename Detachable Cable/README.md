@@ -3,7 +3,7 @@
 
 Here you will find all the information needed to make a detachable cable for a custom Gamecube controller/fightstick.
 
-If you have any questions regarding the process, feel free to message me on Discord @Crane#1195, or join the 20XX Discord here https://discord.gg/6wcEaDU and ask in the DIY #discussion channel.
+If you have any questions regarding the process, feel free to message me on Discord @Crane#1195, or join my Discord server here https://discord.gg/S3qgZWD
 
 GCC stands for GameCube Controller. I will use this acryonym a lot.
 
