@@ -20,7 +20,7 @@ On top of this, I have done two modifications to the design which increase overa
 
 The first of which a detachable RJ45 to Gamecube cable, and the second is an internal Gamecube to USB adapter with the extra three ports available to use outside the case.
 
-If you have any questions regarding this build, feel free to ask me in the 20XX Discord's #diy-discussion channel (https://discord.gg/6wcEaDU) or in direct message @Crane#1195 .
+If you have any questions regarding this build, feel free to ask me in my Discord server (https://discord.gg/S3qgZWD) or in direct message @Crane#1195 .
 
 ## Components
 
@@ -115,7 +115,7 @@ I made a PCB to make building Gamecube controllers a lot easier and to have more
 
 If you are interested in finding out more about the GCCPCB, join this discord server and check out #info
 
-discord.gg/P2BxMVY
+https://discord.gg/S3qgZWD
 
 ![image](https://i.imgur.com/yPC4dIC.jpg)
 Here is the final interior. I put a four pin header on the board to allow access to the 5V, GND, 3V, and Data lines so I could hook up my GCC to USB adapter. I plugged the GCC adapter into the GCCPCB USB port, which means that it is accessible using a RJ45 to USB cable. The Arduino is plugged into a USB Neutrik, which I use for Native PC control and updating the firmware.
@@ -124,4 +124,4 @@ Here is the final interior. I put a four pin header on the board to allow access
 
 Overall, this controller has been a really solid test bench for various projects I've been working on. First the internal USB to GCC adapter, then my mechanical switch boards that I used to replace the Sanwa SW68s (maybe more info on these coming soon, they aren't perfect yet), and now to work on my GCCPCB.
 
-If you have any questions about this build, the GCCPCB, or anything else, feel free to message me on Discord @Crane#1195, or to join my Discord server, discord.gg/P2BxMVY, where I'll be posting updates about the various projects I am working on.
+If you have any questions about this build, the GCCPCB, or anything else, feel free to message me on Discord @Crane#1195, or to join my Discord server, https://discord.gg/S3qgZWD, where I'll be posting updates about the various projects I am working on.
