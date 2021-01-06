@@ -19,10 +19,7 @@ More information regarding the B0XX and links to preorder it are found here.
 
 https://b0xx.com/
 
-To contact any of the people who are credited in this repo, including myself, simple, Danny, and Snapple, join the B0XX discord here.
-
-https://discord.gg/6wcEaDU
-
+To contact me with any comments or questions regarding the info in this repo, join my Discord server here: https://discord.gg/S3qgZWD
 
 I wanted to try this layout before the product launches, so I created a B0XX from raw materials (later a prefabricated case), arcade hardware, and an Arduino.
 
