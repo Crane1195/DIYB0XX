@@ -12,10 +12,7 @@ SimpleControllers (https://github.com/SimpleControllers)
 
 Their website, where the B0XX is now available to preorder, is http://b0xx.com/
 
-
-Here you can find the B0XX manifesto explaining how the B0XX attempts to be in line with the gamecube controller for SSBM, as well as the 20XX community Discord where you can keep up to date with the B0XX development, as well as ask questions about the B0XX, or myself and others any DIY questions.
-
-Here's the Discord invite link https://discord.gg/6wcEaDU
+Here you can find the B0XX manifesto explaining how the B0XX attempts to be in line with the gamecube controller for SSBM, among other references.
 
 Huge shout out to Simple for his guide detailing how to DIY a Smash Box found here. This is how I learned how to wire up the controller. Since then I have made a cleaner and more updated wiring schematic so be sure to follow mine instead. Scroll down to see it.
 https://docs.google.com/document/d/1ndV4E_w2ThAv9LpbjEzRDWwMj0uBWB9YqbvkHV35X5w/edit
@@ -133,4 +130,4 @@ Here is an extensive part list I made to track how much I spent but I thought I'
 
 ![image](https://i.imgur.com/0mqm5v5.jpg)
 
-Once again, huge thanks to Simple for his guide, and assistance when I had a couple of roadblocks, as well as Hax, and Streamlord. We are all on the Discord which can be found at http://b0xx.com/ (or above) if you have any questions, or want to keep up with the actual B0XX's development.
+Once again, huge thanks to Simple for his guide, and assistance when I had a couple of roadblocks, as well as Hax, and Streamlord.
