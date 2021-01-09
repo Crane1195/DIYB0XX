@@ -1,5 +1,5 @@
 /*
-  DIYB0XX v1.202 code by Crane.
+  DIYB0XX v1.209 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
 
@@ -57,6 +57,8 @@ bool lockCDOWN = false;
 // Change it if you want to.
 game currentGame = Melee;
 SOCD currentSOCD = TwoIPNoReactivate;
+
+bool LatencyFix = false;
 
 // Here are your pin assignments. Change the number after the equals sign to wherever each button is plugged into.
 const int L = 16;
@@ -128,6 +130,12 @@ void setup()
   {
     currentGame = PM;
     currentSOCD = TwoIPNoReactivate;
+  }
+
+  // Hold Start on plugin to enable the latency fix for Melee on GC/Wii
+  if (digitalRead(START) == LOW)
+  {
+    LatencyFix = true;
   }
 }
 
@@ -571,6 +579,9 @@ void loop()
   d.report.right = RLight;
   d.report.left = LLight;
   GamecubeConsole.write(d);
+
+  if ((currentGame == Melee) && (LatencyFix == true))
+    delayMicroseconds(7200);
 }
 
 uint8_t fTwoIPNoReactivate(bool isLOW, bool isHIGH, bool& wasLOW, bool& wasHIGH, bool& lockLOW, bool& lockHIGH) {
