@@ -428,7 +428,7 @@ void loop()
     }
   }
 
-  if (isLEFT && isRIGHT && !VERTICAL)
+  if (isLEFT && isRIGHT && !VERTICAL && (currentGame != Ultimate))
     controlX = 128 + (positionX * 100);
 
 
