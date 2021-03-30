@@ -95,3 +95,11 @@ https://www.neutrik.com/media/8070/download/ethercon-cable-connector-ne8mc.pdf?v
 I ended up making a second one as I wasn't taking pictures as I went for the first one. As previously mentioned, it works without the NE8MC, but I'd still recommend it for a more secure connection.
 
 Once again, let me know on Discord in my server or direct message @Crane#1195 if you have any questions.
+
+## Support my work
+
+Do note, all Amazon links are affiliated, meaning I get a kickback when you buy anything using these links, and you pay the normal price of the thing. I figure it's a good way for people who want to support me to be able to without any additional cost.
+
+I also set up a donation link for people who appreciate my work and wish to donate. Donations are greatly appreciated, but are far from necessary:
+
+https://www.paypal.com/donate/?hosted_button_id=NFDEML5FKR8N8
