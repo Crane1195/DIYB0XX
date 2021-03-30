@@ -3,7 +3,7 @@
 
 Here you will find all the information needed to make a detachable cable for a custom Gamecube controller/fightstick.
 
-If you have any questions regarding the process, feel free to message me on Discord @Crane#1195, or join my Discord server here https://discord.gg/S3qgZWD
+If you have any questions regarding the process, feel free to message me on Discord @Crane#1195, or join my Discord server here https://craneslab.xyz/discord
 
 GCC stands for GameCube Controller. I will use this acryonym a lot.
 
@@ -20,15 +20,15 @@ GCC stands for GameCube Controller. I will use this acryonym a lot.
 
 - RJ45 Crimp Kit
     - Here's the kit I used. This comes with both the crimping tool, and the connectors.
-    - https://www.amazon.com/gp/product/B008UY5WL0/ref=oh_aui_detailpage_o08_s02?ie=UTF8&psc=1
+    - https://amzn.to/2QNOFHn
 
 - Neutrik NE8FDP
     - This is the female connector that gets installed in the case of the fightstick; comes in black and silver. Here's a link to the black one I use.
-    - https://www.amazon.com/gp/product/B002BEWOYI/ref=oh_aui_detailpage_o08_s01?ie=UTF8&psc=1
+    - https://amzn.to/3frK87Z
 
 - Neutrik NE8MC
     - This is the male connector, that is installed around the custom cable. The cable works without this, but this makes it much more durable and secure; also comes in black and silver. Here's a link to the black one I use.
-    - https://www.amazon.com/gp/product/B002BEWKR4/ref=oh_aui_detailpage_o08_s00?ie=UTF8&psc=1
+    - https://amzn.to/39usFYx
 
 - Multimeter
     - If you are not using an OEM GCC cable, to be safe, you will need to check which wire is which signal. I will post what my wires are below. If you use a Kitsch-Bent extension, they will likely be the same, but not necessarily. It is possible that they have changed their supplier which would change the wiring.
@@ -94,4 +94,4 @@ https://www.neutrik.com/media/8070/download/ethercon-cable-connector-ne8mc.pdf?v
 ![image](https://i.imgur.com/GE0oSzS.jpg)
 I ended up making a second one as I wasn't taking pictures as I went for the first one. As previously mentioned, it works without the NE8MC, but I'd still recommend it for a more secure connection.
 
-Once again, let me know on Discord in the 20XX Discord or direct message @Crane#1195 if you have any questions.
+Once again, let me know on Discord in my server or direct message @Crane#1195 if you have any questions.
