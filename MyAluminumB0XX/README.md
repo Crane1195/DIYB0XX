@@ -20,7 +20,7 @@ On top of this, I have done two modifications to the design which increase overa
 
 The first of which a detachable RJ45 to Gamecube cable, and the second is an internal Gamecube to USB adapter with the extra three ports available to use outside the case.
 
-If you have any questions regarding this build, feel free to ask me in my Discord server (https://discord.gg/S3qgZWD) or in direct message @Crane#1195 .
+If you have any questions regarding this build, feel free to ask me in my Discord server (https://craneslab.xyz/discord) or in direct message @Crane#1195 .
 
 ## Components
 
@@ -113,9 +113,7 @@ I made a PCB to make building Gamecube controllers a lot easier and to have more
 * Native PC controller support. No need for a GCC to USB adapter for PC.
 * Nunchuk port to use an analog stick instead of the digital stick / modifiers.
 
-If you are interested in finding out more about the GCCPCB, join this discord server and check out #info
-
-https://discord.gg/S3qgZWD
+If you are interested in finding out more about the GCCPCB, check out https://www.craneslab.xyz/projects/s
 
 ![image](https://i.imgur.com/yPC4dIC.jpg)
 Here is the final interior. I put a four pin header on the board to allow access to the 5V, GND, 3V, and Data lines so I could hook up my GCC to USB adapter. I plugged the GCC adapter into the GCCPCB USB port, which means that it is accessible using a RJ45 to USB cable. The Arduino is plugged into a USB Neutrik, which I use for Native PC control and updating the firmware.
@@ -124,4 +122,12 @@ Here is the final interior. I put a four pin header on the board to allow access
 
 Overall, this controller has been a really solid test bench for various projects I've been working on. First the internal USB to GCC adapter, then my mechanical switch boards that I used to replace the Sanwa SW68s (maybe more info on these coming soon, they aren't perfect yet), and now to work on my GCCPCB.
 
-If you have any questions about this build, the GCCPCB, or anything else, feel free to message me on Discord @Crane#1195, or to join my Discord server, https://discord.gg/S3qgZWD, where I'll be posting updates about the various projects I am working on.
+If you have any questions about this build, the GCCPCB, or anything else, feel free to message me on Discord @Crane#1195, or to join my Discord server, https://www.craneslab.xyz/discord, where I'll be posting updates about the various projects I am working on.
+
+### Support my work
+
+Do note, all Amazon links are affiliated, meaning I get a kickback when you buy anything using these links, and you pay the normal price of the thing. I figure it's a good way for people who want to support me to be able to without any additional cost.
+
+I also set up a donation link for people who appreciate my work and wish to donate. Donations are greatly appreciated, but are far from necessary:
+
+https://www.paypal.com/donate/?hosted_button_id=NFDEML5FKR8N8

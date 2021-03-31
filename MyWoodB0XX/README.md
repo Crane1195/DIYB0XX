@@ -26,8 +26,8 @@ This utilizes the Nicohood Nintendo library found here https://github.com/NicoHo
 Anyway, enough of the intro, lets get into the build.
 
 ### Part List
-  * Arduino ~~Mega 2560~~ Micro (Third party ones are cheaper, and work just as well. I have used this one https://www.amazon.com/gp/product/B00J1X5B7Y/ref=ppx_od_dt_b_asin_title_s00?ie=UTF8&psc=1)
-  * Logic Controller 3.3V - 5V (I used this one https://www.amazon.com/gp/product/B0148BLZGE/ref=oh_aui_search_asin_title?ie=UTF8&psc=1)
+  * Arduino ~~Mega 2560~~ Micro (Third party ones are cheaper, and work just as well. I have used this one https://amzn.to/3wioVTG)
+  * Logic Controller 3.3V - 5V (I used this one https://amzn.to/3m78dSC)
   * 18 Sanwa OBSF-24 buttons
   * GameCube controller cable. This can be either the cable from an OEM controller as shown in this build, a 3rd party controller cable, or a 3rd party extension cable. You can make this cable detachable by following the guide here https://github.com/Crane1195/DIYB0XX/tree/master/Detachable%20Cable
   * The wooden case
@@ -85,7 +85,7 @@ I painted the top and sides using multiple layers of spray paint, and then brush
 
 ![image](https://i.imgur.com/nJz8njy.jpg)
 
-Next up was the internals. Here you can see the OBSF-24 Blues and the cables I spliced together to connect the buttons to the Arduino. 
+Next up was the internals. Here you can see the OBSF-24 Blues and the cables I spliced together to connect the buttons to the Arduino.
 
 Edit : Do note, I used to use the Arduino Mega 2560 seen here, and solder spliced wires for the buttons. I recommend not doing this though, and instead using an Arduino Micro like the one linked in the part list. The wiring schematic below has been updated to reflect this.
 The reason to pick the Micro instead is that it can work as a controller on PC without a Gamecube Controller to USB adapter. The Mega2560 cannot. Also, just soldering the button wires to the board is a lot easier IMO then solder splicing wires.
@@ -106,7 +106,7 @@ The wiring is messy since I made the cables much longer than they need to be unf
 
 ![image](https://i.imgur.com/9wG8kuw.jpg)
 
-Here is a wiring diagram I made showing how it all works. I previously used a Mega2560, but now I use an Arduino Micro. I've updated the schematic to show this. For more info on how the wiring works, message me on Discord, or join the 20XX Discord from the link above. @Crane#1195 is my ID.
+Here is a wiring diagram I made showing how it all works. I previously used a Mega2560, but now I use an Arduino Micro. I've updated the schematic to show this. For more info on how the wiring works, feel free to ask in my [Discord Server](https://www.craneslab.xyz/discord)
 
 ![image](https://i.imgur.com/0YlfuPZ.jpg)
 
@@ -131,3 +131,11 @@ Here is an extensive part list I made to track how much I spent but I thought I'
 ![image](https://i.imgur.com/0mqm5v5.jpg)
 
 Once again, huge thanks to Simple for his guide, and assistance when I had a couple of roadblocks, as well as Hax, and Streamlord.
+
+## Support my work
+
+Do note, all Amazon links are affiliated, meaning I get a kickback when you buy anything using these links, and you pay the normal price of the thing. I figure it's a good way for people who want to support me to be able to without any additional cost.
+
+I also set up a donation link for people who appreciate my work and wish to donate. Donations are greatly appreciated, but are far from necessary:
+
+https://www.paypal.com/donate/?hosted_button_id=NFDEML5FKR8N8

@@ -36,3 +36,11 @@ If you are using 24mm snap in buttons (like Sanwa OBSX-24) with an aluminum or A
 If you are using Crowns screw in buttons you could use just one 6mm acrylic or wood panel with 24mm holes rather than two 3mm ones. (Unless you want art, then you'd want a clear 3mm panel and some color 3mm panel)
 
 And like with snap in buttons, just a 3mm aluminum or ACM panel is fine too.
+
+### Support my work
+
+Do note, all Amazon links are affiliated, meaning I get a kickback when you buy anything using these links, and you pay the normal price of the thing. I figure it's a good way for people who want to support me to be able to without any additional cost.
+
+I also set up a donation link for people who appreciate my work and wish to donate. Donations are greatly appreciated, but are far from necessary:
+
+https://www.paypal.com/donate/?hosted_button_id=NFDEML5FKR8N8

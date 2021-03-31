@@ -46,4 +46,12 @@ Normally the DPAD is enabled by holding Mod1 and Mod2 and pressing C-Up/down/lef
 
 Let me know if you have any issues with the code, or any suggestions for the Ultimate/PM modes, as they are less concrete.
 
-Discord : @Crane#1195
+Discord : https://craneslab.xyz/discord
+
+### Support my work
+
+Do note, all Amazon links are affiliated, meaning I get a kickback when you buy anything using these links, and you pay the normal price of the thing. I figure it's a good way for people who want to support me to be able to without any additional cost.
+
+I set up a donation link for people who appreciate my work and wish to donate. Donations are greatly appreciated, but are far from necessary:
+
+https://www.paypal.com/donate/?hosted_button_id=NFDEML5FKR8N8

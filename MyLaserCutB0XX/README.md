@@ -59,14 +59,16 @@ Next was art. I printed it on 17"x11" paper, used scissors to cut the rounded ed
 
 ## Ports
 ![image](https://i.imgur.com/dgtR2th.jpg)
-I left two gaps in the walls. One for a [USB C feedthrough](https://www.amazon.com/gp/product/B07DFCH4V3/ref=ppx_yo_dt_b_asin_title_o08_s00?ie=UTF8&psc=1), and the other for a [Nunchuk extension cable](https://www.amazon.com/gp/product/B01MYVK56T/ref=ppx_yo_dt_b_asin_title_o07_s00?ie=UTF8&psc=1). The company who makes the USB C feedthrough also makes one with only one port which you can find [here](https://www.amazon.com/USB-Adaptor-Type-Receptacle-FT/dp/B07695JD1Q/ref=sr_1_64?qid=1564507879&s=gateway&sr=8-64&srs=8040557011).
+I left two gaps in the walls. One for a [USB C feedthrough](https://amzn.to/3ud6Y7w), and the other for a [Nunchuk extension cable](https://amzn.to/3u9P2dJ). The company who makes the USB C feedthrough also makes one with only one port which you can find [here](https://amzn.to/39NfIth).
+
+Here is another [USBC feedthrough](https://amzn.to/2PeNWPh) which is more commonly in stock and is usually cheaper.
 
 ![image](https://i.imgur.com/Ers2BYs.jpg)
-I used [this](https://www.amazon.com/Loctite-Fun-Tak-Mounting-2-Ounce-1087306/dp/B001F57ZPW) to secure the USB C feedthrough in place, and the Nunchuk extension is friction fit into place. Both are very secure, and I will eventually get some black PLA and make a spacer above the Nunchuk extension to close that hole.
+I used [this](https://amzn.to/3diyg5o) to secure the USB C feedthrough in place, and the Nunchuk extension is friction fit into place. Both are very secure, and I will eventually get some black PLA and make a spacer above the Nunchuk extension to close that hole.
 
 ## Internals
 ![image](https://i.imgur.com/5R3F9Hd.jpg)
-Here you can see the internals. This board is the GCCPCB, made my me. If you are interested in learning more or have any questions about this board and its firmware, feel free to message me about it on Discord @Crane#1195, or to [join my Discord server](https://discord.gg/P2BxMVY) where I post updates about hardware I am working on or firmware updates.
+Here you can see the internals. This board is the GCCPCB, made my me. If you are interested in learning more or have any questions about this board and its firmware, feel free to message me about it on Discord @Crane#1195, or to [join my Discord server](https://www.craneslab.xyz/discord) where I post updates about hardware I am working on or firmware updates.
 Here's a brief synopsis of its benefits over my previous method of making DIY Gamecube Controllers.
 * The entire circuit is all done by the board.
 * Buttons don't need to be spliced to jumper cables and can just be plugged into screw terminals like on a Brook board.
@@ -91,4 +93,12 @@ A few more angles.
 ### Conclusion / Contact
 Overall I'm super happy with how this turned out. It isn't perfect, but it is about the best I could have done given my inexperience with fightstick art and laser cutting cases. I learned a lot and would it would definitely be easier the next time I do one like this.
 
-If you have any questions about this build, the GCCPCB, or anything else, feel free to message me on Discord @Crane#1195, or to join my Discord server, discord.gg/P2BxMVY, where I'll be posting updates about the various projects I am working on.
+If you have any questions about this build, the GCCPCB, or anything else, feel free to message me on Discord @Crane#1195, or to join my Discord server, https://craneslab.xyz/discord, where I'll be posting updates about the various projects I am working on.
+
+### Support my work
+
+Do note, all Amazon links are affiliated, meaning I get a kickback when you buy anything using these links, and you pay the normal price of the thing. I figure it's a good way for people who want to support me to be able to without any additional cost.
+
+I also set up a donation link for people who appreciate my work and wish to donate. Donations are greatly appreciated, but are far from necessary:
+
+https://www.paypal.com/donate/?hosted_button_id=NFDEML5FKR8N8

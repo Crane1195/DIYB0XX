@@ -3,7 +3,7 @@
 
 Here you will find all the information needed to make a detachable cable for a custom Gamecube controller/fightstick.
 
-If you have any questions regarding the process, feel free to message me on Discord @Crane#1195, or join my Discord server here https://craneslab.xyz/discord
+If you have any questions regarding the process, feel free to ask in my Discord server here https://craneslab.xyz/discord
 
 GCC stands for GameCube Controller. I will use this acryonym a lot.
 
@@ -94,7 +94,7 @@ https://www.neutrik.com/media/8070/download/ethercon-cable-connector-ne8mc.pdf?v
 ![image](https://i.imgur.com/GE0oSzS.jpg)
 I ended up making a second one as I wasn't taking pictures as I went for the first one. As previously mentioned, it works without the NE8MC, but I'd still recommend it for a more secure connection.
 
-Once again, let me know on Discord in my server or direct message @Crane#1195 if you have any questions.
+Once again, let me know in my [Discord Server](https://craneslab.xyz/discord) if you have any questions.
 
 ## Support my work
 
