@@ -1,10 +1,9 @@
 /*
-  DIYSmashB0XX v1.209 code by Crane.
+  SmashB0XX v1.209 code by Crane.
   This code utilizes
     Nicohood's Nintendo library
 
-  This fork has the Smashbox pinout prefilled in for ease of installation on
-  Smashboxes.
+  This fork has the Smashbox pinout for ease of installation on Smashboxes.
 */
 #include "Nintendo.h"
 

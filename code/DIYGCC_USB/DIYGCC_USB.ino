@@ -1,11 +1,12 @@
 /*
-  DIYB0XXNativeUSB v1.209 code by Crane.
+  DIYGCC USB Only v1.209 code by Crane.
   This code utilizes
-    Nicohood's Nintendo library
     MHeironimus' Arduino Joystick Library.
     Arduino Keyboard Library
+
+  This code is for DIY controllers using the Arduino Micro and Leonardo
+  without a GameCube circuit.
 */
-#include "Nintendo.h"
 #include <Joystick.h>
 #include <Keyboard.h>
 
@@ -66,9 +67,6 @@ Joystick_ Joystick(JOYSTICK_DEFAULT_REPORT_ID,JOYSTICK_TYPE_GAMEPAD,
   false, true,          // No rudder, throttle
   false, false, false);  // No accelerator, no brake, no steering
 
-CGamecubeConsole GamecubeConsole(A5);
-Gamecube_Data_t d = defaultGamecubeData;
-
 enum game
 {
   Melee,
@@ -79,7 +77,6 @@ enum game
 
 enum device
 {
-	GC,
 	PC,
   Keeb
 };
@@ -113,10 +110,8 @@ bool lockCUP = false;
 bool lockCDOWN = false;
 
 game currentGame = Melee;
-device currentDevice = GC;
+device currentDevice = PC;
 SOCD currentSOCD = TwoIPNoReactivate;
-
-bool LatencyFix = false;
 
 int L = 16;
 int LEFT = 1;
@@ -174,10 +169,6 @@ void setup() {
     pinMode(MIDSHIELD, INPUT_PULLUP);
   }
 
-  if (digitalRead(CDOWN) == LOW) {
-    currentDevice = PC;
-  }
-
   if (digitalRead(MODY) == LOW) {
     currentDevice = Keeb;
   }
@@ -213,13 +204,6 @@ void setup() {
     currentGame = RoA;
     currentSOCD = TwoIP;
   }
-
-  // Hold Start on plugin to enable the latency fix for Melee on GC/Wii
-  if (digitalRead(START) == LOW)
-  {
-    LatencyFix = true;
-  }
-
 }
 
 void loop() {
@@ -875,32 +859,6 @@ if (currentDevice != Keeb) { // If Keyboard mode, disregard all modifier logic
       }
     }
 
-  }
-  /********* GC Report *********/
-  else {
-    d.report.l = isL;
-    d.report.start = isSTART;
-    d.report.b = isB;
-    d.report.x = isX;
-    d.report.z = isZ;
-    d.report.r = isR;
-    d.report.y = isY;
-    d.report.a = isA;
-    d.report.dup = isDPADUP;
-    d.report.ddown = isDPADDOWN;
-    d.report.dleft = isDPADLEFT;
-    d.report.dright = isDPADRIGHT;
-
-    d.report.xAxis = controlX;
-    d.report.yAxis = controlY;
-    d.report.cxAxis = cstickX;
-    d.report.cyAxis = cstickY;
-    d.report.right = RLight;
-    d.report.left = LLight;
-    GamecubeConsole.write(d);
-
-    if ((currentGame == Melee) && (LatencyFix == true))
-      delayMicroseconds(7200);
   }
 }
 

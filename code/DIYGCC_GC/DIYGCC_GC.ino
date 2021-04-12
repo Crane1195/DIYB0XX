@@ -1,9 +1,9 @@
 /*
-  DIYB0XX v1.209 code by Crane.
+  DIYGCC GameCube Only v1.209 by Crane.
   This code utilizes
     Nicohood's Nintendo library
 
-  This code is for DIYB0XXes using Arduinos with 8 bit AVR microcontrollers
+  This code is for DIY controllers using Arduinos with 8 bit AVR microcontrollers
   running at 16 MHz that do not support native usb (Mega2560, Nano, etc)
 */
 #include "Nintendo.h"
