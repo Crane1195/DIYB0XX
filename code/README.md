@@ -4,7 +4,7 @@ This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560
 
 Release Page: https://github.com/Crane1195/DIYB0XX/releases
 
-## Versions
+## Variants
 
 - `DIYGCC_GC`
   - __**Using:**__
