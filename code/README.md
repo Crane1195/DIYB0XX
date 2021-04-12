@@ -84,7 +84,7 @@ DPAD is enabled by holding ModX and ModY and pressing C-Up/down/left/right.
 Let me know if you have any issues with the code in my Discord Server:
 https://craneslab.xyz/discord
 
-### Support my work
+## Support my work
 
 Do note, all Amazon links are affiliated, meaning I get a kickback when you buy anything using these links, and you pay the normal price of the thing. I figure it's a good way for people who want to support me to be able to without any additional cost.
 
