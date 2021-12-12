@@ -1,5 +1,11 @@
 # DIYGCC v1.209 code by Crane.
 
+# Deprecated
+
+This firmware has been succeeded by [CL-FW](https://github.com/Crane1195/CL-FW). Consult the CL-FW README for more information and a new installation guide.
+
+---
+
 This is code designed with 16 mhz Arduinos in mind such as the Arduino Mega 2560, Arduino Micro, Arduino Nano, etc.
 
 Release Page: https://github.com/Crane1195/DIYB0XX/releases
